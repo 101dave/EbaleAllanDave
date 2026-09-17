@@ -1,0 +1,190 @@
+<html>
+<head>
+<title>MyPortfolio</title>
+
+<style>
+body{
+background-color: white;
+font-family: Arial, Helvetica, sans-serif;
+color: black;
+}
+
+header{
+width: 100%;
+background-color: white;
+}
+
+header .Nav-Bar{
+display: flex;
+align-items: center;
+justify-content: space-between;
+height: 30px;
+max-width: 1200px;
+margin-left: 100px;
+margin-right: 100px;
+padding: 15px;
+}
+
+header .Nav-Bar #Logo{
+width: 30px;
+height: 30px;
+}
+
+header .Nav-Bar .Nav-Links{
+display: flex;
+gap: 100px;
+}
+
+header .Nav-Bar .Nav-Links a{
+font-weight: bolde;
+font-size: 16px;
+text-decoration: none;
+color: black;
+}
+
+.Nav-Links :hover{
+border-bottom: 2px solid black;
+}
+
+header #Dark{
+background-color: white;
+border-color: black;
+border-radius: 50%;
+}
+
+header #Dark:hover {
+background-color: #1f6391;
+}
+
+section {
+margin: 100px 150px;
+color: #333;
+}
+
+section #Name {
+font-size: 28px;
+color: #2980b9;
+}
+
+section h1 {
+font-size: 40px;
+margin: 10px 0;
+}
+
+section p {
+font-size: 18px;
+  line-height: 1.5;
+  color: #555;
+}
+
+.Socials-Links {
+display: flex;
+gap: 30px;
+margin: 20px 0;
+}
+
+.Socials-Links a {
+text-decoration: none;
+color: #333;
+font-weight: bold;
+}
+
+.Socials-Links a:hover {
+color: #2980b9;
+}
+
+section button {
+padding: 12px 25px;
+background: #2980b9;
+color: #fff;
+border: none;
+border-radius: 25px;
+font-size: 16px;
+}
+
+section button:hover {
+background: #1f6391;
+}
+
+section button a{
+text-decoration:none;
+color: black;
+}
+
+.AllInfo {
+display: flex;
+align-items: center;
+justify-content: space-between;
+}
+
+.profile img {
+width: 300px;
+height: auto;
+border-radius: 10px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+    <nav class="Nav-Bar">
+        <img src="logo.jpg" id="Logo">
+
+        <div class="Nav-Links">
+            <a href="">Home</a>
+            <a href="http://localhost/SAMPLEPAGE/PICTURE.php">Album</a>
+            <a href="http://localhost/SAMPLEPAGE/CONTACT.php">Contact</a>
+        </div>
+
+        <button id="Dark">
+            <a href="http://localhost/SAMPLEPAGE/LOGIN.php">L</a>
+        </button>
+
+    </nav>
+</header>
+
+<section class="AllInfo">
+
+    <div class="Container">
+        <div class="Info">
+            <h1 id="Name">Hello, I'm Dave!</h1>
+            <h1>Web Developer</h1>
+
+            <p>
+            I'm a grade 12 student with a strong willingness to learn and grow.<br>
+            Eager to develop new skills, gain real-world experience.
+            Responsible, adaptable<br> and committed to doing task with effort.
+            </p>
+
+            <div class="Socials-Links">
+                <a href="https://web.facebook.com/dave.614149">Facebook</a>
+                <a href="https://www.instagram.com/davw_zx">Instagram</a>
+                <a href="">Tiktok</a>
+            </div>
+
+            <button>
+                <a href="http://localhost/SAMPLEPAGE/MOREINFO.php">Know more about me</a>
+            </button>
+        </div>
+
+    </div>
+
+   	<div class="profile">
+		<img src="Me.jpg">
+    	</div>
+
+</section>
+
+
+<script>
+
+alert("Successfully Logged in");
+
+</script>
+
+
+</body>
+</html>

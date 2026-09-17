@@ -1,0 +1,96 @@
+<html>
+<head>
+<title>PICTURE</title>
+
+<style>
+
+body{
+background-color: white;
+font-family: Arial, Helvetica, sans-serif;
+color: black;
+}
+
+header{
+width: 100%;
+background-color: white;
+}
+
+header .Nav-Bar{
+display: flex;
+items: center;
+justify-content: space-between;
+height: 30px;
+max-width: 1200px;
+margin-top: 0;
+margin-bottom: 0;
+margin-left: 100px;
+margin-right: 100px;
+padding: 15px;
+}
+
+header .Nav-Bar #Logo{
+width: 30px;
+height: 30px;
+}
+
+header .Nav-Bar .Nav-Links{
+display: flex;
+gap: 100px;
+}
+
+header .Nav-Bar .Nav-Links a{
+font-weight: bolder;
+font-size: 16px;
+text-decoration: none;
+color: black;    
+}
+
+.Nav-Links :hover{
+border-bottom: 2px solid black;
+}
+header #Dark{
+background-color: white;
+border-color: black;
+border-radius: 50%;
+}
+
+.Image{
+display: flex;
+gap: 10px;
+}
+
+.item{
+width: 300px;
+height: 300px;
+}
+
+</style>
+</head>
+<body>
+
+<header>
+        <nav class="Nav-Bar">
+            <img src="logo.jpg" id="Logo">
+            <div class="Nav-Links">
+                <a href="http://localhost/SAMPLEPAGE/MYPORTFOLIO.php">Home</a>
+                <a href="">Album</a>
+                <a href="http://localhost/SAMPLEPAGE/CONTACT.php">Contact</a>
+            </div>
+            <button id="Dark"><a href="http://localhost/SAMPLEPAGE/LOGIN.php">L</a></button>
+        </nav>
+    </header>
+
+<div class="Image">
+<center>
+<h1>OUR PICTURE TOGETHER (2025-2026)</h1>
+	<img src="pic1.jpeg.jpg" class="item">
+	<img src="pic2.jpeg.jpg" class="item">
+	<img src="pic3.jpeg.jpg" class="item">
+	<img src="pic4.jpeg.jpg" class="item">
+	<img src="pic5.jpeg.jpeg" class="item">
+	<img src="pic6.jpeg.jpeg" class="item">
+</center>
+</div>
+
+</body>
+</html

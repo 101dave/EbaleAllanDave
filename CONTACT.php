@@ -1,0 +1,137 @@
+<html>
+<head>
+<title>CONTACT</title>
+<style>
+
+body{
+background-color: white;
+font-family: Arial, Helvetica, sans-serif;
+color: black;
+}
+
+header{
+width: 100%;
+background-color: white;
+}
+
+header .Nav-Bar{
+display: flex;
+align-items: center;
+justify-content: space-between;
+height: 30px;
+max-width: 1200px;
+margin-top: 0;
+margin-bottom: 0;
+margin-left: 100px;
+margin-right: 100px;
+padding: 15px;
+}
+
+header .Nav-Bar #Logo{
+width: 30px;
+height: 30px;
+}
+
+header .Nav-Bar .Nav-Links{
+display: flex;
+gap: 100px;
+}
+
+header .Nav-Bar .Nav-Links a{
+font-weight: bolder;
+font-size: 16px;
+text-decoration: none;
+color: black;    
+}
+
+.Nav-Links :hover{
+border-bottom: 2px solid black;
+}
+
+header #Dark{
+background-color: white;
+border-color: black;
+border-radius: 50%;
+}
+
+.contact-section {
+padding: 40px;
+background: #f9f9f9;
+}
+
+.contact-container {
+max-width: 600px;
+margin: auto;
+background: #fff;
+padding: 20px;
+border-radius: 10px;
+box-shadow: 0 4px 8px black;
+}
+
+.contact-info p {
+margin: 10px 0;
+}
+
+.contact-info a {
+color: #0077cc;
+text-decoration: none;
+}
+
+.contact-info a:hover {
+  text-decoration: underline;
+}
+
+.Message {
+text-align: center;
+}
+
+</style>
+</head>
+<body>
+
+<header>
+        <nav class="Nav-Bar">
+            <img src="logo.jpg" id="Logo">
+            <div class="Nav-Links">
+                <a href="http://localhost/SAMPLEPAGE/MYPORTFOLIO.php">Home</a>
+                <a href="http://localhost/SAMPLEPAGE/PICTURE.php">Album</a>
+                <a href="">Contact</a>
+            </div>
+            <button id="Dark"><a href="http://localhost/SAMPLEPAGE/LOGIN.php">L</a></button>
+        </nav>
+    </header>
+
+<section class="contact-section">
+	<div class="contact-container">
+	    <div class="contact-info">
+		<p><strong>Name:</strong> Allan Dave E Ebale</p>
+		<p><strong>Phone:</strong> 993-935-7601</p>
+		<p><strong>Email:</strong> 
+		<a href="mailto:davea0153@gmail.com">davea0153@gmail.com</a>
+		</p>
+		<p><strong>Facebook:</strong> 
+         	<a href="https://web.facebook.com/dave.614149">Dave</a>
+		</p>
+		<p><strong>Tiktok:</strong> Dave001</p>
+		<p><strong>Instagram:</strong> 
+		<a href="https://www.instagram.com/davw_zx">Dave</a>
+      		</p>
+	     </div>
+	</div>
+</section>
+
+<section class="Message">
+
+<h1>SEND ME A MESSAGE</h1>
+<form method="post">
+	<label>Name:</label>
+		<input name="Name">
+	<label>Message:</label>
+		<input name="Message">
+		<button>SEND</button>
+</form>
+
+</section>
+
+</body>
+</html>
