@@ -11,10 +11,16 @@ body.dark-mode {
 
 header.dark-mode {
   background-color: #1e1e1e;
+  border-bottom: 1px solid #333;
 }
 
 .Nav-Links a.dark-mode {
-  color: #e0e0e0;
+  color: #f5f5f5 !important;
+}
+
+.Nav-Links a.dark-mode:hover {
+  color: #ffffff;
+  border-bottom: 2px solid #f5f5f5;
 }
 
 .project-item.dark-mode {
@@ -131,6 +137,7 @@ header .Nav-Bar .Nav-Links a {
 
 .Nav-Links a:hover {
     color: #000;
+    border-bottom: 2px solid #000;
 }
 
 /* Projects section */
@@ -225,6 +232,7 @@ header .Nav-Bar .Nav-Links a {
 </header>
 
 <div class="Projects">
+
     <div class="project-grid">
 
         <div class="project-item">
@@ -255,7 +263,7 @@ header .Nav-Bar .Nav-Links a {
             <a href="#">View Project</a>
         </div>
 
-                <div class="project-item">
+         <div class="project-item">
             <img src="cpp_project.jpg" class="item">
             <h2>C++ ATM Simulator</h2>
             <p>A simple C++ console-based program that simulates ATM operations such as deposit, withdrawal, and balance inquiry.</p>
@@ -275,24 +283,47 @@ header .Nav-Bar .Nav-Links a {
             <p>An application for managing student grades and academic performance in a simple interface.</p>
             <a href="#">View Project</a>
         </div>
-        
+
+        <div class="project-item">
+            <img src="project3.jpg" class="item">
+            <h2>Student Management System</h2>
+            <p>A database-driven application for managing student records, courses, and grades with a clean dashboard.</p>
+            <a href="#">View Project</a>
+        </div>
+
+         <div class="project-item">
+            <img src="cpp_project.jpg" class="item">
+            <h2>C++ ATM Simulator</h2>
+            <p>A simple C++ console-based program that simulates ATM operations such as deposit, withdrawal, and balance inquiry.</p>
+            <a href="#">View Project</a>
+        </div>
+
+        <div class="project-item">
+            <img src="project1.jpg" class="item">
+            <h2>Personal Expense Tracker</h2>
+            <p>A minimalist web app to track personal expenses and visualize spending habits with clean charts.</p>
+            <a href="#">View Project</a>
+        </div>
+
+        <div class="project-item">
+            <img src="project2.jpg" class="item">
+            <h2>Student Grade Management System</h2>
+            <p>An application for managing student grades and academic performance in a simple interface.</p>
+            <a href="#">View Project</a>
+        </div>
+
+        <div class="project-item">
+            <img src="project3.jpg" class="item">
+            <h2>Student Management System</h2>
+            <p>A database-driven application for managing student records, courses, and grades with a clean dashboard.</p>
+            <a href="#">View Project</a>
+        </div>
+
     </div>
 </div>
 
-<script>
-  const toggleBtn = document.getElementById("Dark");
-  toggleBtn.addEventListener("change", () => {
-    document.body.classList.toggle("dark-mode");
-    document.querySelector("header").classList.toggle("dark-mode");
-
-    document.querySelectorAll(".Nav-Links a").forEach(link => {
-      link.classList.toggle("dark-mode");
-    });
-
-    document.querySelectorAll(".project-item").forEach(item => {
-      item.classList.toggle("dark-mode");
-    });
-  });
+<script src="script.js">
+  
 </script>
 
 </body>

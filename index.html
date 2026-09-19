@@ -11,10 +11,30 @@ body.dark-mode {
 
 header.dark-mode {
   background-color: #1e1e1e;
+  border-bottom: 1px solid #333;
 }
 
 .Nav-Links a.dark-mode {
-  color: #f5f5f5;
+  color: #f5f5f5 !important;
+}
+
+.Nav-Links a.dark-mode:hover {
+  color: #ffffff;
+  border-bottom: 2px solid #f5f5f5;
+}
+
+section.dark-mode h1,
+section.dark-mode p,
+section.dark-mode #Name {
+  color: #f5f5f5 !important;
+}
+
+.Socials-Links a.dark-mode {
+  color: #f5f5f5 !important;
+}
+
+.Socials-Links a.dark-mode:hover {
+  color: #ffffff;
 }
 
 .contact-container.dark-mode,
@@ -115,6 +135,7 @@ header .Nav-Bar .Nav-Links a {
 
 .Nav-Links a:hover {
   color: #000;
+  border-bottom: 2px solid #000;
 }
 
 /* Content section */
@@ -235,22 +256,8 @@ section button a {
   </div>
 </section>
 
-<script>
-  const toggleBtn = document.getElementById("Dark");
-  toggleBtn.addEventListener("change", () => {
-    document.body.classList.toggle("dark-mode");
-    document.querySelector("header").classList.toggle("dark-mode");
-
-    document.querySelectorAll(".Nav-Links a").forEach(link => {
-      link.classList.toggle("dark-mode");
-    });
-
-    const contactBox = document.querySelector(".contact-container");
-    if (contactBox) contactBox.classList.toggle("dark-mode");
-
-    const resumeBox = document.querySelector(".resume");
-    if (resumeBox) resumeBox.classList.toggle("dark-mode");
-  });
+<script src="script.js" >
+ 
 </script>
 
 </body>
