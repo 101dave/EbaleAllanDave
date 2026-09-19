@@ -2,6 +2,7 @@
 <head>
 <title>CONTACT</title>
 <style>
+/* Dark mode styles */
 body.dark-mode {
   background-color: #121212;
   color: #f5f5f5;
@@ -15,183 +16,278 @@ header.dark-mode {
   color: #f5f5f5;
 }
 
-.project-item.dark-mode,
-.contact-container.dark-mode,
-.resume.dark-mode {
-  background: #2a2a2a;
+.contact-container.dark-mode {
+  background: #1e1e1e;
   color: #f5f5f5;
-  border-color: #444;
+  border-color: #333;
 }
 
-button#Dark {
-  background-color: white;
-  border: 1px solid black;
-  border-radius: 50%;
-  padding: 5px 10px;
+/* Toggle switch style */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 25px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
   cursor: pointer;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-color: #ccc;
+  transition: .4s;
+  border-radius: 25px;
 }
 
-button#Dark:hover {
-  background-color: #1f6391;
-  color: #fff;
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 19px;
+  width: 19px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  transition: .4s;
+  border-radius: 50%;
 }
 
-body{
-background-color: white;
-font-family: Arial, Helvetica, sans-serif;
-color: black;
+input:checked + .slider {
+  background-color: #333;
 }
 
-header{
-width: 100%;
-background-color: white;
+input:checked + .slider:before {
+  transform: translateX(24px);
 }
 
-header .Nav-Bar{
-display: flex;
-align-items: center;
-justify-content: space-between;
-height: 30px;
-max-width: 1200px;
-margin-top: 0;
-margin-bottom: 0;
-margin-left: 100px;
-margin-right: 100px;
-padding: 15px;
+/* Default light mode */
+body {
+  background-color: #fafafa;
+  font-family: 'Segoe UI', Arial, Helvetica, sans-serif;
+  color: #333;
+  margin: 0;
 }
 
-header .Nav-Bar #Logo{
-width: 30px;
-height: 30px;
+header {
+  width: 100%;
+  background-color: #fff;
+  border-bottom: 1px solid #ddd;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
 }
 
-header .Nav-Bar .Nav-Links{
-display: flex;
-gap: 100px;
+header .Nav-Bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 60px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
 }
 
-header .Nav-Bar .Nav-Links a{
-font-weight: bolder;
-font-size: 16px;
-text-decoration: none;
-color: black;    
+header .Nav-Bar #Logo {
+  width: 40px;
+  height: 40px;
 }
 
-.Nav-Links :hover{
-border-bottom: 2px solid black;
+header .Nav-Bar .Nav-Links {
+  display: flex;
+  gap: 30px;
 }
 
-header #Dark{
-background-color: white;
-border-color: black;
-border-radius: 50%;
+header .Nav-Bar .Nav-Links a {
+  font-weight: 500;
+  font-size: 15px;
+  text-decoration: none;
+  color: #333;    
+  transition: color 0.3s;
 }
 
+.Nav-Links a:hover {
+  color: #000;
+}
+
+/* Contact section */
 .contact-section {
-padding: 40px;
-background: #f9f9f9;
+  padding: 40px 20px;
 }
 
 .contact-container {
-max-width: 600px;
-margin: auto;
-background: #fff;
-padding: 20px;
-border-radius: 10px;
-box-shadow: 0 4px 8px black;
+  max-width: 600px;
+  margin: auto;
+  background: #fff;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+.contact-container h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #000;
+  font-size: 22px;
 }
 
 .contact-info p {
-margin: 10px 0;
+  margin: 8px 0;
+  font-size: 14px;
 }
 
 .contact-info a {
-color: #0077cc;
-text-decoration: none;
+  color: #333;
+  text-decoration: none;
 }
 
 .contact-info a:hover {
   text-decoration: underline;
 }
 
+/* Message form */
 .Message {
-text-align: center;
+  text-align: center;
+  margin: 40px 0;
 }
 
+.Message h1 {
+  font-size: 22px;
+  margin-bottom: 20px;
+}
+
+.Message form {
+  display: flex;
+  flex-direction: column;
+  max-width: 400px;
+  margin: auto;
+}
+
+.Message label {
+  margin: 10px 0 5px;
+  font-weight: 500;
+}
+
+.Message input, .Message textarea {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+.Message textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.Message button {
+  margin-top: 15px;
+  padding: 10px;
+  background: #333;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.Message button:hover {
+  background: #555;
+}
+
+/* Social links footer */
+.footer-socials {
+  text-align: center;
+  margin-top: 40px;
+}
+
+.footer-socials a {
+  margin: 0 10px;
+  text-decoration: none;
+  color: #333;
+  font-size: 14px;
+}
+
+.footer-socials a:hover {
+  color: #000;
+}
 </style>
 </head>
 <body>
 
 <header>
-        <nav class="Nav-Bar">
-            <img src="logo.jpg" id="Logo">
-            <div class="Nav-Links">
-                <a href="index.html">Home</a>
-                <a href="PROJECTS.html">Projects</a>
-                <a href="CONTACT.html">Contact</a>
-            </div>
-           	    <button id="Dark">D</button>	
-        </nav>
-    </header>
+  <nav class="Nav-Bar">
+    <img src="logo.jpg" id="Logo">
+    <div class="Nav-Links">
+      <a href="index.html">Home</a>
+      <a href="PROJECTS.html">Projects</a>
+      <a href="CONTACT.html">Contact</a>
+    </div>
+    <!-- Switch button -->
+    <label class="switch">
+      <input type="checkbox" id="Dark">
+      <span class="slider"></span>
+    </label>
+  </nav>
+</header>
 
 <section class="contact-section">
-	<div class="contact-container">
-	    <div class="contact-info">
-		<p><strong>Name:</strong> Allan Dave E Ebale</p>
-		<p><strong>Phone:</strong> 993-935-7601</p>
-		<p><strong>Email:</strong> 
-		<a href="mailto:davea0153@gmail.com">davea0153@gmail.com</a>
-		</p>
-		<p><strong>Facebook:</strong> 
-         	<a href="https://web.facebook.com/dave.614149">Dave</a>
-		</p>
-		<p><strong>Tiktok:</strong> Dave001</p>
-		<p><strong>Instagram:</strong> 
-		<a href="https://www.instagram.com/davw_zx">Dave</a>
-      		</p>
-	     </div>
-	</div>
+  <div class="contact-container">
+    <h2>Contact Information</h2>
+    <div class="contact-info">
+      <p><strong>Name:</strong> Allan Dave E Ebale</p>
+      <p><strong>Phone:</strong> 993-935-7601</p>
+      <p><strong>Email:</strong> 
+        <a href="mailto:davea0153@gmail.com">davea0153@gmail.com</a>
+      </p>
+      <p><strong>Facebook:</strong> 
+        <a href="https://web.facebook.com/dave.614149">Dave</a>
+      </p>
+      <p><strong>Tiktok:</strong> Dave001</p>
+      <p><strong>Instagram:</strong> 
+        <a href="https://www.instagram.com/davw_zx">Dave</a>
+      </p>
+    </div>
+  </div>
 </section>
 
 <section class="Message">
-
-<h1>SEND ME A MESSAGE</h1>
-<form method="post">
-	<label>Name:</label>
-		<input name="Name">
-	<label>Message:</label>
-		<input name="Message">
-		<button>SEND</button>
-</form>
-
+  <h1>Send Me a Message</h1>
+  <form method="post">
+    <label>Name:</label>
+    <input name="Name" placeholder="Enter your name">
+    <label>Email:</label>
+    <input name="Email" placeholder="Enter your email">
+    <label>Message:</label>
+    <textarea name="Message" placeholder="Write your message"></textarea>
+    <button>SEND</button>
+  </form>
 </section>
+
+<div class="footer-socials">
+  <p>Connect with me:</p>
+  <a href="https://web.facebook.com/dave.614149">Facebook</a> |
+  <a href="https://www.instagram.com/davw_zx">Instagram</a> |
+  <a href="">Tiktok</a>
+</div>
 
 <script>
   const toggleBtn = document.getElementById("Dark");
-  toggleBtn.addEventListener("click", () => {
+  toggleBtn.addEventListener("change", () => {
     document.body.classList.toggle("dark-mode");
     document.querySelector("header").classList.toggle("dark-mode");
 
-    // Apply dark mode to nav links
     document.querySelectorAll(".Nav-Links a").forEach(link => {
       link.classList.toggle("dark-mode");
     });
 
-    // Apply dark mode to project items
-    document.querySelectorAll(".project-item").forEach(item => {
-      item.classList.toggle("dark-mode");
-    });
-
-    // Apply dark mode to contact container
     const contactBox = document.querySelector(".contact-container");
     if (contactBox) contactBox.classList.toggle("dark-mode");
-
-    // Apply dark mode to resume (MOREINFO.html)
-    const resumeBox = document.querySelector(".resume");
-    if (resumeBox) resumeBox.classList.toggle("dark-mode");
   });
 </script>
-
 
 </body>
 </html>

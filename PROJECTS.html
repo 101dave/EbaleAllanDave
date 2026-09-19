@@ -3,9 +3,10 @@
 <title>PROJECTS</title>
 
 <style> 
+/* Dark mode styles */
 body.dark-mode {
   background-color: #121212;
-  color: #f5f5f5;
+  color: #e0e0e0;
 }
 
 header.dark-mode {
@@ -13,52 +14,101 @@ header.dark-mode {
 }
 
 .Nav-Links a.dark-mode {
-  color: #f5f5f5;
+  color: #e0e0e0;
 }
 
-.project-item.dark-mode,
-.contact-container.dark-mode,
-.resume.dark-mode {
-  background: #2a2a2a;
-  color: #f5f5f5;
-  border-color: #444;
+.project-item.dark-mode {
+  background: #1e1e1e;
+  color: #e0e0e0;
+  border-color: #333;
 }
 
-button#Dark {
-  background-color: white;
-  border: 1px solid black;
-  border-radius: 50%;
-  padding: 5px 10px;
-  cursor: pointer;
+.project-item.dark-mode h2 {
+  color: #ffffff;
 }
 
-button#Dark:hover {
-  background-color: #1f6391;
+.project-item.dark-mode p {
+  color: #bbb;
+}
+
+.project-item.dark-mode a {
+  background: #333;
   color: #fff;
 }
 
+.project-item.dark-mode a:hover {
+  background: #555;
+}
+
+/* Toggle switch style */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 25px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-color: #ccc;
+  transition: .4s;
+  border-radius: 25px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 19px;
+  width: 19px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  transition: .4s;
+  border-radius: 50%;
+}
+
+input:checked + .slider {
+  background-color: #333;
+}
+
+input:checked + .slider:before {
+  transform: translateX(24px);
+}
+
+/* Default light mode */
 body {
-    background-color: white;
-    font-family: Arial, Helvetica, sans-serif;
-    color: black;
+    background-color: #fafafa;
+    font-family: 'Segoe UI', Arial, Helvetica, sans-serif;
+    color: #333;
     margin: 0;
     padding: 0;
 }
 
 header {
     width: 100%;
-    background-color: white;
+    background-color: #ffffff;
     border-bottom: 1px solid #ddd;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
 }
 
 header .Nav-Bar {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    height: 50px;
+    height: 60px;
     max-width: 1200px;
     margin: 0 auto;
-    padding: 15px;
+    padding: 0 20px;
 }
 
 header .Nav-Bar #Logo {
@@ -68,29 +118,24 @@ header .Nav-Bar #Logo {
 
 header .Nav-Bar .Nav-Links {
     display: flex;
-    gap: 50px;
+    gap: 30px;
 }
 
 header .Nav-Bar .Nav-Links a {
-    font-weight: bolder;
-    font-size: 16px;
+    font-weight: 500;
+    font-size: 15px;
     text-decoration: none;
-    color: black;    
+    color: #333;    
+    transition: color 0.3s;
 }
 
 .Nav-Links a:hover {
-    border-bottom: 2px solid black;
+    color: #000;
 }
 
-header #Dark {
-    background-color: white;
-    border: 1px solid black;
-    border-radius: 50%;
-    padding: 5px 10px;
-}
-
+/* Projects section */
 .Projects {
-    max-width: 1200px;
+    max-width: 1000px;
     margin: 40px auto;
     padding: 0 20px;
 }
@@ -98,59 +143,66 @@ header #Dark {
 .Projects h1 {
     text-align: center;
     margin-bottom: 30px;
-    color: #222;
+    color: #333;
+    font-size: 28px;
+    font-weight: 600;
 }
 
 .project-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
     gap: 20px;
 }
 
 .project-item {
-    background: #f9f9f9;
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    padding: 15px;
-    text-align: center;
+    background: #fff;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    padding: 20px;
+    text-align: left;
     transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .project-item:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    transform: translateY(-4px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
 }
 
 .project-item h2 {
     font-size: 18px;
     margin-bottom: 10px;
-    color: #2980b9;
+    color: #000;
 }
 
 .project-item p {
     font-size: 14px;
     margin: 10px 0;
-    color: #333;
+    color: #555;
+    line-height: 1.5;
 }
 
 .project-item a {
     display: inline-block;
-    margin-top: 8px;
+    margin-top: 10px;
+    padding: 6px 12px;
     text-decoration: none;
-    color: #2980b9;
-    font-weight: bold;
+    color: #fff;
+    background: #333;
+    border-radius: 4px;
+    font-size: 13px;
+    transition: background 0.3s;
 }
 
 .project-item a:hover {
-    text-decoration: underline;
+    background: #555;
 }
 
 .item {
     width: 100%;
-    height: 180px;
+    height: 160px;
     object-fit: cover;
-    border: 2px solid #ccc;
-    border-radius: 10px;
+    border-radius: 6px;
+    margin-bottom: 12px;
 }
 </style>
 </head>
@@ -164,64 +216,82 @@ header #Dark {
             <a href="PROJECTS.html">Projects</a>
             <a href="CONTACT.html">Contact</a>
         </div>
-            <button id="Dark">D</button>
+        <!-- Switch button -->
+        <label class="switch">
+          <input type="checkbox" id="Dark">
+          <span class="slider"></span>
+        </label>
     </nav>
 </header>
 
 <div class="Projects">
-    <h1>MY PROJECTS (2025-2026)</h1>
     <div class="project-grid">
 
         <div class="project-item">
-            <h2>C++ Atm Simulator</h2>
             <img src="cpp_project.jpg" class="item">
-            <p>A C++ console-based program that simulates ATM operations such as deposit, withdrawal, and balance inquiry.</p>
-          </div>
+            <h2>C++ ATM Simulator</h2>
+            <p>A simple C++ console-based program that simulates ATM operations such as deposit, withdrawal, and balance inquiry.</p>
+            <a href="#">View Project</a>
+        </div>
 
         <div class="project-item">
-            <h2>Personal Expense Tracker</h2>
             <img src="project1.jpg" class="item">
-            <p>A web application to track personal expenses and visualize spending habits.</p>
+            <h2>Personal Expense Tracker</h2>
+            <p>A minimalist web app to track personal expenses and visualize spending habits with clean charts.</p>
+            <a href="#">View Project</a>
         </div>
 
         <div class="project-item">
-            <h2>Student Grade Management System</h2>
             <img src="project2.jpg" class="item">
-            <p>A application for managing student grades and academic performance.</p>
+            <h2>Student Grade Management System</h2>
+            <p>An application for managing student grades and academic performance in a simple interface.</p>
+            <a href="#">View Project</a>
         </div>
 
         <div class="project-item">
-            <h2>Student Management System</h2>
             <img src="project3.jpg" class="item">
-            <p>A database-driven application for managing student records, courses, and grades.</p>
-       </div>
+            <h2>Student Management System</h2>
+            <p>A database-driven application for managing student records, courses, and grades with a clean dashboard.</p>
+            <a href="#">View Project</a>
+        </div>
 
+                <div class="project-item">
+            <img src="cpp_project.jpg" class="item">
+            <h2>C++ ATM Simulator</h2>
+            <p>A simple C++ console-based program that simulates ATM operations such as deposit, withdrawal, and balance inquiry.</p>
+            <a href="#">View Project</a>
+        </div>
+
+        <div class="project-item">
+            <img src="project1.jpg" class="item">
+            <h2>Personal Expense Tracker</h2>
+            <p>A minimalist web app to track personal expenses and visualize spending habits with clean charts.</p>
+            <a href="#">View Project</a>
+        </div>
+
+        <div class="project-item">
+            <img src="project2.jpg" class="item">
+            <h2>Student Grade Management System</h2>
+            <p>An application for managing student grades and academic performance in a simple interface.</p>
+            <a href="#">View Project</a>
+        </div>
+        
     </div>
 </div>
 
 <script>
   const toggleBtn = document.getElementById("Dark");
-  toggleBtn.addEventListener("click", () => {
+  toggleBtn.addEventListener("change", () => {
     document.body.classList.toggle("dark-mode");
     document.querySelector("header").classList.toggle("dark-mode");
 
-    // Apply dark mode to nav links
     document.querySelectorAll(".Nav-Links a").forEach(link => {
       link.classList.toggle("dark-mode");
     });
 
-    // Apply dark mode to project items
     document.querySelectorAll(".project-item").forEach(item => {
       item.classList.toggle("dark-mode");
     });
-
-    // Apply dark mode to contact container
-    const contactBox = document.querySelector(".contact-container");
-    if (contactBox) contactBox.classList.toggle("dark-mode");
-
-    // Apply dark mode to resume (MOREINFO.html)
-    const resumeBox = document.querySelector(".resume");
-    if (resumeBox) resumeBox.classList.toggle("dark-mode");
   });
 </script>
 
