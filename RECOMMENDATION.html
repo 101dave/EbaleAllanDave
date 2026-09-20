@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <title>Projects — Dave</title>
+  <title>Recommendations — Dave</title>
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <script src="script.js" defer></script>
   <style>
@@ -101,14 +101,13 @@
     section.card h1 { font-size: 24px; font-weight: 700; color: var(--text); margin-bottom: 8px; }
     section.card p.lead { color: var(--muted); margin-bottom: 24px; }
 
-    .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
-    .project-item {
-      background: var(--bg); border: 1px solid var(--border); border-radius: 10px;
-      padding: 16px; display: flex; flex-direction: column; gap: 12px;
+    .rec-list { display: flex; flex-direction: column; gap: 16px; }
+    .rec-card {
+      padding: 20px; background: var(--bg); border: 1px solid var(--border);
+      border-radius: 10px; display: flex; flex-direction: column; gap: 10px;
     }
-    .project-item img { width: 100%; height: 160px; object-fit: cover; border-radius: 8px; }
-    .project-item h3 { font-size: 16px; color: var(--text); }
-    .project-item p { font-size: 14px; color: var(--muted); line-height: 1.5; }
+    .rec-card p { font-size: 14px; color: var(--muted); font-style: italic; line-height: 1.5; }
+    .rec-card .author { font-size: 13px; font-weight: 600; color: var(--text); font-style: normal; }
 
     @media (max-width: 880px) {
       header { position: relative; width: 100%; height: auto; border-right: 0; border-bottom: 1px solid var(--border); }
@@ -128,11 +127,11 @@
       </a>
       <nav class="Nav-Links">
         <a href="index.html">Home</a>
-        <a href="PROJECTS.html" class="active">Projects</a>
+        <a href="PROJECTS.html">Projects</a>
         <a href="EXPERIENCE.html">Experience</a>
         <a href="CERTIFICATE.html">Certificates</a>
         <a href="TECHSTACK.html">Tech Stack</a>
-        <a href="RECOMMENDATION.html">Recommendations</a>
+        <a href="RECOMMENDATION.html" class="active">Recommendations</a>
       </nav>
     </div>
 
@@ -155,19 +154,13 @@
 
   <main>
     <section class="card">
-      <h1>All Projects</h1>
-      <p class="lead">A complete showcase of my web development and programming projects.</p>
-      
-      <div class="projects-grid">
-        <article class="project-item">
-          <img src="cpp_project.jpg" alt="C++ ATM Simulator">
-          <h3>C++ ATM Simulator</h3>
-          <p>Console-based ATM simulator handling user PIN authentication, balance checking, deposits, and withdrawal transactions.</p>
-        </article>
-        <article class="project-item">
-          <img src="project1.jpg" alt="Expense Tracker">
-          <h3>Personal Expense Tracker</h3>
-          <p>A minimalist web application to monitor daily expenses with categorization and clean summaries.</p>
+      <h1>Recommendations</h1>
+      <p class="lead">Feedback and endorsements from mentors, teachers, and peers.</p>
+
+      <div class="rec-list">
+        <article class="rec-card">
+          <p>N/A</p>
+          <span class="author"></span>
         </article>
       </div>
     </section>

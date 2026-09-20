@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <title>Projects — Dave</title>
+  <title>Tech Stack — Dave</title>
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <script src="script.js" defer></script>
   <style>
@@ -101,14 +101,11 @@
     section.card h1 { font-size: 24px; font-weight: 700; color: var(--text); margin-bottom: 8px; }
     section.card p.lead { color: var(--muted); margin-bottom: 24px; }
 
-    .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
-    .project-item {
-      background: var(--bg); border: 1px solid var(--border); border-radius: 10px;
-      padding: 16px; display: flex; flex-direction: column; gap: 12px;
+    .tech-list { display: flex; gap: 10px; flex-wrap: wrap; }
+    .tech-badge {
+      padding: 10px 16px; border-radius: 8px; border: 1px solid var(--border);
+      background: var(--bg); color: var(--text); font-weight: 600; font-size: 14px;
     }
-    .project-item img { width: 100%; height: 160px; object-fit: cover; border-radius: 8px; }
-    .project-item h3 { font-size: 16px; color: var(--text); }
-    .project-item p { font-size: 14px; color: var(--muted); line-height: 1.5; }
 
     @media (max-width: 880px) {
       header { position: relative; width: 100%; height: auto; border-right: 0; border-bottom: 1px solid var(--border); }
@@ -128,10 +125,10 @@
       </a>
       <nav class="Nav-Links">
         <a href="index.html">Home</a>
-        <a href="PROJECTS.html" class="active">Projects</a>
+        <a href="PROJECTS.html">Projects</a>
         <a href="EXPERIENCE.html">Experience</a>
         <a href="CERTIFICATE.html">Certificates</a>
-        <a href="TECHSTACK.html">Tech Stack</a>
+        <a href="TECHSTACK.html" class="active">Tech Stack</a>
         <a href="RECOMMENDATION.html">Recommendations</a>
       </nav>
     </div>
@@ -155,20 +152,16 @@
 
   <main>
     <section class="card">
-      <h1>All Projects</h1>
-      <p class="lead">A complete showcase of my web development and programming projects.</p>
-      
-      <div class="projects-grid">
-        <article class="project-item">
-          <img src="cpp_project.jpg" alt="C++ ATM Simulator">
-          <h3>C++ ATM Simulator</h3>
-          <p>Console-based ATM simulator handling user PIN authentication, balance checking, deposits, and withdrawal transactions.</p>
-        </article>
-        <article class="project-item">
-          <img src="project1.jpg" alt="Expense Tracker">
-          <h3>Personal Expense Tracker</h3>
-          <p>A minimalist web application to monitor daily expenses with categorization and clean summaries.</p>
-        </article>
+      <h1>Tech Stack</h1>
+      <p class="lead">Languages, and developer tools I build with.</p>
+
+      <div class="tech-list">
+        <div class="tech-badge">HTML5</div>
+        <div class="tech-badge">CSS3</div>
+        <div class="tech-badge">JavaScript (ES6+)</div>
+        <div class="tech-badge">C++</div>
+        <div class="tech-badge">GitHub</div>
+        <div class="tech-badge">VS Code</div>
       </div>
     </section>
   </main>

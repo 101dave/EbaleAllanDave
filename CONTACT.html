@@ -1,310 +1,146 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<title>CONTACT</title>
-<style>
-/* Dark mode styles */
-body.dark-mode {
-  background-color: #121212;
-  color: #f5f5f5;
-}
+  <meta charset="utf-8" />
+  <title>CONTACT — Dave</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #ffffff;
+      --muted: #555555;
+      --text: #111111;
+      --card: #fafafa;
+      --accent: #333333;
+      --glass: rgba(0, 0, 0, 0.04);
+      --radius: 12px;
+    }
+    body { font-family: "Segoe UI", Roboto, sans-serif; color: var(--text); background: var(--bg); line-height: 1.45; }
+    body.dark-mode { --bg: #0f1113; --muted: #bfc6cc; --text: #e6eef3; --card: #121416; --accent: #e6eef3; --glass: rgba(255, 255, 255, 0.03); }
 
-header.dark-mode {
-  background-color: #1e1e1e;
-}
+    header {
+      position: fixed; left: 0; top: 0; height: 100vh; width: 200px;
+      background: var(--card); border-right: 1px solid var(--glass);
+      display: flex; flex-direction: column; align-items: center; gap: 24px; padding: 28px 12px; z-index: 100;
+    }
+    .logo-container { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+    .logo-container img { width: 32px; height: 32px; object-fit: cover; border-radius: 6px; }
+    .logo-link { font-weight: 700; font-size: 18px; color: var(--text); text-decoration: none; }
 
-.Nav-Links a.dark-mode {
-  color: #f5f5f5 !important;
-}
+    nav.Nav-Links { display: flex; flex-direction: column; gap: 10px; width: 100%; align-items: center; }
+    nav.Nav-Links a { color: var(--muted); text-decoration: none; font-weight: 500; font-size: 14px; padding: 8px 12px; border-radius: 8px; width: 100%; text-align: center; }
+    nav.Nav-Links a:hover, nav.Nav-Links a.active { color: var(--text); background: var(--glass); font-weight: 700; }
 
-.contact-container.dark-mode {
-  background: #1e1e1e;
-  color: #f5f5f5;
-  border-color: #333;
-}
+    .topbar { position: fixed; right: 22px; top: 16px; z-index: 101; }
+    .switch { position: relative; width: 46px; height: 24px; display: inline-block; }
+    .switch input { display: none; }
+    .slider { position: absolute; inset: 0; background: #d9d9d9; border-radius: 999px; cursor: pointer; }
+    .slider:before { content: ""; position: absolute; left: 3px; top: 3px; width: 18px; height: 18px; background: #fff; border-radius: 50%; transition: 0.22s; }
+    input:checked + .slider { background: #2b2b2b; }
+    input:checked + .slider:before { transform: translateX(22px); }
 
-.contact-container.dark-mode a {
-  color: #f5f5f5 !important;
-}
+    main { margin-left: 220px; padding: 48px 28px; }
+    section.card { background: var(--card); border-radius: var(--radius); padding: 28px; max-width: 600px; }
+    section.card h1 { font-size: 24px; margin-bottom: 8px; }
+    section.card p.lead { color: var(--muted); margin-bottom: 24px; }
 
-.Message.dark-mode h1,
-.Message.dark-mode label {
-  color: #f5f5f5;
-}
+    .contact-info { margin-bottom: 24px; display: flex; flex-direction: column; gap: 8px; }
+    .contact-info div { font-size: 14px; color: var(--muted); }
+    .contact-info a { color: var(--text); font-weight: 600; text-decoration: underline; }
 
-.Message.dark-mode input,
-.Message.dark-mode textarea {
-  background-color: #2a2a2a;
-  color: #f5f5f5;
-  border: 1px solid #555;
-}
+    .contact-form { display: flex; flex-direction: column; gap: 14px; }
+    .form-group { display: flex; flex-direction: column; gap: 6px; }
+    .form-group label { font-size: 13px; font-weight: 600; color: var(--text); }
+    .form-group input, .form-group textarea {
+      width: 100%;
+      padding: 10px 12px;
+      border: 1px solid var(--glass);
+      background: var(--bg);
+      color: var(--text);
+      border-radius: 8px;
+      font-family: inherit;
+      font-size: 14px;
+    }
+    .form-group textarea { resize: vertical; min-height: 100px; }
+    
+    .submit-btn {
+      padding: 10px 18px;
+      background: var(--accent);
+      color: var(--bg);
+      border: none;
+      border-radius: 8px;
+      font-weight: 600;
+      cursor: pointer;
+      align-self: flex-start;
+    }
 
-.Message.dark-mode button {
-  background: #444;
-  color: #fff;
-}
-
-.Message.dark-mode button:hover {
-  background: #666;
-}
-
-.footer-socials.dark-mode a {
-  color: #f5f5f5 !important;
-}
-
-/* Toggle switch style */
-.switch {
-  position: relative;
-  display: inline-block;
-  width: 50px;
-  height: 25px;
-}
-
-.switch input {
-  opacity: 0;
-  width: 0;
-  height: 0;
-}
-
-.slider {
-  position: absolute;
-  cursor: pointer;
-  top: 0; left: 0; right: 0; bottom: 0;
-  background-color: #ccc;
-  transition: .4s;
-  border-radius: 25px;
-}
-
-.slider:before {
-  position: absolute;
-  content: "";
-  height: 19px;
-  width: 19px;
-  left: 3px;
-  bottom: 3px;
-  background-color: white;
-  transition: .4s;
-  border-radius: 50%;
-}
-
-input:checked + .slider {
-  background-color: #333;
-}
-
-input:checked + .slider:before {
-  transform: translateX(24px);
-}
-
-/* Default light mode */
-body {
-  background-color: #fafafa;
-  font-family: 'Segoe UI', Arial, Helvetica, sans-serif;
-  color: #333;
-  margin: 0;
-}
-
-header {
-  width: 100%;
-  background-color: #fff;
-  border-bottom: 1px solid #ddd;
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-}
-
-header .Nav-Bar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  height: 60px;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 20px;
-}
-
-header .Nav-Bar #Logo {
-  width: 40px;
-  height: 40px;
-}
-
-header .Nav-Bar .Nav-Links {
-  display: flex;
-  gap: 30px;
-}
-
-header .Nav-Bar .Nav-Links a {
-  font-weight: 500;
-  font-size: 15px;
-  text-decoration: none;
-  color: #333;    
-  transition: color 0.3s;
-}
-
-.Nav-Links a:hover {
-  color: #000;
-}
-
-/* Contact section */
-.contact-section {
-  padding: 40px 20px;
-}
-
-.contact-container {
-  max-width: 600px;
-  margin: auto;
-  background: #fff;
-  padding: 30px;
-  border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-}
-
-.contact-container h2 {
-  text-align: center;
-  margin-bottom: 20px;
-  color: #000;
-  font-size: 22px;
-}
-
-.contact-info p {
-  margin: 8px 0;
-  font-size: 14px;
-}
-
-.contact-info a {
-  color: #333;
-  text-decoration: none;
-}
-
-.contact-info a:hover {
-  text-decoration: underline;
-}
-
-/* Message form */
-.Message {
-  text-align: center;
-  margin: 40px 0;
-}
-
-.Message h1 {
-  font-size: 22px;
-  margin-bottom: 20px;
-}
-
-.Message form {
-  display: flex;
-  flex-direction: column;
-  max-width: 400px;
-  margin: auto;
-}
-
-.Message label {
-  margin: 10px 0 5px;
-  font-weight: 500;
-}
-
-.Message input, .Message textarea {
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  font-size: 14px;
-}
-
-.Message textarea {
-  resize: vertical;
-  min-height: 100px;
-}
-
-.Message button {
-  margin-top: 15px;
-  padding: 10px;
-  background: #333;
-  color: #fff;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-.Message button:hover {
-  background: #555;
-}
-
-/* Social links footer */
-.footer-socials {
-  text-align: center;
-  margin-top: 40px;
-}
-
-.footer-socials a {
-  margin: 0 10px;
-  text-decoration: none;
-  color: #333;
-  font-size: 14px;
-}
-
-.footer-socials a:hover {
-  color: #000;
-}
-</style>
+    @media (max-width: 880px) {
+      header { position: relative; width: 100%; height: auto; flex-direction: row; justify-content: space-between; padding: 12px 18px; border-right: 0; border-bottom: 1px solid var(--glass); }
+      nav.Nav-Links { flex-direction: row; flex-wrap: wrap; justify-content: center; }
+      nav.Nav-Links a { width: auto; }
+      main { margin-left: 0; padding: 20px; }
+    }
+  </style>
 </head>
 <body>
-
-<header>
-  <nav class="Nav-Bar">
-    <img src="logo.jpg" id="Logo">
-    <div class="Nav-Links">
-      <a href="index.html">Home</a>
+  <header>
+    <a href="index.html#home" class="logo-container">
+      <img src="logo.jpg" alt="Dave logo" onerror="this.style.display='none'">
+      <span class="logo-link">Dave</span>
+    </a>
+    <nav class="Nav-Links">
+      <a href="index.html#home">Home</a>
       <a href="PROJECTS.html">Projects</a>
-      <a href="CONTACT.html">Contact</a>
-    </div>
-    <!-- Switch button -->
-    <label class="switch">
-      <input type="checkbox" id="Dark">
-      <span class="slider"></span>
-    </label>
-  </nav>
-</header>
+      <a href="EXPERIENCE.html">Experience</a>
+      <a href="CERTIFICATE.html">Certificates</a>
+      <a href="TECHSTACK.html">Tech Stack</a>
+      <a href="RECOMMENDATION.html">Recommendations</a>
+      <a href="CONTACT.html" class="active">Contact</a>
+    </nav>
+  </header>
 
-<section class="contact-section">
-  <div class="contact-container">
-    <div class="contact-info">
-      <p><strong>Name:</strong> Allan Dave E Ebale</p>
-      <p><strong>Phone:</strong> 993-935-7601</p>
-      <p><strong>Email:</strong> 
-        <a href="mailto:davea0153@gmail.com">davea0153@gmail.com</a>
-      </p>
-      <p><strong>Facebook:</strong> 
-        <a href="https://web.facebook.com/dave.614149">Dave</a>
-      </p>
-      <p><strong>Tiktok:</strong> Dave001</p>
-      <p><strong>Instagram:</strong> 
-        <a href="https://www.instagram.com/davw_zx">Dave</a>
-      </p>
-    </div>
+  <div class="topbar">
+    <label class="switch"><input type="checkbox" id="Dark"><span class="slider"></span></label>
   </div>
-</section>
 
-<section class="Message">
-  <h1>Send Me a Message</h1>
-  <form method="post">
-    <label>Name:</label>
-    <input name="Name" placeholder="Enter your name">
-    <label>Email:</label>
-    <input name="Email" placeholder="Enter your email">
-    <label>Message:</label>
-    <textarea name="Message" placeholder="Write your message"></textarea>
-    <button>SEND</button>
-  </form>
-</section>
+  <main>
+    <section class="card">
+      <h1>Contact Me</h1>
+      <p class="lead">Feel free to reach out for collaborations, questions, or project inquiries.</p>
 
-<div class="footer-socials">
-  <p>Connect with me:</p>
-  <a href="https://web.facebook.com/dave.614149">Facebook</a> |
-  <a href="https://www.instagram.com/davw_zx">Instagram</a> |
-  <a href="">Tiktok</a>
-</div>
+      <div class="contact-info">
+        <div>Email: <a href="mailto:dave@example.com">dave@example.com</a></div>
+        <div>Socials: 
+          <a href="[https://web.facebook.com/dave.614149](https://web.facebook.com/dave.614149)" target="_blank">Facebook</a> | 
+          <a href="[https://www.instagram.com/davw_zx](https://www.instagram.com/davw_zx)" target="_blank">Instagram</a>
+        </div>
+      </div>
 
-<script src="script.js">
-  
-</script>
+      <form class="contact-form" action="#" method="post" onsubmit="event.preventDefault(); alert('Message sent!');">
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input type="text" id="name" required placeholder="Your name" />
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" required placeholder="your.email@example.com" />
+        </div>
+        <div class="form-group">
+          <label for="message">Message</label>
+          <textarea id="message" required placeholder="Write your message here..."></textarea>
+        </div>
+        <button type="submit" class="submit-btn">Send Message</button>
+      </form>
+    </section>
+  </main>
 
+  <script>
+    const toggle = document.getElementById('Dark');
+    if (localStorage.getItem('darkMode') === 'enabled') { document.body.classList.add('dark-mode'); toggle.checked = true; }
+    toggle.addEventListener('change', () => {
+      if (toggle.checked) { document.body.classList.add('dark-mode'); localStorage.setItem('darkMode', 'enabled'); }
+      else { document.body.classList.remove('dark-mode'); localStorage.setItem('darkMode', 'disabled'); }
+    });
+  </script>
 </body>
 </html>

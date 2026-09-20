@@ -1,85 +1,47 @@
-// script.js
-document.addEventListener("DOMContentLoaded", () => {
-  const toggleBtn = document.getElementById("Dark");
+document.addEventListener('DOMContentLoaded', () => {
+  // 1. Dark Mode / Theme Toggle
+  const themeBtn = document.getElementById('themeToggle');
+  const savedTheme = localStorage.getItem('darkMode');
+  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
 
-  // Check saved preference on page load
-  if (localStorage.getItem("darkMode") === "enabled") {
-    enableDarkMode();
-    if (toggleBtn) toggleBtn.checked = true;
+  // I-check ang saved preference o system theme
+  if (savedTheme === 'enabled' || (!savedTheme && prefersDark)) {
+    document.body.classList.add('dark-mode');
   }
 
-  // Toggle dark mode and save preference
-  if (toggleBtn) {
-    toggleBtn.addEventListener("change", () => {
-      if (toggleBtn.checked) {
-        enableDarkMode();
-        localStorage.setItem("darkMode", "enabled");
+  if (themeBtn) {
+    themeBtn.addEventListener('click', () => {
+      document.body.classList.toggle('dark-mode');
+      if (document.body.classList.contains('dark-mode')) {
+        localStorage.setItem('darkMode', 'enabled');
       } else {
-        disableDarkMode();
-        localStorage.setItem("darkMode", "disabled");
+        localStorage.setItem('darkMode', 'disabled');
       }
     });
   }
 
-  function enableDarkMode() {
-    document.body.classList.add("dark-mode");
+  // 2. Active Link Highlighting kapag nag-s-scroll
+  const sections = document.querySelectorAll('main section[id]');
+  const navLinks = document.querySelectorAll('nav.Nav-Links a[href^="#"]');
 
-    const header = document.querySelector("header");
-    if (header) header.classList.add("dark-mode");
+  function highlightNavOnScroll() {
+    const scrollY = window.pageYOffset;
 
-    document.querySelectorAll(".Nav-Links a").forEach(link => {
-      link.classList.add("dark-mode");
+    sections.forEach((current) => {
+      const sectionHeight = current.offsetHeight;
+      const sectionTop = current.offsetTop - 100;
+      const sectionId = current.getAttribute('id');
+
+      if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
+        navLinks.forEach((link) => {
+          link.classList.remove('active');
+          if (link.getAttribute('href') === `#${sectionId}`) {
+            link.classList.add('active');
+          }
+        });
+      }
     });
-
-    const contactBox = document.querySelector(".contact-container");
-    if (contactBox) contactBox.classList.add("dark-mode");
-
-    const resumeBox = document.querySelector(".resume");
-    if (resumeBox) resumeBox.classList.add("dark-mode");
-
-    const sectionBox = document.querySelector("section");
-    if (sectionBox) sectionBox.classList.add("dark-mode");
-
-    document.querySelectorAll(".Socials-Links a").forEach(link => {
-      link.classList.add("dark-mode");
-    });
-
-    document.querySelectorAll(".project-item").forEach(item => {
-      item.classList.add("dark-mode");
-    });
-
-    const footer = document.querySelector(".footer-socials");
-    if (footer) footer.classList.add("dark-mode");
   }
 
-  function disableDarkMode() {
-    document.body.classList.remove("dark-mode");
-
-    const header = document.querySelector("header");
-    if (header) header.classList.remove("dark-mode");
-
-    document.querySelectorAll(".Nav-Links a").forEach(link => {
-      link.classList.remove("dark-mode");
-    });
-
-    const contactBox = document.querySelector(".contact-container");
-    if (contactBox) contactBox.classList.remove("dark-mode");
-
-    const resumeBox = document.querySelector(".resume");
-    if (resumeBox) resumeBox.classList.remove("dark-mode");
-
-    const sectionBox = document.querySelector("section");
-    if (sectionBox) sectionBox.classList.remove("dark-mode");
-
-    document.querySelectorAll(".Socials-Links a").forEach(link => {
-      link.classList.remove("dark-mode");
-    });
-
-    document.querySelectorAll(".project-item").forEach(item => {
-      item.classList.remove("dark-mode");
-    });
-
-    const footer = document.querySelector(".footer-socials");
-    if (footer) footer.classList.remove("dark-mode");
-  }
+  window.addEventListener('scroll', highlightNavOnScroll);
 });
