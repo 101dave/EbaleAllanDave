@@ -46,7 +46,7 @@
       --border: rgba(255, 255, 255, 0.1);
     }
 
-    /* Navigation Sidebar - 60/40 Split */
+    /* Navigation Sidebar */
     header {
       position: fixed;
       left: 0;
@@ -62,13 +62,11 @@
       justify-content: space-between;
     }
 
-    /* Top Section (60%) */
+    /* Top Section */
     .sidebar-top {
-      flex: 6;
       display: flex;
       flex-direction: column;
       gap: 20px;
-      overflow-y: auto;
     }
 
     .logo-container {
@@ -108,7 +106,7 @@
       padding: 9px 12px;
       border-radius: 8px;
       text-align: left;
-      transition: color 0.18s, background 0.18s, transform 0.12s;
+      transition: color 0.18s, background 0.18s;
     }
 
     nav.Nav-Links a:hover {
@@ -122,18 +120,15 @@
       font-weight: 700;
     }
 
-    /* Bottom Section (40%) */
+    /* Bottom Section (Email + Theme Toggle ONLY) */
     .sidebar-bottom {
-      flex: 4;
       display: flex;
       flex-direction: column;
-      justify-content: flex-end;
       gap: 16px;
       padding-top: 16px;
       border-top: 1px solid var(--border);
     }
 
-    /* Minimalist Theme Toggle Icon Button */
     .theme-toggle-btn {
       background: transparent;
       border: 1px solid var(--border);
@@ -162,14 +157,12 @@
       stroke-linejoin: round;
     }
 
-    /* Toggle icon visibility */
     .sun-icon { display: block; }
     .moon-icon { display: none; }
 
     body.dark-mode .sun-icon { display: none; }
     body.dark-mode .moon-icon { display: block; }
 
-    /* Sidebar Contact & Socials */
     .sidebar-contact {
       display: flex;
       flex-direction: column;
@@ -186,25 +179,6 @@
 
     .sidebar-contact .email-link:hover {
       text-decoration: underline;
-    }
-
-    .sidebar-socials {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-      margin-top: 4px;
-    }
-
-    .sidebar-socials a {
-      color: var(--muted);
-      text-decoration: none;
-      font-size: 12px;
-      font-weight: 600;
-      transition: color 0.18s;
-    }
-
-    .sidebar-socials a:hover {
-      color: var(--text);
     }
 
     /* Main Container */
@@ -244,7 +218,33 @@
       line-height: 1.6;
     }
 
-    /* Cards */
+    /* Social Links Box Sa Ilalim ng Hero Description */
+    .hero-socials {
+      display: flex;
+      gap: 12px;
+      margin-top: 16px;
+      flex-wrap: wrap;
+    }
+
+    .hero-socials a {
+      display: inline-block;
+      color: var(--text);
+      font-weight: 600;
+      font-size: 13px;
+      text-decoration: none;
+      padding: 8px 14px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background: var(--card);
+      transition: background 0.2s, transform 0.12s;
+    }
+
+    .hero-socials a:hover {
+      background: var(--glass);
+      transform: translateY(-2px);
+    }
+
+    /* Cards & Grids */
     section.card {
       background: var(--card);
       border-radius: var(--radius);
@@ -267,7 +267,6 @@
       margin-bottom: 18px;
     }
 
-    /* Grids */
     .projects-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -299,7 +298,6 @@
       text-decoration: underline;
     }
 
-    /* Tech Stack Badges */
     .tech-grid { display: flex; gap: 10px; flex-wrap: wrap; }
     .tech {
       padding: 8px 12px;
@@ -317,25 +315,21 @@
         position: relative;
         width: 100%;
         height: auto;
-        flex-direction: column;
-        gap: 20px;
         border-right: 0;
         border-bottom: 1px solid var(--border);
       }
-      .sidebar-top { flex: none; width: 100%; }
-      .sidebar-bottom { flex: none; width: 100%; border-top: 1px solid var(--border); }
       nav.Nav-Links { flex-direction: row; flex-wrap: wrap; justify-content: center; }
       nav.Nav-Links a { width: auto; text-align: center; }
       main { margin-left: 0; padding: 20px; }
       .hero { flex-direction: column; text-align: center; }
+      .hero-socials { justify-content: center; }
     }
   </style>
 </head>
 <body>
 
-  <!-- Sidebar / Navigation (60/40 Split) -->
+  <!-- Navigation Sidebar -->
   <header>
-    <!-- 60% Top Section: Navigation Links -->
     <div class="sidebar-top">
       <a href="#home" class="logo-container">
         <img src="logo.jpg" alt="Dave logo" onerror="this.style.display='none'">
@@ -351,10 +345,9 @@
       </nav>
     </div>
 
-    <!-- 40% Bottom Section: Icon Theme Button & Contacts -->
+    <!-- Email at Theme Toggle Button LANG ang nandito -->
     <div class="sidebar-bottom">
       <button id="themeToggle" class="theme-toggle-btn" aria-label="Toggle Dark Mode" title="Toggle Theme">
-        <!-- Sun Icon -->
         <svg class="sun-icon" viewBox="0 0 24 24">
           <circle cx="12" cy="12" r="5"></circle>
           <line x1="12" y1="1" x2="12" y2="3"></line>
@@ -366,24 +359,19 @@
           <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
           <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
         </svg>
-        <!-- Moon Icon -->
         <svg class="moon-icon" viewBox="0 0 24 24">
           <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
         </svg>
       </button>
 
       <div class="sidebar-contact">
-        <a href="mailto:dave@example.com" class="email-link">davea0153@gmail.com</a>
-        <div class="sidebar-socials">
-          <a href="https://github.com/101dave" target="_blank" rel="noopener noreferrer">GitHub</a>
-          <a href="https://web.facebook.com/dave.614149" target="_blank" rel="noopener noreferrer">Facebook</a>
-          <a href="https://www.instagram.com/davw_zx" target="_blank" rel="noopener noreferrer">Instagram</a>
-        </div>
+        <a href="mailto:davea0153@gmail.com" class="email-link">davea0153@gmail.com</a>
       </div>
     </div>
   </header>
 
   <main>
+    <!-- Hero Section -->
     <section id="home" class="hero">
       <div class="profile">
         <img src="Me.jpg" alt="Dave profile photo" />
@@ -391,6 +379,13 @@
       <div class="hero-text">
         <h1>Web Developer</h1>
         <p>I'm a Grade 12 student focused on building clean, accessible web interfaces and functional programs.</p>
+        
+        <!-- DITO NA NAKALAGAY ANG SOCIAL LINKS (BUTTON STYLE) -->
+        <div class="hero-socials">
+          <a href="https://github.com/101dave" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+          <a href="https://web.facebook.com/dave.614149" target="_blank" rel="noopener noreferrer">Facebook ↗</a>
+          <a href="https://www.instagram.com/davw_zx" target="_blank" rel="noopener noreferrer">Instagram ↗</a>
+        </div>
       </div>
     </section>
 
@@ -417,7 +412,6 @@
     <section id="experience" class="card">
       <h2>Experience</h2>
       <p class="lead">N/A</p>
-      <p style="color:var(--muted);"></p>
       <a class="see-more-link" href="EXPERIENCE.html">View full experience details →</a>
     </section>
 

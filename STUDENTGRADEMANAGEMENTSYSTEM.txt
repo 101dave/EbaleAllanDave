@@ -1,0 +1,54 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+
+int main(){
+
+int n;
+vector<string> name(n), section(n);
+vector<int> gradeLevel(n);
+vector<double> firstSemGrade(n), secondSemGrade(n), average(n);
+vector<string> status(n);
+
+    cout << "enter the number of the students: ";
+    cin >> n;
+
+for(int i = 0; i < n; i++){
+
+    cout << "Name: ";
+    cin >> name[i]; 
+
+    cout << "Grade Level: ";
+    cin >> gradeLevel[i];
+
+    cout << "Section: ";
+    cin >> section[i];
+
+    cout << "First Semester Grade: ";
+    cin >> firstSemGrade[i];
+
+    cout << "Second Semester Grade: ";
+    cin >> secondSemGrade[i];
+
+    average[i]= (firstSemGrade[i] + secondSemGrade[i])/2;
+
+    if(average[i] >= 75){
+    status[i] = "PASS";
+}
+else{
+    status[i] = "FAIL";
+}
+}
+
+for (int i = 0; i < n; i++){
+    cout << endl << endl << endl << "<--------------------STUDENTS GRADE MANAGEMENT SYSTEM-------------------->" << endl << endl;
+    cout << "Name: " << name[i] << endl;
+    cout << "Grade/Section: " << gradeLevel[i] << section[i] << endl;
+    cout << "First Semester Grade: " << firstSemGrade[i] << endl;
+    cout << "Second Semester Grade: " << secondSemGrade[i] << endl; 
+    cout << "Average: " << average[i] << endl;
+    cout << "Status: " << status[i] << endl;
+}
+
+   return 0; 
+}

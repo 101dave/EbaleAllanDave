@@ -1,0 +1,94 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+
+int main(){
+
+// check balance deposit widthraw pin verification transaction history
+
+double balance = 100;
+int cardNumber, pin;
+int selector;
+vector<double> depositAmount, withdrawAmount;
+
+    userLogin: 
+        cout << "Enter yout card number: ";
+        cin >> cardNumber;
+
+        cout << "Enter your pin: ";
+        cin >> pin;
+
+    if (cardNumber == 123 && pin == 123){
+
+    selector:
+        cout << "1) Check balance" << endl 
+        << "2) Deposit" << endl 
+        << "3) Withdraw" << endl 
+        <<"4) Exit" << endl;
+        
+        cout << "Enter your choice: ";
+        cin >> selector;
+        cout<< endl << endl << endl;
+        
+
+    if(selector == 1){
+
+        cout << endl << endl << endl << "Balance: " << balance << endl << endl << endl;
+        goto selector;
+        }
+
+    else if(selector == 2){
+        double amount;
+        cout << "Enter the amount: ";
+        cin >> amount;
+        depositAmount.push_back(amount);
+        balance += amount;
+        cout << endl << endl << endl;
+
+        cout << endl << endl << "<----------Transaction history---------->" << endl << endl;
+        cout << "Deposit amount: " << amount << endl;
+        cout << "New Balance: " << balance << endl << endl;
+        cout << "<--------------------------------------->" << endl << endl;
+        goto selector;
+    }
+
+    else if(selector == 3){
+        double amount;
+        cout << "Enter the amount: ";
+        cin >> amount;
+        withdrawAmount.push_back(amount);
+        balance -= amount;
+        
+    if(balance == -1){
+        cout << "You don't have enough balance." << endl << endl;
+        goto selector;
+        }
+
+    else{
+        cout << "Withdraw amount: " << amount << endl;
+        cout << endl << endl << endl;
+
+        cout << endl << endl << "<----------Transaction history---------->" << endl << endl;
+        cout << "Withdraw amount: " << amount << endl;
+        cout << "New balance: " << balance << endl << endl;
+        cout << "<--------------------------------------->" << endl << endl;
+        goto selector;
+        }
+    }
+
+    else if(selector == 4){
+        cout << endl <<  "Thankyou";
+        }
+
+    else{
+        cout << "Invalid key";
+    }    
+}
+
+    else{
+        cout << "Incorect card number or Pin. Try again." << endl << endl << endl;
+        goto userLogin;
+    }
+    
+            return 0;
+}

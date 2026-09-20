@@ -1,0 +1,49 @@
+#include <iostream>
+
+using namespace std;
+
+int main (){
+
+char op;
+double num1;
+double num2;
+double result;
+
+cout << "Enter operation: ";
+cin >> op;
+
+cout << "Enter a number:";
+cin >> num1;
+
+cout << "Enter a number:";
+cin >> num2;
+
+switch (op){
+
+case '+': result = num1 + num2;
+    cout << endl << result;
+    break;
+
+case '-': result = num1 - num2;
+    cout << endl << result;
+    break;
+
+case '*': result = num1 * num2;
+    cout << endl << result;
+    break;
+
+case '/': result = num1 / num2;
+    cout << endl << result;
+    break;
+
+default: 
+    cout << endl << "error";
+    break;
+
+    
+}
+
+
+
+return 0;
+}
