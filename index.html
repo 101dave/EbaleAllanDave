@@ -6,10 +6,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   
   <!-- SEO & Social Sharing Meta Tags -->
-  <meta name="description" content="Portfolio of Allan Dave Ebale — Grade 12 student building functional web interfaces and C++ applications." />
+  <meta name="description" content="Portfolio of Allan Dave Ebale — 1st year student." />
   <meta property="og:type" content="website" />
   <meta property="og:title" content="Dave — Portfolio" />
-  <meta property="og:description" content="Grade 12 Student & Developer building functional web interfaces and C++ applications." />
+  <meta property="og:description" content="I'm a 1st year Student & Developer. I'm currently building functional web interfaces." />
   <meta property="og:image" content="Me.jpg" />
 
   <!-- Inline Script to prevent Dark Mode Flash -->
@@ -371,6 +371,53 @@
       border-radius: 8px;
     }
 
+    /* Experience Section Styling */
+    .exp-list {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .exp-item {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 18px 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .exp-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .exp-role {
+      font-weight: 600;
+      font-size: 15px;
+      color: var(--text);
+    }
+
+    .exp-date {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--muted);
+      background: var(--glass);
+      padding: 4px 10px;
+      border-radius: 6px;
+      border: 1px solid var(--border);
+    }
+
+    .exp-desc {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
     .tech-grid { display: flex; gap: 10px; flex-wrap: wrap; }
     .tech {
       padding: 8px 12px;
@@ -495,7 +542,7 @@
       </div>
       <div class="hero-text">
         <h1>Allan Dave Ebale</h1>
-        <p>I'm a Grade 12 student. I love building accessible web interfaces and functional programs.</p>
+        <p>I'm a 1st year student. I love building accessible web interfaces and functional programs.</p>
         
         <div class="hero-socials">
           <a href="https://github.com/101dave" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
@@ -527,6 +574,7 @@
       </div>
     </section>
 
+    <!-- Experience Section with both items -->
     <section id="experience" class="card">
       <div class="card-header">
         <div>
@@ -534,6 +582,24 @@
           <p class="lead">02 - experience</p>
         </div>
         <a class="see-more-link" href="EXPERIENCE.html">VIEW ALL →</a>
+      </div>
+      
+      <div class="exp-list">
+        <div class="exp-item">
+          <div class="exp-header">
+            <span class="exp-role">Frontend Web Development Projects</span>
+            <span class="exp-date">2024 — Present</span>
+          </div>
+          <p class="exp-desc">Designed and built responsive personal portfolio sites and user interfaces using HTML5, CSS3, and JavaScript, ensuring functionality and seamless mobile navigation.</p>
+        </div>
+
+        <div class="exp-item">
+          <div class="exp-header">
+            <span class="exp-role">C++ Academic & Independent Programming Projects</span>
+            <span class="exp-date">2025 — Present</span>
+          </div>
+          <p class="exp-desc">Developed logic-driven C++ console applications focused on data structures, control flow, and user authentication systems, including an ATM simulator and a student grade management system.</p>
+        </div>
       </div>
     </section>
 
