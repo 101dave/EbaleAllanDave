@@ -4,269 +4,18 @@
   <meta charset="utf-8" />
   <title>Experience — Dave</title>
   <meta name="viewport" content="width=device-width,initial-scale=1" />
+  
+  <script>
+    if (localStorage.getItem('darkMode') === 'enabled' || (!localStorage.getItem('darkMode') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.classList.add('dark-mode-init');
+    }
+  </script>
+
+  <link rel="stylesheet" href="styles.css" />
   <script src="script.js" defer></script>
-  <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
-
-    :root {
-      --bg: #ffffff;
-      --muted: #666666;
-      --text: #111111;
-      --card: #fafafa;
-      --accent: #333333;
-      --glass: rgba(0, 0, 0, 0.05);
-      --border: rgba(0, 0, 0, 0.08);
-      --radius: 12px;
-    }
-
-    body {
-      font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-      color: var(--text);
-      background: var(--bg);
-      -webkit-font-smoothing: antialiased;
-      line-height: 1.45;
-      transition: background-color 0.3s ease, color 0.3s ease;
-    }
-
-    body.dark-mode {
-      --bg: #0f1113;
-      --muted: #9aa4ae;
-      --text: #e6eef3;
-      --card: #14171a;
-      --accent: #e6eef3;
-      --glass: rgba(255, 255, 255, 0.05);
-      --border: rgba(255, 255, 255, 0.1);
-    }
-
-    /* Navigation Sidebar */
-    header {
-      position: fixed;
-      left: 0;
-      top: 0;
-      height: 100vh;
-      width: 220px;
-      background: var(--card);
-      border-right: 1px solid var(--border);
-      display: flex;
-      flex-direction: column;
-      padding: 24px 16px;
-      z-index: 100;
-      justify-content: space-between;
-    }
-
-    /* Top Section */
-    .sidebar-top {
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-    }
-
-    /* Header Bar: Logo + Theme Toggle + Mobile Menu Button */
-    .mobile-header-bar {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      width: 100%;
-    }
-
-    .header-actions {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .logo-container {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      text-decoration: none;
-    }
-
-    .logo-container img {
-      width: 32px;
-      height: 32px;
-      object-fit: cover;
-      border-radius: 6px;
-    }
-
-    .logo-link {
-      font-weight: 700;
-      font-size: 18px;
-      color: var(--text);
-      text-decoration: none;
-    }
-
-    /* Hamburger Toggle Button (Hidden by default on Desktop) */
-    .hamburger-btn {
-      display: none;
-      background: transparent;
-      border: none;
-      color: var(--text);
-      cursor: pointer;
-      padding: 4px;
-    }
-
-    .hamburger-btn svg {
-      width: 24px;
-      height: 24px;
-      stroke: currentColor;
-      stroke-width: 2;
-      stroke-linecap: round;
-      stroke-linejoin: round;
-      fill: none;
-    }
-
-    nav.Nav-Links {
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-      width: 100%;
-    }
-
-    nav.Nav-Links a {
-      color: var(--muted);
-      text-decoration: none;
-      font-weight: 500;
-      font-size: 14px;
-      padding: 9px 12px;
-      border-radius: 8px;
-      transition: color 0.18s, background 0.18s;
-    }
-
-    nav.Nav-Links a:hover { color: var(--accent); background: var(--glass); }
-    nav.Nav-Links a.active { color: var(--text); background: var(--glass); font-weight: 700; }
-
-    /* Theme Toggle Button */
-    .theme-toggle-btn {
-      background: transparent;
-      border: 1px solid var(--border);
-      color: var(--text);
-      width: 34px;
-      height: 34px;
-      border-radius: 8px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      transition: background 0.2s;
-    }
-
-    .theme-toggle-btn:hover { background: var(--glass); }
-    .theme-toggle-btn svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
-
-    .sun-icon { display: block; }
-    .moon-icon { display: none; }
-    body.dark-mode .sun-icon { display: none; }
-    body.dark-mode .moon-icon { display: block; }
-
-    /* Bottom Section (Email Contact ONLY) */
-    .sidebar-bottom {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-      padding-top: 16px;
-      border-top: 1px solid var(--border);
-    }
-
-    .sidebar-contact {
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
-      font-size: 12px;
-    }
-
-    .sidebar-contact .contact-label {
-      color: var(--muted);
-      font-size: 12px;
-      line-height: 1.3;
-    }
-
-    .sidebar-contact .email-link {
-      color: var(--text);
-      font-weight: 600;
-      text-decoration: none;
-      word-break: break-all;
-    }
-
-    .sidebar-contact .email-link:hover { text-decoration: underline; }
-
-    /* Main Container */
-    main { margin-left: 220px; padding: 48px 36px; display: flex; flex-direction: column; gap: 24px; }
-
-    section.card {
-      background: var(--card); border-radius: var(--radius); padding: 28px;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.02); border: 1px solid var(--border);
-    }
-
-    section.card h1 { font-size: 24px; font-weight: 700; color: var(--text); margin-bottom: 8px; }
-    section.card p.lead { color: var(--muted); margin-bottom: 24px; }
-
-    .experience-list { display: flex; flex-direction: column; gap: 20px; }
-    .experience-item {
-      padding: 20px; background: var(--bg); border: 1px solid var(--border);
-      border-radius: 10px; display: flex; flex-direction: column; gap: 8px;
-    }
-    .experience-item h3 { font-size: 16px; color: var(--text); }
-    .experience-item .date { font-size: 13px; color: var(--muted); font-weight: 500; }
-    .experience-item p { font-size: 14px; color: var(--muted); line-height: 1.5; }
-
-    /* Responsive Design (Mobile Hamburger Styles) */
-    @media (max-width: 880px) {
-      header {
-        position: fixed;
-        width: 100%;
-        height: auto;
-        border-right: 0;
-        border-bottom: 1px solid var(--border);
-        padding: 16px;
-        justify-content: flex-start;
-      }
-
-      .hamburger-btn {
-        display: block;
-      }
-
-      nav.Nav-Links,
-      .sidebar-bottom {
-        display: none;
-      }
-
-      /* Expanded Mobile Menu State */
-      header.nav-open {
-        height: 100vh;
-        overflow-y: auto;
-        justify-content: space-between;
-      }
-
-      header.nav-open nav.Nav-Links {
-        display: flex;
-        flex-direction: column;
-        margin-top: 20px;
-      }
-
-      header.nav-open nav.Nav-Links a {
-        padding: 12px;
-        font-size: 16px;
-      }
-
-      header.nav-open .sidebar-bottom {
-        display: flex;
-        flex-direction: column;
-        margin-top: auto;
-        padding-top: 20px;
-      }
-
-      main { 
-        margin-left: 0; 
-        padding: 80px 20px 20px; 
-      }
-    }
-  </style>
 </head>
 <body>
 
-  <!-- Navigation Sidebar -->
   <header id="sidebar">
     <div class="sidebar-top">
       <div class="mobile-header-bar">
@@ -276,13 +25,11 @@
         </a>
 
         <div class="header-actions">
-          <!-- Theme Toggle Button -->
           <button id="themeToggle" class="theme-toggle-btn" aria-label="Toggle Dark Mode" title="Toggle Theme">
             <svg class="sun-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
             <svg class="moon-icon" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
           </button>
 
-          <!-- Mobile Hamburger Toggle Button -->
           <button class="hamburger-btn" id="menuToggle" aria-label="Toggle Navigation">
             <svg viewBox="0 0 24 24">
               <line x1="3" y1="12" x2="21" y2="12"></line>
@@ -303,7 +50,6 @@
       </nav>
     </div>
 
-    <!-- Bottom Section: Email Contact -->
     <div class="sidebar-bottom">
       <div class="sidebar-contact">
         <span class="contact-label">For work and school, reach me at:</span>
@@ -317,34 +63,21 @@
       <h1>Experience</h1>
       <p class="lead">Hands-on learning, internships, and school projects.</p>
 
-      <div class="experience-list">
+      <div style="display: flex; flex-direction: column; gap: 20px;">
         <article class="experience-item">
-          <h3>N/A</h3>
-          <span class="date"></span>
-          <p></p>
+          <h3>Academic & Independent Programming Projects</h3>
+          <span style="font-size: 13px; color: var(--muted); font-weight: 500;">2025 — Present</span>
+          <p style="font-size: 14px; color: var(--muted); line-height: 1.5;">Developed logic-driven C++ console applications focused on data structures, control flow, and user authentication systems, including an ATM simulator and a student grade management system.</p>
+        </article>
+
+        <article class="experience-item">
+          <h3>Frontend Web Development Projects</h3>
+          <span style="font-size: 13px; color: var(--muted); font-weight: 500;">2024 — Present</span>
+          <p style="font-size: 14px; color: var(--muted); line-height: 1.5;">Designed and built responsive personal portfolio sites and user interfaces using HTML5, CSS3, and JavaScript, ensuring functionality and seamless mobile navigation.</p>
         </article>
       </div>
     </section>
   </main>
-
-  <script>
-    // Mobile Hamburger Menu Toggle Logic
-    const menuToggle = document.getElementById('menuToggle');
-    const sidebar = document.getElementById('sidebar');
-    const navLinks = document.querySelectorAll('nav.Nav-Links a');
-
-    if (menuToggle && sidebar) {
-      menuToggle.addEventListener('click', () => {
-        sidebar.classList.toggle('nav-open');
-      });
-
-      // Automatically close menu when clicking a link
-      navLinks.forEach(link => {
-        link.addEventListener('click', () => {
-          sidebar.classList.remove('nav-open');
-        });
-      });
-    }
-  </script>
+  
 </body>
 </html>

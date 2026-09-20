@@ -1,65 +1,37 @@
-document.addEventListener('DOMContentLoaded', () => {
-  // 1. Dark Mode / Theme Toggle Logic
-  const themeBtn = document.getElementById('themeToggle');
-  const savedTheme = localStorage.getItem('darkMode');
-  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+document.addEventListener("DOMContentLoaded", () => {
+  // Theme Toggle Functionality
+  const themeToggle = document.getElementById("themeToggle");
+  
+  // Check persisted dark mode state
+  const isDarkMode = localStorage.getItem("darkMode") === "enabled" ||
+    (!localStorage.getItem("darkMode") && window.matchMedia("(prefers-color-scheme: dark)").matches);
 
-  // Check saved preference o system theme
-  if (savedTheme === 'enabled' || (!savedTheme && prefersDark)) {
-    document.body.classList.add('dark-mode');
+  if (isDarkMode) {
+    document.body.classList.add("dark-mode");
   }
 
-  if (themeBtn) {
-    themeBtn.addEventListener('click', () => {
-      document.body.classList.toggle('dark-mode');
-      if (document.body.classList.contains('dark-mode')) {
-        localStorage.setItem('darkMode', 'enabled');
-      } else {
-        localStorage.setItem('darkMode', 'disabled');
-      }
+  if (themeToggle) {
+    themeToggle.addEventListener("click", () => {
+      const activeDark = document.body.classList.toggle("dark-mode");
+      document.documentElement.classList.remove("dark-mode-init");
+      localStorage.setItem("darkMode", activeDark ? "enabled" : "disabled");
     });
   }
 
-  // 2. Mobile Hamburger Menu Toggle Logic
-  const menuToggle = document.getElementById('menuToggle');
-  const sidebar = document.getElementById('sidebar');
-  const allNavLinks = document.querySelectorAll('nav.Nav-Links a');
+  // Mobile Menu Toggle Functionality
+  const sidebar = document.getElementById("sidebar");
+  const menuToggle = document.getElementById("menuToggle");
 
   if (menuToggle && sidebar) {
-    menuToggle.addEventListener('click', () => {
-      sidebar.classList.toggle('nav-open');
+    menuToggle.addEventListener("click", () => {
+      sidebar.classList.toggle("nav-open");
     });
 
-    // Kusang isara ang mobile menu kapag may clinic-lick na link
-    allNavLinks.forEach(link => {
-      link.addEventListener('click', () => {
-        sidebar.classList.remove('nav-open');
-      });
-    });
-  }
-
-  // 3. Active Link Highlighting kapag nag-s-scroll
-  const sections = document.querySelectorAll('main section[id]');
-  const navLinks = document.querySelectorAll('nav.Nav-Links a[href^="#"]');
-
-  function highlightNavOnScroll() {
-    const scrollY = window.pageYOffset;
-
-    sections.forEach((current) => {
-      const sectionHeight = current.offsetHeight;
-      const sectionTop = current.offsetTop - 100;
-      const sectionId = current.getAttribute('id');
-
-      if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
-        navLinks.forEach((link) => {
-          link.classList.remove('active');
-          if (link.getAttribute('href') === `#${sectionId}`) {
-            link.classList.add('active');
-          }
-        });
+    // Close menu when clicking outside on mobile view
+    document.addEventListener("click", (event) => {
+      if (!sidebar.contains(event.target) && sidebar.classList.contains("nav-open")) {
+        sidebar.classList.remove("nav-open");
       }
     });
   }
-
-  window.addEventListener('scroll', highlightNavOnScroll);
 });

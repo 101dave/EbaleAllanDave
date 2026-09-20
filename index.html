@@ -12,6 +12,13 @@
   <meta property="og:description" content="Grade 12 Student & Developer building functional web interfaces and C++ applications." />
   <meta property="og:image" content="Me.jpg" />
 
+  <!-- Inline Script to prevent Dark Mode Flash -->
+  <script>
+    if (localStorage.getItem('darkMode') === 'enabled' || (!localStorage.getItem('darkMode') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.classList.add('dark-mode-init');
+    }
+  </script>
+
   <!-- External JavaScript File -->
   <script src="script.js" defer></script>
   
@@ -50,8 +57,8 @@
       outline-offset: 3px;
     }
 
-    /* Dark Mode */
-    body.dark-mode {
+    /* Dark Mode Class (Applied on Body) */
+    body.dark-mode, html.dark-mode-init body {
       --bg: #0f1113;
       --muted: #9aa4ae;
       --text: #e6eef3;
@@ -119,7 +126,7 @@
       text-decoration: none;
     }
 
-    /* Hamburger Toggle Button (Hidden by default on Desktop) */
+    /* Hamburger Toggle Button */
     .hamburger-btn {
       display: none;
       background: transparent;
@@ -200,10 +207,10 @@
     .sun-icon { display: block; }
     .moon-icon { display: none; }
 
-    body.dark-mode .sun-icon { display: none; }
-    body.dark-mode .moon-icon { display: block; }
+    body.dark-mode .sun-icon, html.dark-mode-init .sun-icon { display: none; }
+    body.dark-mode .moon-icon, html.dark-mode-init .moon-icon { display: block; }
 
-    /* Bottom Section (Email Contact ONLY) */
+    /* Bottom Section */
     .sidebar-bottom {
       display: flex;
       flex-direction: column;
@@ -253,7 +260,6 @@
       scroll-margin-top: 48px;
     }
 
-    /* Square Profile Picture with Soft Rounded Corners */
     .profile img {
       width: 170px;
       height: 170px;
@@ -365,7 +371,7 @@
       font-size: 13px;
     }
 
-    /* Responsive Design (Mobile Hamburger Styles) */
+    /* Responsive Design */
     @media (max-width: 880px) {
       header {
         position: fixed;
@@ -386,7 +392,6 @@
         display: none;
       }
 
-      /* Expanded Mobile Menu State */
       header.nav-open {
         height: 100vh;
         overflow-y: auto;
@@ -433,19 +438,17 @@
   <header id="sidebar">
     <div class="sidebar-top">
       <div class="mobile-header-bar">
-        <a href="#home" class="logo-container">
+        <a href="index.html" class="logo-container">
           <img src="logo.jpg" alt="Dave Personal Logo" width="32" height="32" onerror="this.style.display='none'">
           <span class="logo-link">Dave</span>
         </a>
 
         <div class="header-actions">
-          <!-- Theme Toggle Button -->
           <button id="themeToggle" class="theme-toggle-btn" aria-label="Toggle Dark Mode" title="Toggle Theme">
             <svg class="sun-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
             <svg class="moon-icon" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
           </button>
 
-          <!-- Mobile Hamburger Toggle Button -->
           <button class="hamburger-btn" id="menuToggle" aria-label="Toggle Navigation">
             <svg viewBox="0 0 24 24">
               <line x1="3" y1="12" x2="21" y2="12"></line>
@@ -457,7 +460,7 @@
       </div>
 
       <nav class="Nav-Links" id="navMenu">
-        <a href="index.html" class="active">Home</a>
+        <a href="index.html#home">Home</a>
         <a href="PROJECTS.html">Projects</a>
         <a href="EXPERIENCE.html">Experience</a>
         <a href="CERTIFICATE.html">Certificates</a>
@@ -466,7 +469,6 @@
       </nav>
     </div>
 
-    <!-- Bottom Section: Email Contact -->
     <div class="sidebar-bottom">
       <div class="sidebar-contact">
         <span class="contact-label">For work and school, reach me at:</span>
@@ -476,14 +478,13 @@
   </header>
 
   <main>
-    <!-- Hero Section -->
     <section id="home" class="hero">
       <div class="profile">
         <img src="Me.jpg" alt="Allan Dave Ebale Profile Picture" width="170" height="170" />
       </div>
       <div class="hero-text">
         <h1>Allan Dave Ebale</h1>
-        <p>I'm a Grade 12 student, I love building, accessible web interfaces and functional programs.</p>
+        <p>I'm a Grade 12 student. I love building accessible web interfaces and functional programs.</p>
         
         <div class="hero-socials">
           <a href="https://github.com/101dave" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
@@ -493,7 +494,6 @@
       </div>
     </section>
 
-    <!-- Projects Overview -->
     <section id="projects" class="card">
       <h2>Projects</h2>
       <p class="lead">Selected projects — short, focused, and practical.</p>
@@ -512,14 +512,12 @@
       <a class="see-more-link" href="PROJECTS.html">View all projects page →</a>
     </section>
 
-    <!-- Experience Overview -->
     <section id="experience" class="card">
       <h2>Experience</h2>
-      <p class="lead">N/A</p>
+      <p class="lead">Academic & Independent Programming Projects</p>
       <a class="see-more-link" href="EXPERIENCE.html">View full experience details →</a>
     </section>
 
-    <!-- Certificates Overview -->
     <section id="certificates" class="card">
       <h2>Certificates</h2>
       <p class="lead">Short courses, trainings, and achievements.</p>
@@ -529,7 +527,6 @@
       <a class="see-more-link" href="CERTIFICATE.html">View all certificates page →</a>
     </section>
 
-    <!-- Tech Stack Overview -->
     <section id="techstack" class="card">
       <h2>Tech Stack</h2>
       <p class="lead">Languages I build with.</p>
@@ -543,7 +540,6 @@
       <a class="see-more-link" href="TECHSTACK.html">View full tech stack details →</a>
     </section>
 
-    <!-- Recommendations Overview -->
     <section id="recommendations" class="card">
       <h2>Recommendations</h2>
       <p class="lead">Feedback from mentors and teachers.</p>
@@ -551,5 +547,6 @@
       <a class="see-more-link" href="RECOMMENDATION.html">View all recommendations →</a>
     </section>
   </main>
+
 </body>
 </html>
