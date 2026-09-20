@@ -1,10 +1,10 @@
 document.addEventListener('DOMContentLoaded', () => {
-  // 1. Dark Mode / Theme Toggle
+  // 1. Dark Mode / Theme Toggle Logic
   const themeBtn = document.getElementById('themeToggle');
   const savedTheme = localStorage.getItem('darkMode');
   const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
 
-  // I-check ang saved preference o system theme
+  // Check saved preference o system theme
   if (savedTheme === 'enabled' || (!savedTheme && prefersDark)) {
     document.body.classList.add('dark-mode');
   }
@@ -20,7 +20,25 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // 2. Active Link Highlighting kapag nag-s-scroll
+  // 2. Mobile Hamburger Menu Toggle Logic
+  const menuToggle = document.getElementById('menuToggle');
+  const sidebar = document.getElementById('sidebar');
+  const allNavLinks = document.querySelectorAll('nav.Nav-Links a');
+
+  if (menuToggle && sidebar) {
+    menuToggle.addEventListener('click', () => {
+      sidebar.classList.toggle('nav-open');
+    });
+
+    // Kusang isara ang mobile menu kapag may clinic-lick na link
+    allNavLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        sidebar.classList.remove('nav-open');
+      });
+    });
+  }
+
+  // 3. Active Link Highlighting kapag nag-s-scroll
   const sections = document.querySelectorAll('main section[id]');
   const navLinks = document.querySelectorAll('nav.Nav-Links a[href^="#"]');
 

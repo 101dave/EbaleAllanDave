@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <script src="script.js" defer></script>
   <style>
+    /* Reset + Base */
     * { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
 
@@ -29,6 +30,7 @@
       transition: background-color 0.3s ease, color 0.3s ease;
     }
 
+    /* Dark Mode */
     body.dark-mode {
       --bg: #0f1113;
       --muted: #9aa4ae;
@@ -39,6 +41,7 @@
       --border: rgba(255, 255, 255, 0.1);
     }
 
+    /* Navigation Sidebar */
     header {
       position: fixed;
       left: 0;
@@ -54,29 +57,103 @@
       justify-content: space-between;
     }
 
-    .sidebar-top { flex: 6; display: flex; flex-direction: column; gap: 20px; overflow-y: auto; }
-    .logo-container { display: flex; align-items: center; gap: 10px; text-decoration: none; padding-bottom: 8px; }
-    .logo-container img { width: 32px; height: 32px; object-fit: cover; border-radius: 6px; }
-    .logo-link { font-weight: 700; font-size: 18px; color: var(--text); }
-
-    nav.Nav-Links { display: flex; flex-direction: column; gap: 6px; width: 100%; }
-    nav.Nav-Links a {
-      color: var(--muted); text-decoration: none; font-weight: 500; font-size: 14px;
-      padding: 9px 12px; border-radius: 8px; transition: color 0.18s, background 0.18s;
+    /* Top Section */
+    .sidebar-top {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
     }
+
+    /* Header Bar: Logo + Theme Toggle + Mobile Menu Button */
+    .mobile-header-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+
+    .logo-container img {
+      width: 32px;
+      height: 32px;
+      object-fit: cover;
+      border-radius: 6px;
+    }
+
+    .logo-link {
+      font-weight: 700;
+      font-size: 18px;
+      color: var(--text);
+      text-decoration: none;
+    }
+
+    /* Hamburger Toggle Button (Hidden by default on Desktop) */
+    .hamburger-btn {
+      display: none;
+      background: transparent;
+      border: none;
+      color: var(--text);
+      cursor: pointer;
+      padding: 4px;
+    }
+
+    .hamburger-btn svg {
+      width: 24px;
+      height: 24px;
+      stroke: currentColor;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      fill: none;
+    }
+
+    nav.Nav-Links {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      width: 100%;
+    }
+
+    nav.Nav-Links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 14px;
+      padding: 9px 12px;
+      border-radius: 8px;
+      transition: color 0.18s, background 0.18s;
+    }
+
     nav.Nav-Links a:hover { color: var(--accent); background: var(--glass); }
     nav.Nav-Links a.active { color: var(--text); background: var(--glass); font-weight: 700; }
 
-    .sidebar-bottom {
-      flex: 4; display: flex; flex-direction: column; justify-content: flex-end;
-      gap: 16px; padding-top: 16px; border-top: 1px solid var(--border);
+    /* Theme Toggle Button */
+    .theme-toggle-btn {
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--text);
+      width: 34px;
+      height: 34px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: background 0.2s;
     }
 
-    .theme-toggle-btn {
-      background: transparent; border: 1px solid var(--border); color: var(--text);
-      width: 36px; height: 36px; border-radius: 8px; display: flex;
-      align-items: center; justify-content: center; cursor: pointer; transition: background 0.2s;
-    }
     .theme-toggle-btn:hover { background: var(--glass); }
     .theme-toggle-btn svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
 
@@ -85,12 +162,38 @@
     body.dark-mode .sun-icon { display: none; }
     body.dark-mode .moon-icon { display: block; }
 
-    .sidebar-contact { display: flex; flex-direction: column; gap: 8px; font-size: 13px; }
-    .sidebar-contact .email-link { color: var(--text); font-weight: 600; text-decoration: none; word-break: break-all; }
-    .sidebar-socials { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 4px; }
-    .sidebar-socials a { color: var(--muted); text-decoration: none; font-size: 12px; font-weight: 600; }
-    .sidebar-socials a:hover { color: var(--text); }
+    /* Bottom Section (Email Contact ONLY) */
+    .sidebar-bottom {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
 
+    .sidebar-contact {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      font-size: 12px;
+    }
+
+    .sidebar-contact .contact-label {
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.3;
+    }
+
+    .sidebar-contact .email-link {
+      color: var(--text);
+      font-weight: 600;
+      text-decoration: none;
+      word-break: break-all;
+    }
+
+    .sidebar-contact .email-link:hover { text-decoration: underline; }
+
+    /* Main Container */
     main { margin-left: 220px; padding: 48px 36px; display: flex; flex-direction: column; gap: 24px; }
 
     section.card {
@@ -107,23 +210,89 @@
       background: var(--bg); color: var(--text); font-weight: 600; font-size: 14px;
     }
 
+    /* Responsive Design (Mobile Hamburger Styles) */
     @media (max-width: 880px) {
-      header { position: relative; width: 100%; height: auto; border-right: 0; border-bottom: 1px solid var(--border); }
-      .sidebar-top, .sidebar-bottom { flex: none; width: 100%; }
-      nav.Nav-Links { flex-direction: row; flex-wrap: wrap; justify-content: center; }
-      main { margin-left: 0; padding: 20px; }
+      header {
+        position: fixed;
+        width: 100%;
+        height: auto;
+        border-right: 0;
+        border-bottom: 1px solid var(--border);
+        padding: 16px;
+        justify-content: flex-start;
+      }
+
+      .hamburger-btn {
+        display: block;
+      }
+
+      nav.Nav-Links,
+      .sidebar-bottom {
+        display: none;
+      }
+
+      /* Expanded Mobile Menu State */
+      header.nav-open {
+        height: 100vh;
+        overflow-y: auto;
+        justify-content: space-between;
+      }
+
+      header.nav-open nav.Nav-Links {
+        display: flex;
+        flex-direction: column;
+        margin-top: 20px;
+      }
+
+      header.nav-open nav.Nav-Links a {
+        padding: 12px;
+        font-size: 16px;
+      }
+
+      header.nav-open .sidebar-bottom {
+        display: flex;
+        flex-direction: column;
+        margin-top: auto;
+        padding-top: 20px;
+      }
+
+      main { 
+        margin-left: 0; 
+        padding: 80px 20px 20px; 
+      }
     }
   </style>
 </head>
 <body>
 
-  <header>
+  <!-- Navigation Sidebar -->
+  <header id="sidebar">
     <div class="sidebar-top">
-      <a href="index.html#home" class="logo-container">
-        <img src="logo.jpg" alt="Dave logo" onerror="this.style.display='none'">
-        <span class="logo-link">Dave</span>
-      </a>
-      <nav class="Nav-Links">
+      <div class="mobile-header-bar">
+        <a href="index.html#home" class="logo-container">
+          <img src="logo.jpg" alt="Dave logo" onerror="this.style.display='none'">
+          <span class="logo-link">Dave</span>
+        </a>
+
+        <div class="header-actions">
+          <!-- Theme Toggle Button -->
+          <button id="themeToggle" class="theme-toggle-btn" aria-label="Toggle Dark Mode" title="Toggle Theme">
+            <svg class="sun-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+            <svg class="moon-icon" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+          </button>
+
+          <!-- Mobile Hamburger Toggle Button -->
+          <button class="hamburger-btn" id="menuToggle" aria-label="Toggle Navigation">
+            <svg viewBox="0 0 24 24">
+              <line x1="3" y1="12" x2="21" y2="12"></line>
+              <line x1="3" y1="6" x2="21" y2="6"></line>
+              <line x1="3" y1="18" x2="21" y2="18"></line>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <nav class="Nav-Links" id="navMenu">
         <a href="index.html">Home</a>
         <a href="PROJECTS.html">Projects</a>
         <a href="EXPERIENCE.html">Experience</a>
@@ -133,19 +302,11 @@
       </nav>
     </div>
 
+    <!-- Bottom Section: Email Contact -->
     <div class="sidebar-bottom">
-      <button id="themeToggle" class="theme-toggle-btn" aria-label="Toggle Dark Mode" title="Toggle Theme">
-        <svg class="sun-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
-        <svg class="moon-icon" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
-      </button>
-
       <div class="sidebar-contact">
-        <a href="mailto:dave@example.com" class="email-link">dave@example.com</a>
-        <div class="sidebar-socials">
-          <a href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer">GitHub</a>
-          <a href="https://web.facebook.com/dave.614149" target="_blank" rel="noopener noreferrer">Facebook</a>
-          <a href="https://www.instagram.com/davw_zx" target="_blank" rel="noopener noreferrer">Instagram</a>
-        </div>
+        <span class="contact-label">For work and school, reach me at:</span>
+        <a href="mailto:davea0153@gmail.com" class="email-link">davea0153@gmail.com</a>
       </div>
     </div>
   </header>
@@ -166,5 +327,24 @@
     </section>
   </main>
 
+  <script>
+    // Mobile Hamburger Menu Toggle Logic
+    const menuToggle = document.getElementById('menuToggle');
+    const sidebar = document.getElementById('sidebar');
+    const navLinks = document.querySelectorAll('nav.Nav-Links a');
+
+    if (menuToggle && sidebar) {
+      menuToggle.addEventListener('click', () => {
+        sidebar.classList.toggle('nav-open');
+      });
+
+      // Automatically close menu when clicking a link
+      navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+          sidebar.classList.remove('nav-open');
+        });
+      });
+    }
+  </script>
 </body>
 </html>
