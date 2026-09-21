@@ -1,0 +1,102 @@
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+int main() {
+    int choice;
+    double radius, length, width, base, height, side, a, b, c;
+
+    cout << "=== Shape Formula Calculator ===" << endl;
+    cout << "1. Area of Circle" << endl;
+    cout << "2. Perimeter of Circle" << endl;
+    cout << "3. Area of Rectangle" << endl;
+    cout << "4. Perimeter of Rectangle" << endl;
+    cout << "5. Area of Triangle" << endl;
+    cout << "6. Perimeter of Triangle" << endl;
+    cout << "7. Area of Square" << endl;
+    cout << "8. Perimeter of Square" << endl;
+    cout << "9. Volume of Sphere" << endl;
+    cout << "10. Volume of Cube" << endl;
+    cout << "11. Volume of Cylinder" << endl;
+    cout << "12. Exit" << endl;
+
+    cout << "Enter your choice: ";
+    cin >> choice;
+
+    switch(choice) {
+        case 1:
+            cout << "Enter radius: ";
+            cin >> radius;
+            cout << "Area of Circle = " << M_PI * radius * radius << endl;
+            break;
+
+        case 2:
+            cout << "Enter radius: ";
+            cin >> radius;
+            cout << "Perimeter of Circle = " << 2 * M_PI * radius << endl;
+            break;
+
+        case 3:
+            cout << "Enter length and width: ";
+            cin >> length >> width;
+            cout << "Area of Rectangle = " << length * width << endl;
+            break;
+
+        case 4:
+            cout << "Enter length and width: ";
+            cin >> length >> width;
+            cout << "Perimeter of Rectangle = " << 2 * (length + width) << endl;
+            break;
+
+        case 5:
+            cout << "Enter base and height: ";
+            cin >> base >> height;
+            cout << "Area of Triangle = " << 0.5 * base * height << endl;
+            break;
+
+        case 6:
+            cout << "Enter three sides (a b c): ";
+            cin >> a >> b >> c;
+            cout << "Perimeter of Triangle = " << a + b + c << endl;
+            break;
+
+        case 7:
+            cout << "Enter side: ";
+            cin >> side;
+            cout << "Area of Square = " << side * side << endl;
+            break;
+
+        case 8:
+            cout << "Enter side: ";
+            cin >> side;
+            cout << "Perimeter of Square = " << 4 * side << endl;
+            break;
+
+        case 9:
+            cout << "Enter radius: ";
+            cin >> radius;
+            cout << "Volume of Sphere = " << (4.0/3.0) * M_PI * pow(radius, 3) << endl;
+            break;
+
+        case 10:
+            cout << "Enter side: ";
+            cin >> side;
+            cout << "Volume of Cube = " << pow(side, 3) << endl;
+            break;
+
+        case 11:
+            cout << "Enter radius and height: ";
+            cin >> radius >> height;
+            cout << "Volume of Cylinder = " << M_PI * pow(radius, 2) * height << endl;
+            break;
+
+        case 12:
+            cout << "Exiting program..." << endl;
+            break;
+
+        default:
+            cout << "Invalid choice!" << endl;
+    }
+
+    return 0;
+}
