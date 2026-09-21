@@ -1,0 +1,37 @@
+#include <iostream>
+using namespace std;
+
+int main(){
+
+    string itemName;
+    double itemPrice, itemQuanty, payment, change, tax, totalPrice, totalAmount;
+
+    cout << "Enter item name: ";
+    cin >> itemName;
+
+    cout << "Enter item price: ";
+    cin >> itemPrice;
+
+    cout << "Enter item quantity: ";
+    cin >> itemQuanty;
+
+    cout << "Enter payment amount: ";
+    cin >> payment;
+
+    totalPrice = itemPrice * itemQuanty;
+    tax = totalPrice * .12;
+    totalAmount = totalPrice + tax;
+    change = payment - totalAmount;
+
+    cout << endl << endl << endl;
+
+    cout << "Item name: " << itemName << endl;
+    cout << "Item quantity: " << itemQuanty << endl;
+    cout << "Payment: " << payment << endl;
+    cout << "Change: " << change << endl;
+    cout << "Total price: " << totalAmount << endl;
+    cout << "Tax: " << tax;
+ 
+
+    return 0;
+}
