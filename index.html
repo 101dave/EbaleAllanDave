@@ -371,6 +371,33 @@
       border-radius: 8px;
     }
 
+    /* Project Action Button */
+    .project-actions {
+      display: flex;
+      gap: 8px;
+      margin-top: auto;
+      padding-top: 8px;
+    }
+
+    .project-btn {
+      display: inline-block;
+      font-size: 13px;
+      font-weight: 600;
+      padding: 8px 14px;
+      border-radius: 6px;
+      text-decoration: none;
+      border: 1px solid var(--border);
+      background: var(--card);
+      color: var(--text);
+      transition: background 0.2s, border-color 0.2s, transform 0.12s;
+    }
+
+    .project-btn:hover {
+      background: var(--glass);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
     /* Experience Section Styling */
     .exp-list {
       display: flex;
@@ -564,16 +591,22 @@
           <img src="cpp_project.jpg" alt="C++ ATM Simulator Preview" width="300" height="150" loading="lazy">
           <h3>C++ ATM Simulator</h3>
           <p>Console-based ATM simulator for deposits and withdrawals.</p>
+          <div class="project-actions">
+            <a href="ATMSIMMULATOR.txt" target="_blank" rel="noopener noreferrer" class="project-btn">📄 View Source Code (.txt) ↗</a>
+          </div>
         </article>
+
         <article class="project-item">
           <img src="project1.jpg" alt="Student Grade Management System Preview" width="300" height="150" loading="lazy">
           <h3>C++ Student Grade Management System</h3>
           <p>Console based program that lets you add student records, input grades, check if they pass or fail, and display all student information.</p>
+          <div class="project-actions">
+            <a href="STUDENTGRADEMANAGEMENTSYSTEM.txt" target="_blank" rel="noopener noreferrer" class="project-btn">📄 View Source Code (.txt) ↗</a>
+          </div>
         </article>
       </div>
     </section>
 
-    <!-- Experience Section with both items -->
     <section id="experience" class="card">
       <div class="card-header">
         <div>
