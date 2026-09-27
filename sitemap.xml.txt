@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="[sitemaps.org](http://www.sitemaps.org/schemas/sitemap/0.9)">
+  <url><loc>[101dave.github.io](https://101dave.github.io/EbaleAllanDave/)</loc></url>
+  <url><loc>[101dave.github.io](https://101dave.github.io/EbaleAllanDave/PROJECTS.html)</loc></url>
+  <url><loc>[101dave.github.io](https://101dave.github.io/EbaleAllanDave/EXPERIENCE.html)</loc></url>
+  <url><loc>[101dave.github.io](https://101dave.github.io/EbaleAllanDave/CERTIFICATE.html)</loc></url>
+  <url><loc>[101dave.github.io](https://101dave.github.io/EbaleAllanDave/TECHSTACK.html)</loc></url>
+  <url><loc>[101dave.github.io](https://101dave.github.io/EbaleAllanDave/RECOMMENDATION.html)</loc></url>
+</urlset>
