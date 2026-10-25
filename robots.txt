@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://101dave.github.io/EbaleAllanDave/sitemap.xml

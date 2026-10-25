@@ -2,552 +2,57 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <title>Dave — Portfolio</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link rel="stylesheet" href="styles.css" />
-
-  
-  <!-- SEO & Social Sharing Meta Tags -->
+  <title>Allan Dave Ebale — Student Developer</title>
   <meta name="description" content="Portfolio of Allan Dave Ebale — student developer building accessible web interfaces and C++ console applications." />
-<link rel="canonical" href="[101dave.github.io](https://101dave.github.io/EbaleAllanDave/)" />
+  <link rel="canonical" href="https://101dave.github.io/EbaleAllanDave/" />
+  <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
+  <meta name="theme-color" content="#0f1113" media="(prefers-color-scheme: dark)" />
+  <link rel="icon" type="image/jpeg" href="logo.jpg" />
+  <link rel="apple-touch-icon" href="logo.jpg" />
 
-<meta property="og:type" content="website" />
-<meta property="og:title" content="Dave — Portfolio" />
-<meta property="og:description" content="I'm a student developer building functional web interfaces." />
-<meta property="og:url" content="[101dave.github.io](https://101dave.github.io/EbaleAllanDave/)" />
-<meta property="og:image" content="[101dave.github.io](https://101dave.github.io/EbaleAllanDave/Me.jpg)" />
-<meta property="og:image:alt" content="Allan Dave Ebale" />
+  <!-- Open Graph / Twitter sharing -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Allan Dave Ebale — Student Developer" />
+  <meta property="og:description" content="Portfolio of Allan Dave Ebale — student developer building accessible web interfaces and C++ console applications." />
+  <meta property="og:url" content="https://101dave.github.io/EbaleAllanDave/" />
+  <meta property="og:image" content="https://101dave.github.io/EbaleAllanDave/Me.jpg" />
+  <meta property="og:image:alt" content="Allan Dave Ebale" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Allan Dave Ebale — Student Developer" />
+  <meta name="twitter:description" content="Portfolio of Allan Dave Ebale — student developer building accessible web interfaces and C++ console applications." />
+  <meta name="twitter:image" content="https://101dave.github.io/EbaleAllanDave/Me.jpg" />
 
-<meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="Dave — Portfolio" />
-<meta name="twitter:description" content="I'm a student developer building functional web interfaces." />
-<meta name="twitter:image" content="[101dave.github.io](https://101dave.github.io/EbaleAllanDave/Me.jpg)" />
-
-
-  <!-- Inline Script to prevent Dark Mode Flash -->
+  <!-- Apply the saved theme before first paint to avoid a flash -->
   <script>
     if (localStorage.getItem('darkMode') === 'enabled' || (!localStorage.getItem('darkMode') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
       document.documentElement.classList.add('dark-mode-init');
     }
   </script>
 
-  <!-- External JavaScript File -->
+  <link rel="stylesheet" href="styles.css" />
   <script src="script.js" defer></script>
-  
-  <style>
-    /* Reset + Base */
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    :root {
-      --bg: #ffffff;
-      --muted: #666666;
-      --text: #111111;
-      --card: #fafafa;
-      --accent: #333333;
-      --glass: rgba(0, 0, 0, 0.05);
-      --border: rgba(0, 0, 0, 0.08);
-      --radius: 12px;
-    }
-
-    body {
-      font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-      color: var(--text);
-      background: var(--bg);
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-      line-height: 1.45;
-      transition: background-color 0.3s ease, color 0.3s ease;
-    }
-
-    /* Accessibility Focus State */
-    a:focus-visible, button:focus-visible {
-      outline: 2px solid var(--text);
-      outline-offset: 3px;
-    }
-
-    /* Dark Mode Class (Applied on Body) */
-    body.dark-mode, html.dark-mode-init body {
-      --bg: #0f1113;
-      --muted: #9aa4ae;
-      --text: #e6eef3;
-      --card: #14171a;
-      --accent: #e6eef3;
-      --glass: rgba(255, 255, 255, 0.05);
-      --border: rgba(255, 255, 255, 0.1);
-    }
-
-    /* Navigation Sidebar */
-    header {
-      position: fixed;
-      left: 0;
-      top: 0;
-      height: 100vh;
-      width: 220px;
-      background: var(--card);
-      border-right: 1px solid var(--border);
-      display: flex;
-      flex-direction: column;
-      padding: 24px 16px;
-      z-index: 100;
-      justify-content: space-between;
-    }
-
-    /* Top Section */
-    .sidebar-top {
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-    }
-
-    /* Header Bar: Logo + Theme Toggle + Mobile Menu Button */
-    .mobile-header-bar {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      width: 100%;
-    }
-
-    .header-actions {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .logo-container {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      text-decoration: none;
-    }
-
-    .logo-container img {
-      width: 32px;
-      height: 32px;
-      object-fit: cover;
-      border-radius: 6px;
-    }
-
-    .logo-link {
-      font-weight: 700;
-      font-size: 18px;
-      color: var(--text);
-      text-decoration: none;
-    }
-
-    /* Hamburger Toggle Button */
-    .hamburger-btn {
-      display: none;
-      background: transparent;
-      border: none;
-      color: var(--text);
-      cursor: pointer;
-      padding: 4px;
-    }
-
-    .hamburger-btn svg {
-      width: 24px;
-      height: 24px;
-      stroke: currentColor;
-      stroke-width: 2;
-      stroke-linecap: round;
-      stroke-linejoin: round;
-      fill: none;
-    }
-
-    nav.Nav-Links {
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-      width: 100%;
-    }
-
-    nav.Nav-Links a {
-      color: var(--muted);
-      text-decoration: none;
-      font-weight: 500;
-      font-size: 14px;
-      padding: 9px 12px;
-      border-radius: 8px;
-      text-align: left;
-      transition: color 0.18s, background 0.18s;
-    }
-
-    nav.Nav-Links a:hover {
-      color: var(--accent);
-      background: var(--glass);
-    }
-
-    nav.Nav-Links a.active {
-      color: var(--text);
-      background: var(--glass);
-      font-weight: 700;
-    }
-
-    /* Theme Toggle Button */
-    .theme-toggle-btn {
-      background: transparent;
-      border: 1px solid var(--border);
-      color: var(--text);
-      width: 34px;
-      height: 34px;
-      border-radius: 8px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      transition: background 0.2s, border-color 0.2s;
-    }
-
-    .theme-toggle-btn:hover {
-      background: var(--glass);
-    }
-
-    .theme-toggle-btn svg {
-      width: 18px;
-      height: 18px;
-      fill: none;
-      stroke: currentColor;
-      stroke-width: 2;
-      stroke-linecap: round;
-      stroke-linejoin: round;
-    }
-
-    .sun-icon { display: block; }
-    .moon-icon { display: none; }
-
-    body.dark-mode .sun-icon, html.dark-mode-init .sun-icon { display: none; }
-    body.dark-mode .moon-icon, html.dark-mode-init .moon-icon { display: block; }
-
-    /* Bottom Section */
-    .sidebar-bottom {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-      padding-top: 16px;
-      border-top: 1px solid var(--border);
-    }
-
-    .sidebar-contact {
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
-      font-size: 12px;
-    }
-
-    .sidebar-contact .contact-label {
-      color: var(--muted);
-      font-size: 12px;
-      line-height: 1.3;
-    }
-
-    .sidebar-contact .email-link {
-      color: var(--text);
-      font-weight: 600;
-      text-decoration: none;
-      word-break: break-all;
-    }
-
-    .sidebar-contact .email-link:hover {
-      text-decoration: underline;
-    }
-
-    /* Main Container */
-    main {
-      margin-left: 220px;
-      padding: 48px 36px;
-      display: flex;
-      flex-direction: column;
-      gap: 36px;
-    }
-
-    /* Hero Section */
-    .hero {
-      display: flex;
-      gap: 32px;
-      align-items: center;
-      scroll-margin-top: 48px;
-    }
-
-    .profile img {
-      width: 170px;
-      height: 170px;
-      border-radius: 16px;
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
-      border: 1px solid var(--border);
-      object-fit: cover;
-    }
-
-    .hero-text h1 {
-      font-size: 28px;
-      font-weight: 700;
-      margin-bottom: 8px;
-      color: var(--text);
-    }
-
-    .hero-text p {
-      color: var(--muted);
-      line-height: 1.6;
-    }
-
-    .hero-socials {
-      display: flex;
-      gap: 12px;
-      margin-top: 16px;
-      flex-wrap: wrap;
-    }
-
-    .hero-socials a {
-      display: inline-block;
-      color: var(--text);
-      font-weight: 600;
-      font-size: 13px;
-      text-decoration: none;
-      padding: 8px 14px;
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      background: var(--card);
-      transition: background 0.2s, transform 0.12s;
-    }
-
-    .hero-socials a:hover {
-      background: var(--glass);
-      transform: translateY(-2px);
-    }
-
-    /* Cards & Grids */
-    section.card {
-      background: var(--card);
-      border-radius: var(--radius);
-      padding: 28px;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.02);
-      border: 1px solid var(--border);
-      scroll-margin-top: 24px;
-      transition: background-color 0.3s ease;
-    }
-
-    /* Card Header with View All on Top Right */
-    .card-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      margin-bottom: 18px;
-    }
-
-    section.card h2 {
-      font-size: 18px;
-      font-weight: 700;
-      color: var(--text);
-    }
-
-    section.card p.lead {
-      color: var(--muted);
-      margin-top: 2px;
-    }
-
-    .see-more-link {
-      color: var(--text);
-      font-weight: 600;
-      font-size: 13px;
-      text-decoration: none;
-      white-space: nowrap;
-    }
-
-    .see-more-link:hover {
-      color: var(--accent);
-    }
-
-    .projects-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 20px;
-    }
-
-    .project-item {
-      background: var(--bg);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 16px;
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-
-    .project-item img {
-      width: 100%;
-      height: 150px;
-      object-fit: cover;
-      border-radius: 8px;
-    }
-
-    /* Project Action Button */
-    .project-actions {
-      display: flex;
-      gap: 8px;
-      margin-top: auto;
-      padding-top: 8px;
-    }
-
-    .project-btn {
-      display: inline-block;
-      font-size: 13px;
-      font-weight: 600;
-      padding: 8px 14px;
-      border-radius: 6px;
-      text-decoration: none;
-      border: 1px solid var(--border);
-      background: var(--card);
-      color: var(--text);
-      transition: background 0.2s, border-color 0.2s, transform 0.12s;
-    }
-
-    .project-btn:hover {
-      background: var(--glass);
-      border-color: var(--accent);
-      transform: translateY(-2px);
-    }
-
-    /* Experience Section Styling */
-    .exp-list {
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-    }
-
-    .exp-item {
-      background: var(--bg);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 18px 20px;
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
-
-    .exp-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 8px;
-    }
-
-    .exp-role {
-      font-weight: 600;
-      font-size: 15px;
-      color: var(--text);
-    }
-
-    .exp-date {
-      font-size: 12px;
-      font-weight: 600;
-      color: var(--muted);
-      background: var(--glass);
-      padding: 4px 10px;
-      border-radius: 6px;
-      border: 1px solid var(--border);
-    }
-
-    .exp-desc {
-      color: var(--muted);
-      font-size: 14px;
-      line-height: 1.5;
-    }
-
-    .tech-grid { display: flex; gap: 10px; flex-wrap: wrap; }
-    .tech {
-      padding: 8px 12px;
-      border-radius: 8px;
-      border: 1px solid var(--border);
-      background: var(--bg);
-      color: var(--muted);
-      font-weight: 600;
-      font-size: 13px;
-    }
-
-    /* Responsive Design */
-    @media (max-width: 880px) {
-      header {
-        position: fixed;
-        width: 100%;
-        height: auto;
-        border-right: 0;
-        border-bottom: 1px solid var(--border);
-        padding: 16px;
-        justify-content: flex-start;
-      }
-
-      .hamburger-btn {
-        display: block;
-      }
-
-      nav.Nav-Links,
-      .sidebar-bottom {
-        display: none;
-      }
-
-      header.nav-open {
-        height: 100vh;
-        overflow-y: auto;
-        justify-content: space-between;
-      }
-
-      header.nav-open nav.Nav-Links {
-        display: flex;
-        flex-direction: column;
-        margin-top: 20px;
-      }
-
-      header.nav-open nav.Nav-Links a {
-        padding: 12px;
-        font-size: 16px;
-      }
-
-      header.nav-open .sidebar-bottom {
-        display: flex;
-        flex-direction: column;
-        margin-top: auto;
-        padding-top: 20px;
-      }
-
-      main { 
-        margin-left: 0; 
-        padding: 80px 20px 20px; 
-      }
-
-      .hero { 
-        flex-direction: column; 
-        text-align: center; 
-      }
-
-      .hero-socials { 
-        justify-content: center; 
-      }
-    }
-  </style>
 </head>
 <body>
 
-  <!-- Navigation Sidebar -->
+  <a class="skip-link" href="#main">Skip to content</a>
+
   <header id="sidebar">
     <div class="sidebar-top">
       <div class="mobile-header-bar">
         <a href="index.html" class="logo-container">
-          <img src="logo.jpg" alt="Dave Personal Logo" width="32" height="32" onerror="this.style.display='none'">
+          <img src="logo.jpg" alt="" width="32" height="32" />
           <span class="logo-link">Dave</span>
         </a>
 
         <div class="header-actions">
-          <button id="themeToggle" class="theme-toggle-btn" aria-label="Toggle Dark Mode" title="Toggle Theme">
-            <svg class="sun-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
-            <svg class="moon-icon" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+          <button id="themeToggle" class="theme-toggle-btn" aria-label="Toggle dark mode" title="Toggle theme">
+            <svg class="sun-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+            <svg class="moon-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
           </button>
 
-          <button class="hamburger-btn" id="menuToggle" aria-label="Toggle Navigation">
-            <svg viewBox="0 0 24 24">
+          <button class="hamburger-btn" id="menuToggle" aria-label="Toggle navigation" aria-controls="navMenu">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
               <line x1="3" y1="12" x2="21" y2="12"></line>
               <line x1="3" y1="6" x2="21" y2="6"></line>
               <line x1="3" y1="18" x2="21" y2="18"></line>
@@ -556,13 +61,14 @@
         </div>
       </div>
 
-      <nav class="Nav-Links" id="navMenu">
-        <a href="index.html">Home</a>
+      <nav class="Nav-Links" id="navMenu" aria-label="Main navigation">
+        <a href="index.html" class="active" aria-current="page">Home</a>
         <a href="PROJECTS.html">Projects</a>
         <a href="EXPERIENCE.html">Experience</a>
         <a href="CERTIFICATE.html">Certificates</a>
         <a href="TECHSTACK.html">Tech Stack</a>
         <a href="RECOMMENDATION.html">Recommendations</a>
+        <a href="CONTACT.html">Contact</a>
       </nav>
     </div>
 
@@ -571,49 +77,49 @@
         <span class="contact-label">For work and school, reach me at:</span>
         <a href="mailto:davea0153@gmail.com" class="email-link">davea0153@gmail.com</a>
       </div>
+      <a class="sidebar-resume-link" href="MOREINFO.html">View my r&eacute;sum&eacute; &rarr;</a>
     </div>
   </header>
 
-  <main>
+  <main id="main">
     <section id="home" class="hero">
       <div class="profile">
-        <img src="Me.jpg" alt="Allan Dave Ebale Profile Picture" width="170" height="170" />
+        <img src="Me.jpg" alt="Allan Dave Ebale" width="170" height="170" />
       </div>
       <div class="hero-text">
         <h1>Allan Dave Ebale</h1>
-        <p>I'm a 1st year student. I love building accessible web interfaces and functional programs.</p>
-        
+        <p class="tagline">I'm a 1st year student. I love building accessible web interfaces and functional programs.</p>
+
         <div class="hero-socials">
-          <a href="https://github.com/101dave" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
-          <a href="https://web.facebook.com/dave.614149" target="_blank" rel="noopener noreferrer">Facebook ↗</a>
-          <a href="https://www.instagram.com/davw_zx" target="_blank" rel="noopener noreferrer">Instagram ↗</a>
+          <a href="https://github.com/101dave" target="_blank" rel="noopener noreferrer">GitHub &#8599;</a>
+          <a href="https://web.facebook.com/dave.614149" target="_blank" rel="noopener noreferrer">Facebook &#8599;</a>
+          <a href="https://www.instagram.com/davw_zx" target="_blank" rel="noopener noreferrer">Instagram &#8599;</a>
+          <a href="MOREINFO.html">R&eacute;sum&eacute;</a>
+          <a class="primary" href="CONTACT.html">Contact me</a>
         </div>
       </div>
     </section>
 
     <section id="projects" class="card">
       <div class="card-header">
-        <div>
-          <p class="lead">01 - projects</p>
-        </div>
-        <a class="see-more-link" href="PROJECTS.html">VIEW ALL →</a>
+        <h2 class="card-title"><span class="num">01</span>projects</h2>
+        <a class="see-more-link" href="PROJECTS.html">VIEW ALL &rarr;</a>
       </div>
       <div class="projects-grid">
         <article class="project-item">
-          <img src="cpp_project.jpg" alt="ATM Simulator" width="300" height="150" loading="lazy">
-          <h3>c++ ATM Simulator</h3>
-          <p>Console-based ATM simulator for deposits and withdrawals.</p>
+          <img src="images/atm-simulator.svg" alt="ATM Simulator project cover" width="600" height="300" loading="lazy" />
+          <h3>ATM Simulator</h3>
+          <p>Console-based ATM with card and PIN verification, balance checking, deposits, withdrawals, and transaction history.</p>
           <div class="project-actions">
-            <a href="ATMSIMMULATOR.txt" target="_blank" rel="noopener noreferrer" class="project-btn">📄 View Source Code (.txt) ↗</a>
+            <a class="project-btn" href="ATMSIMMULATOR.txt" target="_blank" rel="noopener noreferrer">&#128196; View source code &#8599;</a>
           </div>
         </article>
-
         <article class="project-item">
-          <img src="project1.jpg" alt="Student Grade Management System" width="300" height="150" loading="lazy">
-          <h3>C++ Student Grade Management System</h3>
-          <p>Console based program that lets you add student records, input grades, check if they pass or fail, and display all student information.</p>
+          <img src="images/grade-management.svg" alt="Student Grade Management System project cover" width="600" height="300" loading="lazy" />
+          <h3>Student Grade Management System</h3>
+          <p>Add student records, input grades, check pass or fail status, and display all student information.</p>
           <div class="project-actions">
-            <a href="STUDENTGRADEMANAGEMENTSYSTEM.txt" target="_blank" rel="noopener noreferrer" class="project-btn">📄 View Source Code (.txt) ↗</a>
+            <a class="project-btn" href="STUDENTGRADEMANAGEMENTSYSTEM.txt" target="_blank" rel="noopener noreferrer">&#128196; View source code &#8599;</a>
           </div>
         </article>
       </div>
@@ -621,25 +127,23 @@
 
     <section id="experience" class="card">
       <div class="card-header">
-        <div>
-          <p class="lead">02 - experience</p>
-        </div>
-        <a class="see-more-link" href="EXPERIENCE.html">VIEW ALL →</a>
+        <h2 class="card-title"><span class="num">02</span>experience</h2>
+        <a class="see-more-link" href="EXPERIENCE.html">VIEW ALL &rarr;</a>
       </div>
-      
+
       <div class="exp-list">
         <div class="exp-item">
           <div class="exp-header">
             <span class="exp-role">Frontend Web Development Projects</span>
-            <span class="exp-date">2024 — Present</span>
+            <span class="exp-date">2024 &mdash; Present</span>
           </div>
           <p class="exp-desc">Designed and built responsive personal portfolio sites and user interfaces using HTML5, CSS3, and JavaScript, ensuring functionality and seamless mobile navigation.</p>
         </div>
 
         <div class="exp-item">
           <div class="exp-header">
-            <span class="exp-role">C++ Academic & Independent Programming Projects</span>
-            <span class="exp-date">2025 — Present</span>
+            <span class="exp-role">C++ Academic &amp; Independent Programming Projects</span>
+            <span class="exp-date">2025 &mdash; Present</span>
           </div>
           <p class="exp-desc">Developed logic-driven C++ console applications focused on data structures, control flow, and user authentication systems, including an ATM simulator and a student grade management system.</p>
         </div>
@@ -648,39 +152,44 @@
 
     <section id="certificates" class="card">
       <div class="card-header">
-        <div>
-          <p class="lead">03 - certificates</p>
-        </div>
-        <a class="see-more-link" href="CERTIFICATE.html">VIEW ALL →</a>
+        <h2 class="card-title"><span class="num">03</span>certificates</h2>
+        <a class="see-more-link" href="CERTIFICATE.html">VIEW ALL &rarr;</a>
       </div>
-      <div style="display: flex; gap: 10px; flex-wrap: wrap;">
-        <span class="tech">N/A</span>
+      <div class="empty-state">
+        <span class="empty-icon" aria-hidden="true">&#127891;</span>
+        No certificates yet &mdash; I'm focused on coursework and personal projects right now. They will appear here as I earn them.
       </div>
     </section>
 
     <section id="techstack" class="card">
       <div class="card-header">
-        <div>
-          <p class="lead">04 - stack</p>
-        </div>
-        <a class="see-more-link" href="TECHSTACK.html">VIEW ALL →</a>
+        <h2 class="card-title"><span class="num">04</span>stack</h2>
+        <a class="see-more-link" href="TECHSTACK.html">VIEW ALL &rarr;</a>
       </div>
       <div class="tech-grid">
-        <div class="tech">HTML</div>
-        <div class="tech">CSS</div>
-        <div class="tech">JavaScript</div>
+        <span class="tech">HTML5</span>
+        <span class="tech">CSS3</span>
+        <span class="tech">JavaScript</span>
+        <span class="tech">C++</span>
+        <span class="tech">PHP</span>
+        <span class="tech">Git &amp; GitHub</span>
       </div>
     </section>
 
     <section id="recommendations" class="card">
       <div class="card-header">
-        <div>
-          <p class="lead">05 - recommendation</p>
-        </div>
-        <a class="see-more-link" href="RECOMMENDATION.html">VIEW ALL →</a>
+        <h2 class="card-title"><span class="num">05</span>recommendation</h2>
+        <a class="see-more-link" href="RECOMMENDATION.html">VIEW ALL &rarr;</a>
       </div>
-      <p style="color:var(--muted); font-style: italic;">N/A</p>
+      <div class="empty-state">
+        <span class="empty-icon" aria-hidden="true">&#128172;</span>
+        Recommendations from mentors, teachers, and peers will appear here.
+      </div>
     </section>
+  <footer class="site-footer">
+    <p>&copy; <span class="year">2026</span> Allan Dave Ebale &middot; Built with plain HTML, CSS &amp; JavaScript</p>
+    <p><a href="MOREINFO.html">R&eacute;sum&eacute;</a> &middot; <a href="CONTACT.html">Contact</a> &middot; <a href="https://github.com/101dave" target="_blank" rel="noopener noreferrer">GitHub &#8599;</a></p>
+  </footer>
   </main>
 
 </body>

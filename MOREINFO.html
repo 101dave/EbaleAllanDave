@@ -1,160 +1,154 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<title>More Info</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Résumé — Allan Dave Ebale</title>
+  <meta name="description" content="Résumé of Allan Dave Ebale — student developer: contact details, experience, education, and hobbies." />
+  <link rel="canonical" href="https://101dave.github.io/EbaleAllanDave/MOREINFO.html" />
+  <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
+  <meta name="theme-color" content="#0f1113" media="(prefers-color-scheme: dark)" />
+  <link rel="icon" type="image/jpeg" href="logo.jpg" />
+  <link rel="apple-touch-icon" href="logo.jpg" />
 
-<style>
+  <!-- Open Graph / Twitter sharing -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Résumé — Allan Dave Ebale" />
+  <meta property="og:description" content="Résumé of Allan Dave Ebale — student developer: contact details, experience, education, and hobbies." />
+  <meta property="og:url" content="https://101dave.github.io/EbaleAllanDave/MOREINFO.html" />
+  <meta property="og:image" content="https://101dave.github.io/EbaleAllanDave/Me.jpg" />
+  <meta property="og:image:alt" content="Allan Dave Ebale" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Résumé — Allan Dave Ebale" />
+  <meta name="twitter:description" content="Résumé of Allan Dave Ebale — student developer: contact details, experience, education, and hobbies." />
+  <meta name="twitter:image" content="https://101dave.github.io/EbaleAllanDave/Me.jpg" />
 
-body{
-font-family: Arial, sans-serif;
-margin: 0;
-padding: 0;
-background-color: #f4f4f4;
-color: black;
-}
+  <!-- Apply the saved theme before first paint to avoid a flash -->
+  <script>
+    if (localStorage.getItem('darkMode') === 'enabled' || (!localStorage.getItem('darkMode') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.classList.add('dark-mode-init');
+    }
+  </script>
 
-.resume{
-max-width: 700px;
-margin: 40px auto;
-background-color: white;
-display: grid;
-grid-template-columns: 30% 70%;
-box-shadow: 0 0 10px black;
-}
-
-.sidebar{
-background-color: #8487AD;
-color: white;
-padding: 20px;
-}
-
-.sidebar img{
-width: 120px;
-border-radius: 10%;
-display: block;
-margin: 0 auto 20px;
-}
-
-.sidebar h2{
-text-align: center;
-margin-bottom: 10px;
-}
-
-.sidebar p{
-text-align: center;
-font-size: 14px;
-margin-bottom: 20px;
-}
-
-.sidebar .section{
-margin-bottom: 20px;
-}
-
-.sidebar .section h3{
-border-bottom: 1px solid white;
-padding-bottom: 5px;
-margin-bottom: 5px;
-font-size: 14px;
-}
-
-.sidebar ul{
-list-style: none;
-padding: 0;
-font-size: 12px;
-}
-
-.sidebar ul li{
-margin-bottom: 5px;
-}
-
-.main{
-padding: 20px;
-}
-
-.main h1{
-margin-bottom: 5px;
-color: black;
-}
-
-.main p{
-margin-top: 0;
-}
-
-.main .section{
-margin-top: 20px;
-}
-
-.main .section h2{
-border-bottom: 2px solid black;
-padding-bottom: 5px;
-margin-bottom: 5px;
-}
-
-.main ul{
-padding-left: 20px;
-}
-
-</style>
+  <link rel="stylesheet" href="styles.css" />
+  <script src="script.js" defer></script>
 </head>
-
 <body>
 
-<div class="resume">
+  <a class="skip-link" href="#main">Skip to content</a>
 
-<div class="sidebar">
+  <header id="sidebar">
+    <div class="sidebar-top">
+      <div class="mobile-header-bar">
+        <a href="index.html" class="logo-container">
+          <img src="logo.jpg" alt="" width="32" height="32" />
+          <span class="logo-link">Dave</span>
+        </a>
 
-<img src="Me.jpg" alt="Profile Photo">
+        <div class="header-actions">
+          <button id="themeToggle" class="theme-toggle-btn" aria-label="Toggle dark mode" title="Toggle theme">
+            <svg class="sun-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+            <svg class="moon-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+          </button>
 
-<h2>Allan Dave E Ebale</h2>
-<p>Student</p>
+          <button class="hamburger-btn" id="menuToggle" aria-label="Toggle navigation" aria-controls="navMenu">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <line x1="3" y1="12" x2="21" y2="12"></line>
+              <line x1="3" y1="6" x2="21" y2="6"></line>
+              <line x1="3" y1="18" x2="21" y2="18"></line>
+            </svg>
+          </button>
+        </div>
+      </div>
 
-<div class="section">
-<h3>Contact</h3>
-<ul>
-<li>Gmail: davea0153@gmail.com</li>
-<li>Phone: 993-935-7601</li>
-</ul>
-</div>
+      <nav class="Nav-Links" id="navMenu" aria-label="Main navigation">
+        <a href="index.html">Home</a>
+        <a href="PROJECTS.html">Projects</a>
+        <a href="EXPERIENCE.html">Experience</a>
+        <a href="CERTIFICATE.html">Certificates</a>
+        <a href="TECHSTACK.html">Tech Stack</a>
+        <a href="RECOMMENDATION.html">Recommendations</a>
+        <a href="CONTACT.html">Contact</a>
+      </nav>
+    </div>
 
-<div class="section">
-<h3>Hobbies</h3>
-<ul>
-<li>Coding</li>
-<li>Chess</li>
-<li>Cycling</li>
-</ul>
-</div>
+    <div class="sidebar-bottom">
+      <div class="sidebar-contact">
+        <span class="contact-label">For work and school, reach me at:</span>
+        <a href="mailto:davea0153@gmail.com" class="email-link">davea0153@gmail.com</a>
+      </div>
+      <a class="sidebar-resume-link" href="MOREINFO.html">View my r&eacute;sum&eacute; &rarr;</a>
+    </div>
+  </header>
 
-</div>
+  <main id="main">
+    <section class="card resume-card">
+      <div class="resume-side">
+        <div>
+          <img src="Me.jpg" alt="Allan Dave Ebale" width="120" height="120" />
+          <h2>Allan Dave E Ebale</h2>
+          <p class="resume-role">Student Developer</p>
+        </div>
 
-<div class="main">
+        <div class="resume-section">
+          <h3>Contact</h3>
+          <ul>
+            <li>Email: <a href="mailto:davea0153@gmail.com">davea0153@gmail.com</a></li>
+            <li>Phone: 993-935-7601</li>
+          </ul>
+        </div>
 
-<h1>Allan Dave E Ebale</h1>
+        <div class="resume-section">
+          <h3>Links</h3>
+          <ul>
+            <li><a href="https://github.com/101dave" target="_blank" rel="noopener noreferrer">GitHub &#8599;</a></li>
+            <li><a href="https://web.facebook.com/dave.614149" target="_blank" rel="noopener noreferrer">Facebook &#8599;</a></li>
+            <li><a href="https://www.instagram.com/davw_zx" target="_blank" rel="noopener noreferrer">Instagram &#8599;</a></li>
+          </ul>
+        </div>
 
-<p>
-I'm a Grade 12 student and i'm 17 YearsOld.
-</p>
+        <div class="resume-section">
+          <h3>Hobbies</h3>
+          <ul>
+            <li>Coding</li>
+            <li>Chess</li>
+            <li>Cycling</li>
+          </ul>
+        </div>
+      </div>
 
-<div class="section">
-<h2>Experience</h2>
-<ul>
-<li>No work experience yet, but willing to learn.</li>
-</ul>
-</div>
+      <div class="resume-main">
+        <h1>R&eacute;sum&eacute;</h1>
+        <p class="resume-summary">I'm a student developer who enjoys turning ideas into working programs &mdash; from C++ console applications to responsive websites. Always learning, always building.</p>
 
-<div class="section">
-<h2>Education</h2>
-<ul>
-<li>Elementary School - Doleres Piring Elementary School (2013-2020)</li>
-<li>Junior High School - Diosdado Macapagal High School - (2020-2024)</li> 
-<li>Senior High School - Next Generation Technological College - (2024-Present)</li>
+        <div class="resume-section">
+          <h2>Experience</h2>
+          <ul>
+            <li>Frontend web development projects (HTML, CSS, JavaScript) <span class="years">2024 &mdash; Present</span></li>
+            <li>C++ academic &amp; independent programming projects <span class="years">2025 &mdash; Present</span></li>
+            <li>No formal work experience yet &mdash; but willing to learn.</li>
+          </ul>
+        </div>
 
+        <div class="resume-section">
+          <h2>Education</h2>
+          <ul>
+            <li>Senior High School &mdash; Next Generation Technological College <span class="years">2024 &mdash; Present</span></li>
+            <li>Junior High School &mdash; Diosdado Macapagal High School <span class="years">2020 &mdash; 2024</span></li>
+            <li>Elementary &mdash; Doleres Piring Elementary School <span class="years">2013 &mdash; 2020</span></li>
+          </ul>
+        </div>
 
-</ul>
-</div>
-
-</div>
-
-</div>
+        <div class="resume-actions">
+          <button class="submit-btn" onclick="window.print()">&#128424; Print / Save as PDF</button>
+        </div>
+      </div>
+    </section>
+  <footer class="site-footer">
+    <p>&copy; <span class="year">2026</span> Allan Dave Ebale &middot; Built with plain HTML, CSS &amp; JavaScript</p>
+    <p><a href="MOREINFO.html">R&eacute;sum&eacute;</a> &middot; <a href="CONTACT.html">Contact</a> &middot; <a href="https://github.com/101dave" target="_blank" rel="noopener noreferrer">GitHub &#8599;</a></p>
+  </footer>
+  </main>
 
 </body>
 </html>

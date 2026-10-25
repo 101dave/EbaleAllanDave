@@ -1,0 +1,12 @@
+# Compiled binaries & scratch files
+*.exe
+*.o
+*.out
+tempCodeRunnerFile.*
+sample.cpp
+
+# Editors / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
