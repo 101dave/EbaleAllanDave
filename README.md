@@ -27,6 +27,7 @@ My personal portfolio site, built with **plain HTML, CSS, and JavaScript** — n
 - SEO meta tags, Open Graph/Twitter cards, `robots.txt`, and `sitemap.xml`
 - Accessibility: skip link, `aria-expanded`/`aria-pressed` states, keyboard (Esc) support, reduced-motion support
 - SVG project covers in `images/` (crisp at any size, tiny file size)
+- Design language inspired by [bryl-minimal](https://github.com/bryllim/bryl-minimal-design) (bryllim.com): monochrome ramp, mono micro-labels, numbered sections, halftone accent, soft shadows
 
 ## Project source code
 
