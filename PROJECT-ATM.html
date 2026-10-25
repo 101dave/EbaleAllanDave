@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Case study: C++ ATM Simulator</title>
+  <meta name="description" content="My first real C++ program: PIN authentication, deposits, withdrawals, and transaction history in the console — plus the bugs I'd fix today." />
+  <link rel="canonical" href="https://101dave.github.io/EbaleAllanDave/PROJECT-ATM.html" />
+  <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
+  <meta name="theme-color" content="#0c0c0f" media="(prefers-color-scheme: dark)" />
+  <link rel="icon" type="image/jpeg" href="logo.jpg" />
+  <link rel="apple-touch-icon" href="logo.jpg" />
+
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Case study: C++ ATM Simulator" />
+  <meta property="og:description" content="My first real C++ program: PIN authentication, deposits, withdrawals, and transaction history in the console — plus the bugs I'd fix today." />
+  <meta property="og:url" content="https://101dave.github.io/EbaleAllanDave/PROJECT-ATM.html" />
+  <meta property="og:image" content="https://101dave.github.io/EbaleAllanDave/Me.jpg" />
+  <meta property="og:image:alt" content="Case study: C++ ATM Simulator" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Case study: C++ ATM Simulator" />
+  <meta name="twitter:description" content="My first real C++ program: PIN authentication, deposits, withdrawals, and transaction history in the console — plus the bugs I'd fix today." />
+  <meta name="twitter:image" content="https://101dave.github.io/EbaleAllanDave/Me.jpg" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <script>
+    if (localStorage.getItem('darkMode') === 'enabled' || (!localStorage.getItem('darkMode') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.classList.add('dark-mode-init');
+    }
+  </script>
+
+  <link rel="stylesheet" href="styles.css" />
+  <script src="script.js" defer></script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"Person","name":"Allan Dave Ebale","jobTitle":"Student Developer","url":"https://101dave.github.io/EbaleAllanDave/","email":"mailto:davea0153@gmail.com","image":"https://101dave.github.io/EbaleAllanDave/Me.jpg","sameAs":["https://github.com/101dave","https://web.facebook.com/dave.614149","https://www.instagram.com/davw_zx"]}
+  </script>
+</head>
+<body>
+
+  <a class="skip-link" href="#main">skip to content</a>
+
+  <header id="sidebar">
+    <div class="sidebar-top">
+      <div class="mobile-header-bar">
+        <a href="index.html" class="logo-container">
+          <span class="logo-link">allan dave ebale</span>
+        </a>
+
+        <div class="header-actions">
+          <button id="themeToggle" class="theme-toggle-btn" aria-label="Toggle dark mode" title="Toggle theme">
+            <svg class="sun-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+            <svg class="moon-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+          </button>
+
+          <button class="hamburger-btn" id="menuToggle" aria-label="Toggle navigation" aria-controls="navMenu">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <line x1="3" y1="12" x2="21" y2="12"></line>
+              <line x1="3" y1="6" x2="21" y2="6"></line>
+              <line x1="3" y1="18" x2="21" y2="18"></line>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <nav class="Nav-Links" id="navMenu" aria-label="Main navigation">
+        <a href="index.html">home</a>
+        <a href="PROJECTS.html" class="active" aria-current="page">projects</a>
+        <a href="EXPERIENCE.html">experience</a>
+        <a href="CERTIFICATE.html">certificates</a>
+        <a href="TECHSTACK.html">stack</a>
+        <a href="RECOMMENDATION.html">recommendations</a>
+        <a href="CONTACT.html">contact</a>
+      </nav>
+    </div>
+
+    <div class="sidebar-bottom">
+      <div class="sidebar-contact">
+        <span class="contact-label">for work &amp; school</span>
+        <a href="mailto:davea0153@gmail.com" class="email-link">davea0153@gmail.com</a>
+      </div>
+      <a class="sidebar-resume-link" href="MOREINFO.html">r&eacute;sum&eacute; &rarr;</a>
+    </div>
+  </header>
+
+  <main id="main">
+    <section>
+      <p class="crumb"><a href="PROJECTS.html">projects</a> / atm simulator</p>
+      <h1 class="page-title">c++ atm simulator</h1>
+      <p class="page-lead">my first real C++ program &mdash; PIN authentication, deposits, withdrawals, and transaction history, all in the console.</p>
+      <div class="stack-cloud"><span class="tag">c++</span><span class="tag">console</span><span class="tag">control flow</span><span class="tag">vectors</span></div>
+      <div class="case-media">
+        <img src="images/atm-demo.gif" alt="Animated terminal demo of the ATM simulator: login, balance check, deposit, and withdrawal" width="640" height="400" />
+      </div>
+      <pre class="terminal">$ g++ atm.cpp -o atm &amp;&amp; ./atm
+Enter yout card number: 123
+Enter your pin: 123
+Enter your choice: 2
+Enter the amount: 500
+&lt;----------Transaction history----------&gt;
+Deposit amount: 500
+New Balance: 600
+&lt;---------------------------------------&gt;</pre>
+      <p class="deck-hint">real session, recorded from the compiled program</p>
+      <div class="case-grid">
+        <div class="case-block">
+          <h2>the problem</h2>
+          <p>Model a real ATM in the console: verify the card before touching money, keep a running balance, and print a receipt-like history after every transaction.</p>
+        </div>
+        <div class="case-block">
+          <h2>the approach</h2>
+          <p>A login loop that retries until the card number and PIN match, then a menu loop (balance / deposit / withdraw / exit). Vectors store every deposit and withdrawal so the history can be printed after each transaction.</p>
+        </div>
+        <div class="case-block">
+          <h2>key features</h2>
+          <ul>
+            <li>card + PIN verification with a retry loop</li>
+            <li>balance inquiry at any time</li>
+            <li>deposits and withdrawals with a running balance</li>
+            <li>transaction history printed after every operation</li>
+            <li>clean exit path</li>
+          </ul>
+        </div>
+        <div class="case-block">
+          <h2>what i'd fix now</h2>
+          <p>The login and menu loops use goto &mdash; a while loop with small functions would read much better. And the insufficient-funds check tests balance == -1 instead of balance &lt; 0, so it only catches one exact overdraft. Finding those bugs myself was the real lesson: this project taught me to re-read my own code like a reviewer.</p>
+        </div>
+      </div>
+      <div class="case-links">
+        <a href="ATMSIMMULATOR.txt" target="_blank" rel="noopener noreferrer">source <span class="arr">&#8599;</span></a><a href="PROJECTS.html">back to projects <span class="arr">&#8594;</span></a>
+      </div>
+    </section>
+  <footer class="site-footer">
+    <p>&copy; <span class="year">2026</span> allan dave ebale &middot; built with plain html, css &amp; js</p>
+    <p class="footer-links">
+      <a href="MOREINFO.html">r&eacute;sum&eacute;</a>
+      <a href="CONTACT.html">contact</a>
+      <a href="https://github.com/101dave" target="_blank" rel="noopener noreferrer">github <span class="arr">&#8599;</span></a>
+    </p>
+  </footer>
+  </main>
+
+</body>
+</html>
