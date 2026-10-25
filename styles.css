@@ -339,16 +339,6 @@ main {
   transform: translateY(-2px);
 }
 
-.hero-socials a.primary {
-  background: var(--text);
-  color: var(--bg);
-  border-color: var(--text);
-}
-
-.hero-socials a.primary:hover {
-  opacity: 0.88;
-}
-
 /* ---------- Cards ---------- */
 section.card {
   background: var(--card);
