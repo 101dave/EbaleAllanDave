@@ -87,6 +87,80 @@
     });
   }
 
+  /* ---------- Project deck (bryl-style carousel) ---------- */
+  var deck = document.getElementById("projectDeck");
+  if (deck) {
+    var cards = Array.prototype.slice.call(deck.querySelectorAll(".deck-card"));
+    var dotsWrap = document.getElementById("deckDots");
+    var prevBtn = document.getElementById("deckPrev");
+    var nextBtn = document.getElementById("deckNext");
+    var stage = deck.querySelector(".deck-stage");
+    var n = cards.length;
+    var idx = 0;
+
+    cards.forEach(function (_, i) {
+      var dot = document.createElement("button");
+      dot.type = "button";
+      dot.className = "deck-dot";
+      dot.setAttribute("aria-label", "Go to project " + (i + 1));
+      dot.addEventListener("click", function () {
+        idx = i;
+        render();
+      });
+      dotsWrap.appendChild(dot);
+    });
+    var dots = Array.prototype.slice.call(dotsWrap.children);
+
+    function render() {
+      cards.forEach(function (card, i) {
+        var rel = (((i - idx) % n) + n) % n;
+        var pos = rel === 0 ? "pos-center" : rel === 1 ? "pos-right" : rel === n - 1 ? "pos-left" : "is-hidden";
+        card.classList.remove("pos-center", "pos-right", "pos-left", "is-hidden");
+        card.classList.add(pos);
+        if (pos === "pos-center") {
+          card.removeAttribute("inert");
+        } else {
+          card.setAttribute("inert", "");
+        }
+        card.setAttribute("aria-hidden", pos === "is-hidden" ? "true" : "false");
+      });
+      dots.forEach(function (dot, i) {
+        dot.classList.toggle("active", i === idx);
+        if (i === idx) {
+          dot.setAttribute("aria-current", "true");
+        } else {
+          dot.removeAttribute("aria-current");
+        }
+      });
+    }
+
+    function go(delta) {
+      idx = (((idx + delta) % n) + n) % n;
+      render();
+    }
+
+    prevBtn.addEventListener("click", function () { go(-1); });
+    nextBtn.addEventListener("click", function () { go(1); });
+
+    deck.addEventListener("keydown", function (event) {
+      if (event.key === "ArrowLeft") { event.preventDefault(); go(-1); }
+      if (event.key === "ArrowRight") { event.preventDefault(); go(1); }
+    });
+
+    // Swipe support (touch & mouse drag)
+    var startX = null;
+    stage.addEventListener("pointerdown", function (event) { startX = event.clientX; });
+    stage.addEventListener("pointerup", function (event) {
+      if (startX === null) return;
+      var dx = event.clientX - startX;
+      if (Math.abs(dx) > 40) go(dx < 0 ? 1 : -1);
+      startX = null;
+    });
+    stage.addEventListener("pointercancel", function () { startX = null; });
+
+    render();
+  }
+
   /* ---------- Footer year ---------- */
   document.querySelectorAll(".year").forEach(function (el) {
     el.textContent = new Date().getFullYear();
