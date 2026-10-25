@@ -174,14 +174,6 @@ header#sidebar {
   text-decoration: none;
 }
 
-.logo-container img {
-  width: 30px;
-  height: 30px;
-  object-fit: cover;
-  border-radius: 8px;
-  border: 1px solid var(--g200);
-}
-
 .logo-link {
   font: 600 15px var(--font-sans);
   color: var(--ink);
@@ -614,6 +606,113 @@ main > *:nth-child(n+5) { animation-delay: 0.33s; }
 
 .project-links a:hover {
   color: var(--ink);
+}
+
+/* ---------- Project deck (bryl-style carousel) ---------- */
+.deck {
+  position: relative;
+}
+
+.deck-stage {
+  display: grid;
+  perspective: 1400px;
+  touch-action: pan-y;
+}
+
+.deck-card {
+  grid-area: 1 / 1;
+  width: min(460px, 100%);
+  justify-self: center;
+  transition: transform 0.45s var(--ease), opacity 0.45s var(--ease),
+    visibility 0.45s;
+  will-change: transform;
+}
+
+.deck-card.pos-center {
+  transform: none;
+  opacity: 1;
+  z-index: 3;
+}
+
+.deck-card.pos-left,
+.deck-card.pos-right {
+  opacity: 0.45;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.deck-card.pos-left {
+  transform: translateX(-62%) scale(0.9) rotateY(10deg);
+}
+
+.deck-card.pos-right {
+  transform: translateX(62%) scale(0.9) rotateY(-10deg);
+}
+
+.deck-card.is-hidden {
+  opacity: 0;
+  visibility: hidden;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.deck-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  margin-top: 28px;
+}
+
+.deck-btn {
+  width: 34px;
+  height: 34px;
+  border: 1px solid var(--g200);
+  background: var(--bg);
+  color: var(--ink);
+  border-radius: 8px;
+  font: 500 14px var(--font-mono);
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.deck-btn:hover {
+  background: var(--g100);
+}
+
+.deck-dots {
+  display: flex;
+  gap: 8px;
+}
+
+.deck-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  border: 0;
+  padding: 0;
+  background: var(--g300);
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
+}
+
+.deck-dot:hover {
+  background: var(--g400);
+}
+
+.deck-dot.active {
+  background: var(--ink);
+  transform: scale(1.3);
+}
+
+@media (max-width: 560px) {
+  .deck-card.pos-left {
+    transform: translateX(-42%) scale(0.88) rotateY(10deg);
+  }
+
+  .deck-card.pos-right {
+    transform: translateX(42%) scale(0.88) rotateY(-10deg);
+  }
 }
 
 /* ---------- Experience & education rows ---------- */
