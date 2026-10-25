@@ -32,6 +32,8 @@ My personal portfolio site, built with **plain HTML, CSS, and JavaScript** — n
 
 The C++ console projects showcased on the site live in the repository root as `.txt` files
 (e.g. `ATMSIMMULATOR.txt`, `BINARYConverter.txt`) and are linked from the project cards.
+Web apps live in their own repositories — **Scholog** ([scholog.vercel.app](https://scholog.vercel.app),
+[github.com/101dave/Scholog](https://github.com/101dave/Scholog)) is linked to its live deployment.
 
 ## Running locally
 
