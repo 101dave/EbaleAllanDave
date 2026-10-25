@@ -1,7 +1,7 @@
 /* =========================================================
    Allan Dave Ebale — Portfolio
-   Shared behaviour: theme toggle, mobile nav, contact form.
-   Loaded with `defer`, so the DOM is already parsed.
+   Shared behaviour: theme toggle, mobile nav, project deck,
+   contact form. Loaded with `defer`, so the DOM is parsed.
    ========================================================= */
 (function () {
   "use strict";
@@ -66,6 +66,78 @@
     });
   }
 
+  /* ---------- Project deck (bryl-style carousel) ----------
+     No buttons: click a side card to bring it to the center.
+     Keyboard arrows and swipe still work. */
+  var deck = document.getElementById("projectDeck");
+  if (deck) {
+    var cards = Array.prototype.slice.call(deck.querySelectorAll(".deck-card"));
+    var stage = deck.querySelector(".deck-stage");
+    var n = cards.length;
+    var idx = 0;
+    var swiped = false;
+
+    function render() {
+      cards.forEach(function (card, i) {
+        var rel = (((i - idx) % n) + n) % n;
+        var pos = rel === 0 ? "pos-center" : rel === 1 ? "pos-right" : rel === n - 1 ? "pos-left" : "is-hidden";
+        card.classList.remove("pos-center", "pos-right", "pos-left", "is-hidden");
+        card.classList.add(pos);
+
+        var isCenter = pos === "pos-center";
+        card.setAttribute("aria-hidden", pos === "is-hidden" ? "true" : "false");
+
+        // Only the centered card exposes its links to the keyboard;
+        // side cards are click targets that bring themselves forward.
+        Array.prototype.forEach.call(card.querySelectorAll("a"), function (link) {
+          if (isCenter) {
+            link.removeAttribute("tabindex");
+          } else {
+            link.setAttribute("tabindex", "-1");
+          }
+        });
+      });
+    }
+
+    function go(delta) {
+      idx = (((idx + delta) % n) + n) % n;
+      render();
+    }
+
+    // Click a side card to bring it to the center
+    cards.forEach(function (card, i) {
+      card.addEventListener("click", function (event) {
+        if (swiped) { swiped = false; return; }
+        if (i === idx) return;
+        event.preventDefault();
+        idx = i;
+        render();
+      });
+    });
+
+    // Keyboard support
+    deck.addEventListener("keydown", function (event) {
+      if (event.key === "ArrowLeft") { event.preventDefault(); go(-1); }
+      if (event.key === "ArrowRight") { event.preventDefault(); go(1); }
+    });
+
+    // Swipe support (touch & mouse drag)
+    var startX = null;
+    stage.addEventListener("pointerdown", function (event) { startX = event.clientX; swiped = false; });
+    stage.addEventListener("pointerup", function (event) {
+      if (startX === null) return;
+      var dx = event.clientX - startX;
+      if (Math.abs(dx) > 40) {
+        swiped = true;
+        go(dx < 0 ? 1 : -1);
+      }
+      startX = null;
+    });
+    stage.addEventListener("pointercancel", function () { startX = null; });
+
+    render();
+  }
+
   /* ---------- Contact form → opens the visitor's mail app ---------- */
   var contactForm = document.getElementById("contactForm");
   if (contactForm) {
@@ -85,80 +157,6 @@
         status.textContent = "Opening your mail app… if nothing happens, email davea0153@gmail.com directly.";
       }
     });
-  }
-
-  /* ---------- Project deck (bryl-style carousel) ---------- */
-  var deck = document.getElementById("projectDeck");
-  if (deck) {
-    var cards = Array.prototype.slice.call(deck.querySelectorAll(".deck-card"));
-    var dotsWrap = document.getElementById("deckDots");
-    var prevBtn = document.getElementById("deckPrev");
-    var nextBtn = document.getElementById("deckNext");
-    var stage = deck.querySelector(".deck-stage");
-    var n = cards.length;
-    var idx = 0;
-
-    cards.forEach(function (_, i) {
-      var dot = document.createElement("button");
-      dot.type = "button";
-      dot.className = "deck-dot";
-      dot.setAttribute("aria-label", "Go to project " + (i + 1));
-      dot.addEventListener("click", function () {
-        idx = i;
-        render();
-      });
-      dotsWrap.appendChild(dot);
-    });
-    var dots = Array.prototype.slice.call(dotsWrap.children);
-
-    function render() {
-      cards.forEach(function (card, i) {
-        var rel = (((i - idx) % n) + n) % n;
-        var pos = rel === 0 ? "pos-center" : rel === 1 ? "pos-right" : rel === n - 1 ? "pos-left" : "is-hidden";
-        card.classList.remove("pos-center", "pos-right", "pos-left", "is-hidden");
-        card.classList.add(pos);
-        if (pos === "pos-center") {
-          card.removeAttribute("inert");
-        } else {
-          card.setAttribute("inert", "");
-        }
-        card.setAttribute("aria-hidden", pos === "is-hidden" ? "true" : "false");
-      });
-      dots.forEach(function (dot, i) {
-        dot.classList.toggle("active", i === idx);
-        if (i === idx) {
-          dot.setAttribute("aria-current", "true");
-        } else {
-          dot.removeAttribute("aria-current");
-        }
-      });
-    }
-
-    function go(delta) {
-      idx = (((idx + delta) % n) + n) % n;
-      render();
-    }
-
-    prevBtn.addEventListener("click", function () { go(-1); });
-    nextBtn.addEventListener("click", function () { go(1); });
-
-    deck.addEventListener("keydown", function (event) {
-      if (event.key === "ArrowLeft") { event.preventDefault(); go(-1); }
-      if (event.key === "ArrowRight") { event.preventDefault(); go(1); }
-    });
-
-    // Swipe support (touch & mouse drag)
-    var startX = null;
-    stage.addEventListener("pointerdown", function (event) { startX = event.clientX; });
-    stage.addEventListener("pointerup", function (event) {
-      if (startX === null) return;
-      var dx = event.clientX - startX;
-      if (Math.abs(dx) > 40) go(dx < 0 ? 1 : -1);
-      startX = null;
-    });
-    stage.addEventListener("pointercancel", function () { startX = null; });
-
-    render();
   }
 
   /* ---------- Footer year ---------- */
