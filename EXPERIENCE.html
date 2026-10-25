@@ -7,11 +7,10 @@
   <meta name="description" content="Experience and education of Allan Dave Ebale — frontend web projects, C++ programming, and schooling." />
   <link rel="canonical" href="https://101dave.github.io/EbaleAllanDave/EXPERIENCE.html" />
   <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
-  <meta name="theme-color" content="#0f1113" media="(prefers-color-scheme: dark)" />
+  <meta name="theme-color" content="#0c0c0f" media="(prefers-color-scheme: dark)" />
   <link rel="icon" type="image/jpeg" href="logo.jpg" />
   <link rel="apple-touch-icon" href="logo.jpg" />
 
-  <!-- Open Graph / Twitter sharing -->
   <meta property="og:type" content="website" />
   <meta property="og:title" content="Experience — Allan Dave Ebale" />
   <meta property="og:description" content="Experience and education of Allan Dave Ebale — frontend web projects, C++ programming, and schooling." />
@@ -23,7 +22,10 @@
   <meta name="twitter:description" content="Experience and education of Allan Dave Ebale — frontend web projects, C++ programming, and schooling." />
   <meta name="twitter:image" content="https://101dave.github.io/EbaleAllanDave/Me.jpg" />
 
-  <!-- Apply the saved theme before first paint to avoid a flash -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+
   <script>
     if (localStorage.getItem('darkMode') === 'enabled' || (!localStorage.getItem('darkMode') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
       document.documentElement.classList.add('dark-mode-init');
@@ -35,14 +37,14 @@
 </head>
 <body>
 
-  <a class="skip-link" href="#main">Skip to content</a>
+  <a class="skip-link" href="#main">skip to content</a>
 
   <header id="sidebar">
     <div class="sidebar-top">
       <div class="mobile-header-bar">
         <a href="index.html" class="logo-container">
-          <img src="logo.jpg" alt="" width="32" height="32" />
-          <span class="logo-link">Dave</span>
+          <img src="logo.jpg" alt="" width="30" height="30" />
+          <span class="logo-link">allan dave ebale</span>
         </a>
 
         <div class="header-actions">
@@ -62,76 +64,71 @@
       </div>
 
       <nav class="Nav-Links" id="navMenu" aria-label="Main navigation">
-        <a href="index.html">Home</a>
-        <a href="PROJECTS.html">Projects</a>
-        <a href="EXPERIENCE.html" class="active" aria-current="page">Experience</a>
-        <a href="CERTIFICATE.html">Certificates</a>
-        <a href="TECHSTACK.html">Tech Stack</a>
-        <a href="RECOMMENDATION.html">Recommendations</a>
-        <a href="CONTACT.html">Contact</a>
+        <a href="index.html">home</a>
+        <a href="PROJECTS.html">projects</a>
+        <a href="EXPERIENCE.html" class="active" aria-current="page">experience</a>
+        <a href="CERTIFICATE.html">certificates</a>
+        <a href="TECHSTACK.html">stack</a>
+        <a href="RECOMMENDATION.html">recommendations</a>
+        <a href="CONTACT.html">contact</a>
       </nav>
     </div>
 
     <div class="sidebar-bottom">
       <div class="sidebar-contact">
-        <span class="contact-label">For work and school, reach me at:</span>
+        <span class="contact-label">for work &amp; school</span>
         <a href="mailto:davea0153@gmail.com" class="email-link">davea0153@gmail.com</a>
       </div>
-      <a class="sidebar-resume-link" href="MOREINFO.html">View my r&eacute;sum&eacute; &rarr;</a>
+      <a class="sidebar-resume-link" href="MOREINFO.html">r&eacute;sum&eacute; &rarr;</a>
     </div>
   </header>
 
   <main id="main">
-    <section class="card">
-      <h1>Experience</h1>
-      <p class="lead">Hands-on learning, school work, and independent projects.</p>
+    <section>
+      <h1 class="page-title">experience</h1>
+      <p class="page-lead">hands-on learning, school work, and independent projects.</p>
 
-      <h2 class="subsection-title">Projects &amp; Practice</h2>
-      <div class="exp-list">
-        <article class="exp-item">
-          <div class="exp-header">
-            <span class="exp-role">C++ Academic &amp; Independent Programming Projects</span>
-            <span class="exp-date">2025 &mdash; Present</span>
+      <h2 class="sub-head">projects &amp; practice</h2>
+      <div class="exp-rows">
+        <div class="exp-row">
+          <span class="exp-date">2025 &mdash; now</span>
+          <div>
+            <span class="exp-role">C++ academic &amp; independent programming projects</span>
+            <p class="exp-desc">Developed logic-driven C++ console applications focused on data structures, control flow, and user authentication systems, including an ATM simulator and a student grade management system.</p>
           </div>
-          <p class="exp-desc">Developed logic-driven C++ console applications focused on data structures, control flow, and user authentication systems, including an ATM simulator and a student grade management system.</p>
-        </article>
-
-        <article class="exp-item">
-          <div class="exp-header">
-            <span class="exp-role">Frontend Web Development Projects</span>
-            <span class="exp-date">2024 &mdash; Present</span>
+        </div>
+        <div class="exp-row">
+          <span class="exp-date">2024 &mdash; now</span>
+          <div>
+            <span class="exp-role">Frontend web development projects</span>
+            <p class="exp-desc">Designed and built responsive personal portfolio sites and user interfaces using HTML5, CSS3, and JavaScript, ensuring functionality and seamless mobile navigation.</p>
           </div>
-          <p class="exp-desc">Designed and built responsive personal portfolio sites and user interfaces using HTML5, CSS3, and JavaScript, ensuring functionality and seamless mobile navigation.</p>
-        </article>
+        </div>
       </div>
 
-      <h2 class="subsection-title">Education</h2>
-      <div class="edu-list">
-        <article class="edu-item">
-          <div class="edu-header">
-            <span class="edu-school"><span class="edu-level">Senior High School</span>Next Generation Technological College</span>
-            <span class="edu-date">2024 &mdash; Present</span>
-          </div>
-        </article>
-
-        <article class="edu-item">
-          <div class="edu-header">
-            <span class="edu-school"><span class="edu-level">Junior High School</span>Diosdado Macapagal High School</span>
-            <span class="edu-date">2020 &mdash; 2024</span>
-          </div>
-        </article>
-
-        <article class="edu-item">
-          <div class="edu-header">
-            <span class="edu-school"><span class="edu-level">Elementary</span>Doleres Piring Elementary School</span>
-            <span class="edu-date">2013 &mdash; 2020</span>
-          </div>
-        </article>
+      <h2 class="sub-head">education</h2>
+      <div class="edu-rows">
+        <div class="edu-row">
+          <span class="edu-date">2024 &mdash; now</span>
+          <div><span class="edu-school"><span class="edu-level">senior high school</span>Next Generation Technological College</span></div>
+        </div>
+        <div class="edu-row">
+          <span class="edu-date">2020 &mdash; 2024</span>
+          <div><span class="edu-school"><span class="edu-level">junior high school</span>Diosdado Macapagal High School</span></div>
+        </div>
+        <div class="edu-row">
+          <span class="edu-date">2013 &mdash; 2020</span>
+          <div><span class="edu-school"><span class="edu-level">elementary</span>Doleres Piring Elementary School</span></div>
+        </div>
       </div>
     </section>
   <footer class="site-footer">
-    <p>&copy; <span class="year">2026</span> Allan Dave Ebale &middot; Built with plain HTML, CSS &amp; JavaScript</p>
-    <p><a href="MOREINFO.html">R&eacute;sum&eacute;</a> &middot; <a href="CONTACT.html">Contact</a> &middot; <a href="https://github.com/101dave" target="_blank" rel="noopener noreferrer">GitHub &#8599;</a></p>
+    <p>&copy; <span class="year">2026</span> allan dave ebale &middot; built with plain html, css &amp; js</p>
+    <p class="footer-links">
+      <a href="MOREINFO.html">r&eacute;sum&eacute;</a>
+      <a href="CONTACT.html">contact</a>
+      <a href="https://github.com/101dave" target="_blank" rel="noopener noreferrer">github <span class="arr">&#8599;</span></a>
+    </p>
   </footer>
   </main>
 
