@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Case study: C++ Student Grade Management System</title>
+  <meta name="description" content="Records, averages, and pass/fail status in C++ — and the uninitialized-vector bug that taught me how memory actually works." />
+  <link rel="canonical" href="https://101dave.github.io/EbaleAllanDave/PROJECT-GRADES.html" />
+  <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
+  <meta name="theme-color" content="#0c0c0f" media="(prefers-color-scheme: dark)" />
+  <link rel="icon" type="image/jpeg" href="logo.jpg" />
+  <link rel="apple-touch-icon" href="logo.jpg" />
+
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Case study: C++ Student Grade Management System" />
+  <meta property="og:description" content="Records, averages, and pass/fail status in C++ — and the uninitialized-vector bug that taught me how memory actually works." />
+  <meta property="og:url" content="https://101dave.github.io/EbaleAllanDave/PROJECT-GRADES.html" />
+  <meta property="og:image" content="https://101dave.github.io/EbaleAllanDave/Me.jpg" />
+  <meta property="og:image:alt" content="Case study: C++ Student Grade Management System" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Case study: C++ Student Grade Management System" />
+  <meta name="twitter:description" content="Records, averages, and pass/fail status in C++ — and the uninitialized-vector bug that taught me how memory actually works." />
+  <meta name="twitter:image" content="https://101dave.github.io/EbaleAllanDave/Me.jpg" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <script>
+    if (localStorage.getItem('darkMode') === 'enabled' || (!localStorage.getItem('darkMode') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.classList.add('dark-mode-init');
+    }
+  </script>
+
+  <link rel="stylesheet" href="styles.css" />
+  <script src="script.js" defer></script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"Person","name":"Allan Dave Ebale","jobTitle":"Student Developer","url":"https://101dave.github.io/EbaleAllanDave/","email":"mailto:davea0153@gmail.com","image":"https://101dave.github.io/EbaleAllanDave/Me.jpg","sameAs":["https://github.com/101dave","https://web.facebook.com/dave.614149","https://www.instagram.com/davw_zx"]}
+  </script>
+</head>
+<body>
+
+  <a class="skip-link" href="#main">skip to content</a>
+
+  <header id="sidebar">
+    <div class="sidebar-top">
+      <div class="mobile-header-bar">
+        <a href="index.html" class="logo-container">
+          <span class="logo-link">allan dave ebale</span>
+        </a>
+
+        <div class="header-actions">
+          <button id="themeToggle" class="theme-toggle-btn" aria-label="Toggle dark mode" title="Toggle theme">
+            <svg class="sun-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+            <svg class="moon-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+          </button>
+
+          <button class="hamburger-btn" id="menuToggle" aria-label="Toggle navigation" aria-controls="navMenu">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <line x1="3" y1="12" x2="21" y2="12"></line>
+              <line x1="3" y1="6" x2="21" y2="6"></line>
+              <line x1="3" y1="18" x2="21" y2="18"></line>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <nav class="Nav-Links" id="navMenu" aria-label="Main navigation">
+        <a href="index.html">home</a>
+        <a href="PROJECTS.html" class="active" aria-current="page">projects</a>
+        <a href="EXPERIENCE.html">experience</a>
+        <a href="CERTIFICATE.html">certificates</a>
+        <a href="TECHSTACK.html">stack</a>
+        <a href="RECOMMENDATION.html">recommendations</a>
+        <a href="CONTACT.html">contact</a>
+      </nav>
+    </div>
+
+    <div class="sidebar-bottom">
+      <div class="sidebar-contact">
+        <span class="contact-label">for work &amp; school</span>
+        <a href="mailto:davea0153@gmail.com" class="email-link">davea0153@gmail.com</a>
+      </div>
+      <a class="sidebar-resume-link" href="MOREINFO.html">r&eacute;sum&eacute; &rarr;</a>
+    </div>
+  </header>
+
+  <main id="main">
+    <section>
+      <p class="crumb"><a href="PROJECTS.html">projects</a> / grade management</p>
+      <h1 class="page-title">c++ student grade management system</h1>
+      <p class="page-lead">records, averages, and pass/fail status &mdash; my first taste of managing real data in C++.</p>
+      <div class="stack-cloud"><span class="tag">c++</span><span class="tag">console</span><span class="tag">vectors</span><span class="tag">records</span></div>
+      <div class="case-media">
+        <img src="images/grade-management.svg" alt="Student Grade Management System project cover" width="600" height="300" />
+      </div>
+      <div class="case-grid">
+        <div class="case-block">
+          <h2>the problem</h2>
+          <p>Teachers juggle names, sections, and two semesters of grades per student. I wanted a console tool that collects everything and prints a clean report with averages and pass/fail status.</p>
+        </div>
+        <div class="case-block">
+          <h2>the approach</h2>
+          <p>Parallel vectors (name, grade level, section, first- and second-semester grades, average, status) filled in an input loop; an average of 75 or above means PASS. A report pass at the end prints every record.</p>
+        </div>
+        <div class="case-block">
+          <h2>key features</h2>
+          <ul>
+            <li>any number of students per run</li>
+            <li>per-student record input with both semester grades</li>
+            <li>automatic average and pass/fail status</li>
+            <li>full report printed at the end</li>
+          </ul>
+        </div>
+        <div class="case-block">
+          <h2>what i'd fix now</h2>
+          <p>The original sizes its vectors with n before n is read from the user &mdash; undefined behavior that crashes on some machines (including mine, while recording demos for this site). Today I would read n first, or better, push_back a Student struct each iteration. That crash taught me more about declaration order and memory than any program that worked on the first try.</p>
+        </div>
+      </div>
+      <div class="case-links">
+        <a href="STUDENTGRADEMANAGEMENTSYSTEM.txt" target="_blank" rel="noopener noreferrer">source <span class="arr">&#8599;</span></a><a href="PROJECTS.html">back to projects <span class="arr">&#8594;</span></a>
+      </div>
+    </section>
+  <footer class="site-footer">
+    <p>&copy; <span class="year">2026</span> allan dave ebale &middot; built with plain html, css &amp; js</p>
+    <p class="footer-links">
+      <a href="MOREINFO.html">r&eacute;sum&eacute;</a>
+      <a href="CONTACT.html">contact</a>
+      <a href="https://github.com/101dave" target="_blank" rel="noopener noreferrer">github <span class="arr">&#8599;</span></a>
+    </p>
+  </footer>
+  </main>
+
+</body>
+</html>

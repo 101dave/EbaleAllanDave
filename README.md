@@ -15,7 +15,8 @@ My personal portfolio site, built with **plain HTML, CSS, and JavaScript** — n
 | Tech Stack | `TECHSTACK.html` |
 | Recommendations | `RECOMMENDATION.html` |
 | Contact | `CONTACT.html` |
-| Résumé | `MOREINFO.html` |
+| Résumé | `MOREINFO.html` (+ downloadable `resume.pdf`) |
+| Case studies | `PROJECT-SCHOLOG.html`, `PROJECT-ATM.html`, `PROJECT-GRADES.html` |
 | 404 | `404.html` |
 
 ## Features
