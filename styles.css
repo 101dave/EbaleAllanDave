@@ -372,8 +372,7 @@ main > *:nth-child(n+5) { animation-delay: 0.33s; }
 .hero-grid,
 .hero-stats {
   width: min(100%, 725px);
-  margin-left: auto;
-  margin-right: 20px;
+  margin-inline: auto;
 }
 
 .hero-grid {
@@ -396,7 +395,6 @@ main > *:nth-child(n+5) { animation-delay: 0.33s; }
   border-radius: 0;
   object-fit: cover;
   object-position: center 42%;
-  filter: grayscale(1) contrast(1.04);
 }
 
 .hero-text h1 {
@@ -481,13 +479,6 @@ main > *:nth-child(n+5) { animation-delay: 0.33s; }
   text-transform: uppercase;
   letter-spacing: 1px;
   color: var(--g400);
-}
-
-@media (max-width: 1100px) {
-  .hero-grid,
-  .hero-stats {
-    margin-right: 0;
-  }
 }
 
 /* ---------- Sections ---------- */
