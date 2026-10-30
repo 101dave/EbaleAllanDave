@@ -2,7 +2,6 @@
 
 from html.parser import HTMLParser
 from pathlib import Path
-import re
 from urllib.parse import unquote, urlsplit
 import struct
 import unittest
@@ -97,22 +96,18 @@ class StaticSiteTests(unittest.TestCase):
                         if target.fragment and local.suffix.lower() == '.html':
                             self.assertIn(unquote(target.fragment), Page(local).ids)
 
-    def test_expense_tracker_is_present_and_keeps_secrets_out(self):
-        app = ROOT / 'expense-tracker'
-        for relative in ('index.html', 'css/styles.css', 'js/app.js', 'js/config.js',
-                         'js/store.js', 'sql/schema.sql', 'README.md', 'favicon.svg'):
-            with self.subTest(file=relative):
-                self.assertTrue((app / relative).is_file(), f'expense-tracker: missing {relative}')
-        for script in (app / 'js').glob('*.js'):
-            source = script.read_text(encoding='utf-8').lower()
-            source = re.sub(r'/\*.*?\*/', '', source, flags=re.S)
-            source = re.sub(r'//.*', '', source)
-            self.assertNotIn('service_role', source)
-            self.assertNotIn('sb_secret_', source)
-        schema = (app / 'sql' / 'schema.sql').read_text(encoding='utf-8')
-        self.assertIn('enable row level security', schema)
-        self.assertIn('transactions_select_own', schema)
-        self.assertIn('budgets_delete_own', schema)
+    def test_ledger_is_a_separate_repository(self):
+        live = 'https://101dave.github.io/Finora/'
+        source = 'https://github.com/101dave/Finora'
+        for filename in ('index.html', 'PROJECTS.html', 'PROJECT-EXPENSE.html'):
+            text = (ROOT / filename).read_text(encoding='utf-8')
+            with self.subTest(page=filename):
+                self.assertIn(live, text)
+                self.assertNotIn('href="expense-tracker/', text)
+                self.assertNotIn('EbaleAllanDave/expense-tracker', text)
+        for filename in ('PROJECTS.html', 'PROJECT-EXPENSE.html'):
+            self.assertIn(source, (ROOT / filename).read_text(encoding='utf-8'))
+        self.assertFalse((ROOT / 'expense-tracker').exists())
 
     def test_resume_retains_corrected_project_claims(self):
         resume = (ROOT / 'MOREINFO.html').read_text(encoding='utf-8')
