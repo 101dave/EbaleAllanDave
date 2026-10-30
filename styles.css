@@ -764,6 +764,15 @@ main > *:nth-child(n+5) { animation-delay: 0.33s; }
   color: var(--g400);
 }
 
+.case-block code {
+  font: 500 0.86em var(--font-mono);
+  background: var(--g100);
+  border: 1px solid var(--g200);
+  border-radius: 5px;
+  padding: 1px 5px;
+  color: var(--ink);
+}
+
 .case-links {
   display: flex;
   gap: 18px;
@@ -1473,7 +1482,7 @@ html.dark-mode-init body .cv {
   --showcase-ink: #19241f;
   --showcase-muted: #607267;
   --showcase-line: #dce4dc;
-  --showcase-accent: #64856a;
+  --showcase-accent: #55735b;
   color: var(--showcase-ink);
 }
 body.dark-mode .featured-project,

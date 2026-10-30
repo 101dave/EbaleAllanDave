@@ -16,7 +16,7 @@ My personal portfolio site, built with **plain HTML, CSS, and JavaScript** — n
 | Recommendations | `RECOMMENDATION.html` |
 | Contact | `CONTACT.html` |
 | Résumé | `MOREINFO.html` (+ downloadable `resume.pdf`) |
-| Case studies | `PROJECT-SCHOLOG.html`, `PROJECT-ATM.html`, `PROJECT-GRADES.html` |
+| Case studies | `PROJECT-SCHOLOG.html`, `PROJECT-ATM.html`, `PROJECT-GRADES.html`, `PROJECT-EXPENSE.html` |
 | 404 | `404.html` |
 
 ## Features
@@ -34,8 +34,10 @@ My personal portfolio site, built with **plain HTML, CSS, and JavaScript** — n
 
 The C++ console projects showcased on the site live in the repository root as `.txt` files
 (e.g. `ATMSIMMULATOR.txt`, `BINARYConverter.txt`) and are linked from the project cards.
-Web apps live in their own repositories — **Scholog** ([scholog.vercel.app](https://scholog.vercel.app),
-[github.com/101dave/Scholog](https://github.com/101dave/Scholog)) is linked to its live deployment.
+Web apps are linked to their live deployments. **Scholog** ([scholog.vercel.app](https://scholog.vercel.app),
+[github.com/101dave/Scholog](https://github.com/101dave/Scholog)) lives in its own repository.
+**Ledger**, the expense tracker, lives in this repository under `expense-tracker/` and ships with its
+own [setup guide](expense-tracker/README.md).
 
 ## Running locally
 
@@ -54,6 +56,7 @@ The browser icons and social-sharing image are generated from `Me.jpg`. To repla
 
 ```bash
 python3 -m unittest discover -s tests -v
+cd expense-tracker && node --test   # 15 app unit tests, no install needed
 ```
 
 ## résumé

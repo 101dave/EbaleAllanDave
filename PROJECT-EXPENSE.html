@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Case study: Ledger — personal expense tracker</title>
+  <meta name="description" content="A framework-free expense tracker with Supabase auth, monthly budgets, a Chart.js breakdown, and a local-only demo visitors can explore." />
+  <link rel="canonical" href="https://101dave.github.io/EbaleAllanDave/PROJECT-EXPENSE.html" />
+  <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
+  <meta name="theme-color" content="#0c0c0f" media="(prefers-color-scheme: dark)" />
+  <link rel="icon" type="image/png" sizes="48x48" href="images/portrait-icon-48.png" />
+  <link rel="icon" type="image/png" sizes="192x192" href="images/portrait-icon-192.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="images/portrait-touch-180.png" />
+
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Case study: Ledger — personal expense tracker" />
+  <meta property="og:description" content="A framework-free expense tracker with Supabase auth, monthly budgets, a Chart.js breakdown, and a local-only demo visitors can explore." />
+  <meta property="og:url" content="https://101dave.github.io/EbaleAllanDave/PROJECT-EXPENSE.html" />
+  <meta property="og:image" content="https://101dave.github.io/EbaleAllanDave/images/portrait-share.jpg" />
+  <meta property="og:image:type" content="image/jpeg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Portrait of Allan Dave Ebale" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Case study: Ledger — personal expense tracker" />
+  <meta name="twitter:description" content="A framework-free expense tracker with Supabase auth, monthly budgets, a Chart.js breakdown, and a local-only demo visitors can explore." />
+  <meta name="twitter:image" content="https://101dave.github.io/EbaleAllanDave/images/portrait-share.jpg" />
+  <meta name="twitter:image:alt" content="Portrait of Allan Dave Ebale" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <script>
+    try {
+      var savedTheme = localStorage.getItem('darkMode');
+      if (savedTheme === 'enabled' || (!savedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        document.documentElement.classList.add('dark-mode-init');
+      }
+    } catch (_) { /* The site remains usable if storage is unavailable. */ }
+  </script>
+
+  <link rel="stylesheet" href="styles.css" />
+  <noscript><link rel="stylesheet" href="styles-nojs.css" /></noscript>
+  <script src="script.js" defer></script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"Person","name":"Allan Dave Ebale","jobTitle":"Student Developer","url":"https://101dave.github.io/EbaleAllanDave/","email":"mailto:davea0153@gmail.com","image":"https://101dave.github.io/EbaleAllanDave/Me.jpg","sameAs":["https://github.com/101dave","https://web.facebook.com/dave.614149","https://www.instagram.com/davw_zx"]}
+  </script>
+</head>
+<body>
+
+  <a class="skip-link" href="#main">skip to content</a>
+
+  <header id="sidebar">
+    <div class="sidebar-top">
+      <div class="mobile-header-bar">
+        <a href="index.html" class="logo-container">
+          <span class="logo-link">allan dave ebale</span>
+        </a>
+
+        <div class="header-actions">
+          <button id="themeToggle" class="theme-toggle-btn" aria-label="Toggle dark mode" title="Toggle theme">
+            <svg class="sun-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+            <svg class="moon-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+          </button>
+
+          <button class="hamburger-btn" id="menuToggle" aria-label="Toggle navigation" aria-controls="navMenu">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <line x1="3" y1="12" x2="21" y2="12"></line>
+              <line x1="3" y1="6" x2="21" y2="6"></line>
+              <line x1="3" y1="18" x2="21" y2="18"></line>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <nav class="Nav-Links" id="navMenu" aria-label="Main navigation">
+        <a href="PROJECTS.html" class="active" aria-current="page">projects</a>
+        <a href="EXPERIENCE.html">experience</a>
+        <a href="CERTIFICATE.html">certificates</a>
+        <a href="TECHSTACK.html">stack</a>
+        <a href="RECOMMENDATION.html">recommendations</a>
+        <a href="CONTACT.html">contact</a>
+      </nav>
+    </div>
+
+    <div class="sidebar-bottom">
+      <div class="sidebar-contact">
+        <span class="contact-label">for work &amp; school</span>
+        <a href="mailto:davea0153@gmail.com" class="email-link">davea0153@gmail.com</a>
+      </div>
+      <a class="sidebar-resume-link" href="MOREINFO.html">r&eacute;sum&eacute; &rarr;</a>
+    </div>
+  </header>
+
+  <main id="main">
+    <section>
+      <p class="crumb"><a href="PROJECTS.html">projects</a> / ledger</p>
+      <h1 class="page-title">ledger &mdash; personal expense tracker</h1>
+      <p class="page-lead">a quiet place to log what comes in and what goes out, set a monthly budget, and see the whole month honestly.</p>
+      <div class="stack-cloud"><span class="tag">plain html</span><span class="tag">css</span><span class="tag">javascript</span><span class="tag">supabase</span><span class="tag">postgresql</span><span class="tag">row level security</span><span class="tag">chart.js</span></div>
+      <div class="case-media">
+        <img src="images/expense-tracker-cover.png" alt="Ledger dashboard showing monthly income, expenses, balance, budget progress, and a category doughnut chart" width="1200" height="600" />
+      </div>
+      <div class="case-grid">
+        <div class="case-block">
+          <h2>the brief</h2>
+          <p>Build a personal expense tracker that is simple enough to explain in a minute and complete enough to be useful: accounts, income and expense entries, a monthly summary, one budget, filters, a category chart &mdash; and a way for visitors to try it without typing real financial information.</p>
+          <p>The constraints mattered as much as the features: plain HTML, CSS and JavaScript; no React, no build step; separate files; and a Supabase publishable key in the browser with Row Level Security doing the real work.</p>
+        </div>
+        <div class="case-block">
+          <h2>the approach</h2>
+          <p>The app is a static shell plus eleven small ES modules. <code>app.js</code> decides between the auth screen and the dashboard, <code>dashboard.js</code> owns one month of state, and a tiny store interface has two implementations: Supabase for real accounts and <code>localStorage</code> for demo mode.</p>
+          <p>That seam is the main design decision. The demo is not a separate mock screen &mdash; it runs the same filters, dialogs, stats, chart and validation as the real app. It also meant the UI could be tested thoroughly without a database.</p>
+        </div>
+        <div class="case-block">
+          <h2>accounts and data</h2>
+          <p>Supabase Auth handles email/password sign-up, login, logout and confirmation links. Transactions and budgets live in two Postgres tables; money is <code>numeric(12,2)</code>, dates are real <code>date</code> values, and a user has at most one budget per month.</p>
+          <p>Every transaction is owned by <code>auth.uid()</code> through a default plus a foreign key to <code>auth.users</code>. The frontend never filters by user id in its queries &mdash; policies on the table do that, so a manipulated request cannot widen its own access.</p>
+        </div>
+        <div class="case-block">
+          <h2>security</h2>
+          <p>Each table has four owner-only policies and the <code>anon</code> role has no table privileges at all. Only the publishable key ships; no service-role key exists anywhere in the folder.</p>
+          <p>I verified this in the live database with two impersonated users: each saw only their own rows, cross-user updates and deletes affected zero rows, a forged <code>user_id</code> insert was rejected with <code>42501</code>, and <code>anon</code> was denied. The temporary users and rows were deleted afterwards.</p>
+        </div>
+        <div class="case-block">
+          <h2>the demo</h2>
+          <p><a href="expense-tracker/?demo=1">The demo</a> seeds a current month clipped to today, a previous month with a budget, and a month before that without one. Everything is editable, the state survives a refresh in that browser, and <em>Reset sample data</em> restores the seed.</p>
+          <p>It never calls Supabase and never uploads anything. The tradeoff is honest: it is local sample data for exploring the interface, not private storage.</p>
+        </div>
+        <div class="case-block">
+          <h2>design and accessibility</h2>
+          <p>The interface uses one warm neutral palette, a mono micro-label system, and a single accent for action. On mobile the table becomes labelled cards rather than shrinking into unreadable columns; the chart legend carries the category values so the canvas is never the only source of information.</p>
+          <p>Forms keep visible labels, link errors with <code>aria-describedby</code>, and announce them; native <code>&lt;dialog&gt;</code> provides the focus trap and Escape handling; the theme respects the system preference and remembers the choice. An axe-core pass in Chromium found no WCAG A/AA violations across the auth screen, dashboard, empty month and entry dialog, in light and dark themes.</p>
+        </div>
+        <div class="case-block">
+          <h2>testing</h2>
+          <p>Fifteen dependency-free unit tests cover formatting and the demo store, including persistence failures and rollback. During development I also ran 14 jsdom UI-flow checks and 40 real-Chromium checks covering add/edit/delete, reload persistence, budgets, filters, empty states, validation, focus return, dark mode and mobile layout.</p>
+          <p>The one thing automated checks cannot prove here is the full email-confirmation round trip; that is a browser step after deployment, and it is listed in the README checklist.</p>
+        </div>
+        <div class="case-block">
+          <h2>what i&rsquo;d add next</h2>
+          <p>CSV export, recurring entries, a password-reset screen, and user-defined categories stored per account. Each is a real improvement, but none of them is needed to make the core loop feel finished &mdash; and keeping that loop small is why the app is easy to read.</p>
+        </div>
+      </div>
+      <div class="case-links">
+        <a href="expense-tracker/">open the app <span class="arr">&#8599;</span></a><a href="expense-tracker/?demo=1">try the demo <span class="arr">&#8599;</span></a><a href="https://github.com/101dave/EbaleAllanDave/tree/main/expense-tracker" target="_blank" rel="noopener noreferrer">source <span class="arr">&#8599;</span></a><a href="PROJECTS.html">back to projects <span class="arr">&#8594;</span></a>
+      </div>
+    </section>
+  <footer class="site-footer">
+    <p>&copy; <span class="year">2026</span> allan dave ebale &middot; built with plain html, css &amp; js</p>
+    <p class="footer-links">
+      <a href="MOREINFO.html">r&eacute;sum&eacute;</a>
+      <a href="CONTACT.html">contact</a>
+      <a href="https://github.com/101dave" target="_blank" rel="noopener noreferrer">github <span class="arr">&#8599;</span></a>
+    </p>
+  </footer>
+  </main>
+
+</body>
+</html>

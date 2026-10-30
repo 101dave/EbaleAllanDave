@@ -2,6 +2,7 @@
 
 from html.parser import HTMLParser
 from pathlib import Path
+import re
 from urllib.parse import unquote, urlsplit
 import struct
 import unittest
@@ -10,7 +11,7 @@ ROOT = Path(__file__).resolve().parent.parent
 PAGES = (
     'index.html', 'PROJECTS.html', 'TECHSTACK.html', 'PROJECT-SCHOLOG.html',
     'PROJECT-ATM.html', 'PROJECT-GRADES.html', 'EXPERIENCE.html', 'CERTIFICATE.html',
-    'RECOMMENDATION.html', 'CONTACT.html', 'MOREINFO.html', '404.html',
+    'RECOMMENDATION.html', 'CONTACT.html', 'MOREINFO.html', '404.html', 'PROJECT-EXPENSE.html',
 )
 SHARE_IMAGE = 'https://101dave.github.io/EbaleAllanDave/images/portrait-share.jpg'
 
@@ -43,13 +44,13 @@ class StaticSiteTests(unittest.TestCase):
         self.assertIn('class="hero-grid"', home)
         self.assertIn('src="images/me.webp"', home)
         self.assertIn('id="projectDeck"', home)
-        for target in ('PROJECT-SCHOLOG.html', 'PROJECT-ATM.html', 'PROJECT-GRADES.html'):
+        for target in ('PROJECT-SCHOLOG.html', 'PROJECT-ATM.html', 'PROJECT-GRADES.html', 'PROJECT-EXPENSE.html'):
             self.assertIn(f'href="{target}"', home)
 
     def test_scholog_is_the_only_featured_project(self):
         projects = (ROOT / 'PROJECTS.html').read_text(encoding='utf-8')
         self.assertEqual(projects.count('class="showcase-card featured-project"'), 1)
-        self.assertEqual(projects.count('class="project-item"'), 8)
+        self.assertEqual(projects.count('class="project-item"'), 9)
         featured, other_projects = projects.split('<h2 class="other-projects-title">', 1)
         for target in ('https://scholog.vercel.app', 'https://github.com/101dave/Scholog', 'PROJECT-SCHOLOG.html'):
             self.assertIn(f'href="{target}"', featured)
@@ -95,6 +96,23 @@ class StaticSiteTests(unittest.TestCase):
                         self.assertTrue(local.is_file(), f'{filename}: missing {value}')
                         if target.fragment and local.suffix.lower() == '.html':
                             self.assertIn(unquote(target.fragment), Page(local).ids)
+
+    def test_expense_tracker_is_present_and_keeps_secrets_out(self):
+        app = ROOT / 'expense-tracker'
+        for relative in ('index.html', 'css/styles.css', 'js/app.js', 'js/config.js',
+                         'js/store.js', 'sql/schema.sql', 'README.md', 'favicon.svg'):
+            with self.subTest(file=relative):
+                self.assertTrue((app / relative).is_file(), f'expense-tracker: missing {relative}')
+        for script in (app / 'js').glob('*.js'):
+            source = script.read_text(encoding='utf-8').lower()
+            source = re.sub(r'/\*.*?\*/', '', source, flags=re.S)
+            source = re.sub(r'//.*', '', source)
+            self.assertNotIn('service_role', source)
+            self.assertNotIn('sb_secret_', source)
+        schema = (app / 'sql' / 'schema.sql').read_text(encoding='utf-8')
+        self.assertIn('enable row level security', schema)
+        self.assertIn('transactions_select_own', schema)
+        self.assertIn('budgets_delete_own', schema)
 
     def test_resume_retains_corrected_project_claims(self):
         resume = (ROOT / 'MOREINFO.html').read_text(encoding='utf-8')
