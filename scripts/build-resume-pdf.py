@@ -178,17 +178,16 @@ def build(path="resume.pdf"):
     pdf.two_col("Frontend Web Developer", "2024 \u2013 Present", left_style="I", left_size=8.9)
     pdf.bullet("Built responsive, mobile-first sites and an installable attendance web app, "
                "Scholog, using HTML5, CSS3, JavaScript, and Supabase.")
-    pdf.bullet("Handled the full cycle solo: layout and navigation, dark-mode theming, "
-               "database modeling, and deployment on Vercel.")
+    pdf.bullet("Worked across interface design, navigation, database integration, and deployment on Vercel.")
     pdf.ln(1.5)
 
     pdf.two_col("Academic & Personal Programming Work", "Angeles City")
     pdf.two_col("C++ Programmer", "2025 \u2013 Present", left_style="I", left_size=8.9)
-    pdf.bullet("Wrote and debugged 8+ console programs covering user authentication (card and PIN), "
-               "record management, and arithmetic and geometry logic.")
-    pdf.bullet("Added input validation and menu loops so each program runs end-to-end without "
-               "crashing on bad input.")
-    pdf.bullet("Used the work to practise control flow, functions, arrays, structs, and formatted output.")
+    pdf.bullet("Wrote eight C++ console exercises covering card and PIN checks, record management, "
+               "arithmetic, and geometry.")
+    pdf.bullet("Practised transaction state and control flow; documented known validation and "
+               "memory bugs in the project case studies.")
+    pdf.bullet("Used the work to practise control flow, vectors, basic arithmetic, and formatted console output.")
     pdf.note("No formal employment yet \u2014 actively seeking an internship (OJT) or first junior "
              "developer role.")
 
@@ -197,20 +196,20 @@ def build(path="resume.pdf"):
     pdf.two_col("Scholog \u2014 Student & Attendance Tracker", "2025 \u2013 Present")
     pdf.bullet("Installable web app for teachers: manage sections and rosters, take daily "
                "attendance, and export PDF reports.")
-    pdf.bullet("Students check in with a QR code or Student ID; records sync offline and reconcile "
-               "when the connection returns.")
+    pdf.bullet("Teachers work with a local cache and queued edits; students check in via QR or ID "
+               "when a live session is available.")
     pdf.bullet("Front end in HTML, CSS, and JavaScript; Supabase and PostgreSQL for authentication, "
                "records, and attendance data.")
     pdf.ln(1.5)
 
     pdf.two_col("C++ ATM Simulator", "2025")
-    pdf.bullet("Console ATM with card and PIN verification, balance inquiry, deposits, withdrawals, "
-               "and transaction history.")
+    pdf.bullet("Console ATM with hard-coded card and PIN checks, balance, deposits, and withdrawals; "
+               "the known withdrawal bug is documented.")
     pdf.ln(1.5)
 
     pdf.two_col("C++ Student Grade Management System", "2025")
-    pdf.bullet("Add student records, encode grades, check pass or fail status, and display all "
-               "student information from a menu-driven interface.")
+    pdf.bullet("Prototype for student records, semester averages, and pass/fail output; "
+               "the uninitialized vector-size bug is documented.")
     pdf.ln(1.5)
 
     pdf.two_col("Other C++ Console Programs", "2025")

@@ -27,62 +27,221 @@
   <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
 
   <script>
-    if (localStorage.getItem('darkMode') === 'enabled' || (!localStorage.getItem('darkMode') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-      document.documentElement.classList.add('dark-mode-init');
-    }
+    try {
+      var savedTheme = localStorage.getItem('darkMode');
+      if (savedTheme === 'enabled' || (!savedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        document.documentElement.classList.add('dark-mode-init');
+      }
+    } catch (_) { /* The site remains usable if storage is unavailable. */ }
   </script>
 
   <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="portfolio.css" />
+  <noscript><style>@media (max-width: 1023px) { body.portfolio-page header#sidebar { position: static; } .portfolio-page nav.Nav-Links { display: flex; } .portfolio-page .hamburger-btn, .portfolio-page .theme-toggle-btn { display: none; } }</style></noscript>
   <script src="script.js" defer></script>
   <script type="application/ld+json">
   {"@context":"https://schema.org","@type":"Person","name":"Allan Dave Ebale","jobTitle":"Student Developer","url":"https://101dave.github.io/EbaleAllanDave/","email":"mailto:davea0153@gmail.com","image":"https://101dave.github.io/EbaleAllanDave/Me.jpg","sameAs":["https://github.com/101dave","https://web.facebook.com/dave.614149","https://www.instagram.com/davw_zx"]}
   </script>
 </head>
-<body>
+<body class="portfolio-page">
 
   <a class="skip-link" href="#main">skip to content</a>
 
+  <!-- BEGIN SHARED_SIDEBAR -->
   <header id="sidebar">
     <div class="sidebar-top">
       <div class="mobile-header-bar">
-        <a href="index.html" class="logo-container">
-          <span class="logo-link">allan dave ebale</span>
-        </a>
-
+        <a href="index.html" class="portfolio-brand"
+          ><span class="portfolio-brand-mark" aria-hidden="true">a.</span
+          ><span class="portfolio-brand-copy"
+            ><strong>Allan Dave Ebale</strong><small>SOFTWARE ENGINEER</small></span
+          ></a
+        >
         <div class="header-actions">
-          <button id="themeToggle" class="theme-toggle-btn" aria-label="Toggle dark mode" title="Toggle theme">
-            <svg class="sun-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
-            <svg class="moon-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
-          </button>
-
-          <button class="hamburger-btn" id="menuToggle" aria-label="Toggle navigation" aria-controls="navMenu">
-            <svg viewBox="0 0 24 24" aria-hidden="true">
-              <line x1="3" y1="12" x2="21" y2="12"></line>
-              <line x1="3" y1="6" x2="21" y2="6"></line>
-              <line x1="3" y1="18" x2="21" y2="18"></line>
+          <button
+            id="themeToggle"
+            class="theme-toggle-btn"
+            aria-label="Toggle dark mode"
+            title="Toggle theme"
+            type="button"
+          >
+            <svg
+              class="sun-icon"
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.6"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+              focusable="false"
+            >
+              <circle cx="12" cy="12" r="4"></circle>
+              <path
+                d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4m11.4 11.4 1.4 1.4M2 12h2m16 0h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"
+              ></path></svg
+            ><svg
+              class="moon-icon"
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.6"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+              focusable="false"
+            >
+              <path d="M20.8 13.3A8.5 8.5 0 0 1 10.7 3.2 8.5 8.5 0 1 0 20.8 13.3Z"></path>
+            </svg></button
+          ><button
+            class="hamburger-btn"
+            id="menuToggle"
+            aria-label="Toggle navigation"
+            aria-controls="navMenu"
+            aria-expanded="false"
+            type="button"
+          >
+            <svg
+              class=""
+              width="22"
+              height="22"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.6"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+              focusable="false"
+            >
+              <path d="M4 7h16M4 12h16M4 17h16"></path>
             </svg>
           </button>
         </div>
       </div>
-
       <nav class="Nav-Links" id="navMenu" aria-label="Main navigation">
-        <a href="PROJECTS.html">projects</a>
-        <a href="EXPERIENCE.html">experience</a>
-        <a href="CERTIFICATE.html" class="active" aria-current="page">certificates</a>
-        <a href="TECHSTACK.html">stack</a>
-        <a href="RECOMMENDATION.html">recommendations</a>
-        <a href="CONTACT.html">contact</a>
+        <span class="sidebar-label">MENU</span
+        ><a href="index.html"
+          ><svg
+            class=""
+            width="17"
+            height="17"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.6"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+            focusable="false"
+          >
+            <path d="m3 10 9-7 9 7"></path>
+            <path d="M5 9v11h14V9M9 20v-6h6v6"></path></svg
+          ><span>Overview</span></a
+        ><a href="PROJECTS.html"
+          ><svg
+            class=""
+            width="17"
+            height="17"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.6"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+            focusable="false"
+          >
+            <rect x="3" y="5" width="18" height="14" rx="2"></rect>
+            <path d="M8 5V3h8v2M3 10h18M10 10v2h4v-2"></path></svg
+          ><span>Selected work</span></a
+        ><a href="TECHSTACK.html"
+          ><svg
+            class=""
+            width="17"
+            height="17"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.6"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+            focusable="false"
+          >
+            <path d="m12 3 9 5-9 5-9-5 9-5Z"></path>
+            <path d="m3 12 9 5 9-5M3 16l9 5 9-5"></path></svg
+          ><span>Tech stack</span></a
+        ><a href="EXPERIENCE.html"
+          ><svg
+            class=""
+            width="17"
+            height="17"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.6"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+            focusable="false"
+          >
+            <circle cx="12" cy="8" r="3"></circle>
+            <path d="M5 20a7 7 0 0 1 14 0"></path></svg
+          ><span>Experience</span></a
+        ><a href="CONTACT.html"
+          ><svg
+            class=""
+            width="17"
+            height="17"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.6"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+            focusable="false"
+          >
+            <rect x="3" y="5" width="18" height="14" rx="2"></rect>
+            <path d="m4 7 8 6 8-6"></path></svg
+          ><span>Contact</span></a
+        ><span class="sidebar-label sidebar-label-more">MORE</span
+        ><a href="MOREINFO.html" class="sidebar-secondary"><span>Résumé</span></a
+        ><a href="CERTIFICATE.html" class="sidebar-secondary active" aria-current="page"
+          ><span>Certificates</span><span class="nav-active-dot" aria-hidden="true"></span></a
+        ><a href="RECOMMENDATION.html" class="sidebar-secondary"><span>Recommendations</span></a>
       </nav>
     </div>
-
     <div class="sidebar-bottom">
-      <div class="sidebar-contact">
-        <span class="contact-label">for work &amp; school</span>
-        <a href="mailto:davea0153@gmail.com" class="email-link">davea0153@gmail.com</a>
+      <div class="sidebar-availability">
+        <span class="status-dot" aria-hidden="true"></span><span>OPEN TO OPPORTUNITIES</span>
       </div>
-      <a class="sidebar-resume-link" href="MOREINFO.html">r&eacute;sum&eacute; &rarr;</a>
+      <p>Internships &amp; junior roles</p>
+      <a class="sidebar-email" href="mailto:davea0153@gmail.com"
+        >davea0153@gmail.com
+        <svg
+          class=""
+          width="13"
+          height="13"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.6"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+          focusable="false"
+        >
+          <path d="M7 17 17 7M7 7h10v10"></path></svg></a
+      ><span class="sidebar-location">ANGELES CITY, PHILIPPINES</span>
     </div>
   </header>
+  <!-- END SHARED_SIDEBAR -->
 
   <main id="main">
     <section>
@@ -90,14 +249,15 @@
       <p class="page-lead">certifications, online training, and completed courses.</p>
       <p class="empty">no certificates yet &mdash; coursework and personal projects come first. certificates will appear here as i earn them.</p>
     </section>
-  <footer class="site-footer">
-    <p>&copy; <span class="year">2026</span> allan dave ebale &middot; built with plain html, css &amp; js</p>
+  <!-- BEGIN SHARED_FOOTER -->
+  <footer class="site-footer portfolio-footer">
+    <p>© <span class="year">2026</span> ALLAN DAVE EBALE <span class="footer-sep">/</span> BUILT IN THE OPEN</p>
     <p class="footer-links">
-      <a href="MOREINFO.html">r&eacute;sum&eacute;</a>
-      <a href="CONTACT.html">contact</a>
-      <a href="https://github.com/101dave" target="_blank" rel="noopener noreferrer">github <span class="arr">&#8599;</span></a>
+      <a href="MOREINFO.html">Résumé</a><a href="CONTACT.html">Contact</a
+      ><a href="https://github.com/101dave" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
     </p>
   </footer>
+  <!-- END SHARED_FOOTER -->
   </main>
 
 </body>

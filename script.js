@@ -19,7 +19,8 @@
   if (themeToggle) {
     themeToggle.setAttribute("aria-pressed", String(currentlyDark()));
     themeToggle.addEventListener("click", function () {
-      var activeDark = body.classList.toggle("dark-mode");
+      var activeDark = !currentlyDark();
+      body.classList.toggle("dark-mode", activeDark);
       root.classList.remove("dark-mode-init");
       try {
         localStorage.setItem("darkMode", activeDark ? "enabled" : "disabled");
