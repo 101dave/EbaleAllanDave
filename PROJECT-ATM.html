@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Case study: C++ ATM Simulator</title>
-  <meta name="description" content="My first real C++ program: PIN authentication, deposits, withdrawals, and transaction history in the console — plus the bugs I'd fix today." />
+  <meta name="description" content="A C++ learning project exploring transaction state and control flow, including its known limitations and source code." />
   <link rel="canonical" href="https://101dave.github.io/EbaleAllanDave/PROJECT-ATM.html" />
   <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
   <meta name="theme-color" content="#0c0c0f" media="(prefers-color-scheme: dark)" />
@@ -13,13 +13,13 @@
 
   <meta property="og:type" content="article" />
   <meta property="og:title" content="Case study: C++ ATM Simulator" />
-  <meta property="og:description" content="My first real C++ program: PIN authentication, deposits, withdrawals, and transaction history in the console — plus the bugs I'd fix today." />
+  <meta property="og:description" content="A C++ learning project exploring transaction state and control flow, including its known limitations and source code." />
   <meta property="og:url" content="https://101dave.github.io/EbaleAllanDave/PROJECT-ATM.html" />
   <meta property="og:image" content="https://101dave.github.io/EbaleAllanDave/Me.jpg" />
   <meta property="og:image:alt" content="Case study: C++ ATM Simulator" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Case study: C++ ATM Simulator" />
-  <meta name="twitter:description" content="My first real C++ program: PIN authentication, deposits, withdrawals, and transaction history in the console — plus the bugs I'd fix today." />
+  <meta name="twitter:description" content="A C++ learning project exploring transaction state and control flow, including its known limitations and source code." />
   <meta name="twitter:image" content="https://101dave.github.io/EbaleAllanDave/Me.jpg" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -27,118 +27,564 @@
   <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
 
   <script>
-    if (localStorage.getItem('darkMode') === 'enabled' || (!localStorage.getItem('darkMode') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-      document.documentElement.classList.add('dark-mode-init');
-    }
+    try {
+      var savedTheme = localStorage.getItem('darkMode');
+      if (savedTheme === 'enabled' || (!savedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        document.documentElement.classList.add('dark-mode-init');
+      }
+    } catch (_) { /* The site remains usable if storage is unavailable. */ }
   </script>
 
   <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="portfolio.css" />
+  <noscript><style>@media (max-width: 1023px) { body.portfolio-page header#sidebar { position: static; } .portfolio-page nav.Nav-Links { display: flex; } .portfolio-page .hamburger-btn, .portfolio-page .theme-toggle-btn { display: none; } }</style></noscript>
   <script src="script.js" defer></script>
   <script type="application/ld+json">
   {"@context":"https://schema.org","@type":"Person","name":"Allan Dave Ebale","jobTitle":"Student Developer","url":"https://101dave.github.io/EbaleAllanDave/","email":"mailto:davea0153@gmail.com","image":"https://101dave.github.io/EbaleAllanDave/Me.jpg","sameAs":["https://github.com/101dave","https://web.facebook.com/dave.614149","https://www.instagram.com/davw_zx"]}
   </script>
 </head>
-<body>
+<body class="portfolio-page">
 
   <a class="skip-link" href="#main">skip to content</a>
 
+  <!-- BEGIN SHARED_SIDEBAR -->
   <header id="sidebar">
     <div class="sidebar-top">
       <div class="mobile-header-bar">
-        <a href="index.html" class="logo-container">
-          <span class="logo-link">allan dave ebale</span>
-        </a>
-
+        <a href="index.html" class="portfolio-brand"
+          ><span class="portfolio-brand-mark" aria-hidden="true">a.</span
+          ><span class="portfolio-brand-copy"
+            ><strong>Allan Dave Ebale</strong><small>SOFTWARE ENGINEER</small></span
+          ></a
+        >
         <div class="header-actions">
-          <button id="themeToggle" class="theme-toggle-btn" aria-label="Toggle dark mode" title="Toggle theme">
-            <svg class="sun-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
-            <svg class="moon-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
-          </button>
-
-          <button class="hamburger-btn" id="menuToggle" aria-label="Toggle navigation" aria-controls="navMenu">
-            <svg viewBox="0 0 24 24" aria-hidden="true">
-              <line x1="3" y1="12" x2="21" y2="12"></line>
-              <line x1="3" y1="6" x2="21" y2="6"></line>
-              <line x1="3" y1="18" x2="21" y2="18"></line>
+          <button
+            id="themeToggle"
+            class="theme-toggle-btn"
+            aria-label="Toggle dark mode"
+            title="Toggle theme"
+            type="button"
+          >
+            <svg
+              class="sun-icon"
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.6"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+              focusable="false"
+            >
+              <circle cx="12" cy="12" r="4"></circle>
+              <path
+                d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4m11.4 11.4 1.4 1.4M2 12h2m16 0h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"
+              ></path></svg
+            ><svg
+              class="moon-icon"
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.6"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+              focusable="false"
+            >
+              <path d="M20.8 13.3A8.5 8.5 0 0 1 10.7 3.2 8.5 8.5 0 1 0 20.8 13.3Z"></path>
+            </svg></button
+          ><button
+            class="hamburger-btn"
+            id="menuToggle"
+            aria-label="Toggle navigation"
+            aria-controls="navMenu"
+            aria-expanded="false"
+            type="button"
+          >
+            <svg
+              class=""
+              width="22"
+              height="22"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.6"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+              focusable="false"
+            >
+              <path d="M4 7h16M4 12h16M4 17h16"></path>
             </svg>
           </button>
         </div>
       </div>
-
       <nav class="Nav-Links" id="navMenu" aria-label="Main navigation">
-        <a href="PROJECTS.html" class="active" aria-current="page">projects</a>
-        <a href="EXPERIENCE.html">experience</a>
-        <a href="CERTIFICATE.html">certificates</a>
-        <a href="TECHSTACK.html">stack</a>
-        <a href="RECOMMENDATION.html">recommendations</a>
-        <a href="CONTACT.html">contact</a>
+        <span class="sidebar-label">MENU</span
+        ><a href="index.html"
+          ><svg
+            class=""
+            width="17"
+            height="17"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.6"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+            focusable="false"
+          >
+            <path d="m3 10 9-7 9 7"></path>
+            <path d="M5 9v11h14V9M9 20v-6h6v6"></path></svg
+          ><span>Overview</span></a
+        ><a href="PROJECTS.html" class="active" aria-current="page"
+          ><svg
+            class=""
+            width="17"
+            height="17"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.6"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+            focusable="false"
+          >
+            <rect x="3" y="5" width="18" height="14" rx="2"></rect>
+            <path d="M8 5V3h8v2M3 10h18M10 10v2h4v-2"></path></svg
+          ><span>Selected work</span><span class="nav-active-dot" aria-hidden="true"></span></a
+        ><a href="TECHSTACK.html"
+          ><svg
+            class=""
+            width="17"
+            height="17"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.6"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+            focusable="false"
+          >
+            <path d="m12 3 9 5-9 5-9-5 9-5Z"></path>
+            <path d="m3 12 9 5 9-5M3 16l9 5 9-5"></path></svg
+          ><span>Tech stack</span></a
+        ><a href="EXPERIENCE.html"
+          ><svg
+            class=""
+            width="17"
+            height="17"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.6"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+            focusable="false"
+          >
+            <circle cx="12" cy="8" r="3"></circle>
+            <path d="M5 20a7 7 0 0 1 14 0"></path></svg
+          ><span>Experience</span></a
+        ><a href="CONTACT.html"
+          ><svg
+            class=""
+            width="17"
+            height="17"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.6"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+            focusable="false"
+          >
+            <rect x="3" y="5" width="18" height="14" rx="2"></rect>
+            <path d="m4 7 8 6 8-6"></path></svg
+          ><span>Contact</span></a
+        ><span class="sidebar-label sidebar-label-more">MORE</span
+        ><a href="MOREINFO.html" class="sidebar-secondary"><span>Résumé</span></a
+        ><a href="CERTIFICATE.html" class="sidebar-secondary"><span>Certificates</span></a
+        ><a href="RECOMMENDATION.html" class="sidebar-secondary"><span>Recommendations</span></a>
       </nav>
     </div>
-
     <div class="sidebar-bottom">
-      <div class="sidebar-contact">
-        <span class="contact-label">for work &amp; school</span>
-        <a href="mailto:davea0153@gmail.com" class="email-link">davea0153@gmail.com</a>
+      <div class="sidebar-availability">
+        <span class="status-dot" aria-hidden="true"></span><span>OPEN TO OPPORTUNITIES</span>
       </div>
-      <a class="sidebar-resume-link" href="MOREINFO.html">r&eacute;sum&eacute; &rarr;</a>
+      <p>Internships &amp; junior roles</p>
+      <a class="sidebar-email" href="mailto:davea0153@gmail.com"
+        >davea0153@gmail.com
+        <svg
+          class=""
+          width="13"
+          height="13"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.6"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+          focusable="false"
+        >
+          <path d="M7 17 17 7M7 7h10v10"></path></svg></a
+      ><span class="sidebar-location">ANGELES CITY, PHILIPPINES</span>
     </div>
   </header>
+  <!-- END SHARED_SIDEBAR -->
 
-  <main id="main">
-    <section>
-      <p class="crumb"><a href="PROJECTS.html">projects</a> / atm simulator</p>
-      <h1 class="page-title">c++ atm simulator</h1>
-      <p class="page-lead">my first real C++ program &mdash; PIN authentication, deposits, withdrawals, and transaction history, all in the console.</p>
-      <div class="stack-cloud"><span class="tag">c++</span><span class="tag">console</span><span class="tag">control flow</span><span class="tag">vectors</span></div>
-      <div class="case-media">
-        <img src="images/atm-demo.gif" alt="Animated terminal demo of the ATM simulator: login, balance check, deposit, and withdrawal" width="640" height="400" />
+  <main id="main" class="portfolio-main">
+    <!-- BEGIN PORTFOLIO_CONTENT -->
+  <div class="portfolio-content">
+    <div class="portfolio-topbar">
+      <span>PORTFOLIO <span class="topbar-slash">/</span> CASE STUDY</span
+      ><a href="CONTACT.html"
+        ><span class="topbar-dot" aria-hidden="true"></span> OPEN TO INTERNSHIPS &amp; JUNIOR ROLES
+        <svg
+          class=""
+          width="13"
+          height="13"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.6"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+          focusable="false"
+        >
+          <path d="M7 17 17 7M7 7h10v10"></path></svg
+      ></a>
+    </div>
+    <div class="case-page-intro">
+      <a href="PROJECTS.html"
+        ><svg
+          class="back-arrow"
+          width="15"
+          height="15"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.6"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+          focusable="false"
+        >
+          <path d="M4 12h16M14 6l6 6-6 6"></path>
+        </svg>
+        All projects</a
+      >
+      <div class="portfolio-page-intro">
+        <p class="section-eyebrow"><span> / </span>CASE STUDY</p>
+        <h1>C++ ATM Simulator</h1>
+        <p>An early C++ project, kept public with its limitations intact.</p>
       </div>
-      <pre class="terminal">$ g++ atm.cpp -o atm &amp;&amp; ./atm
-Enter yout card number: 123
-Enter your pin: 123
-Enter your choice: 2
-Enter the amount: 500
-&lt;----------Transaction history----------&gt;
-Deposit amount: 500
-New Balance: 600
-&lt;---------------------------------------&gt;</pre>
-      <p class="deck-hint">real session, recorded from the compiled program</p>
-      <div class="case-grid">
-        <div class="case-block">
-          <h2>the problem</h2>
-          <p>Model a real ATM in the console: verify the card before touching money, keep a running balance, and print a receipt-like history after every transaction.</p>
-        </div>
-        <div class="case-block">
-          <h2>the approach</h2>
-          <p>A login loop that retries until the card number and PIN match, then a menu loop (balance / deposit / withdraw / exit). Vectors store every deposit and withdrawal so the history can be printed after each transaction.</p>
-        </div>
-        <div class="case-block">
-          <h2>key features</h2>
-          <ul>
-            <li>card + PIN verification with a retry loop</li>
-            <li>balance inquiry at any time</li>
-            <li>deposits and withdrawals with a running balance</li>
-            <li>transaction history printed after every operation</li>
-            <li>clean exit path</li>
+    </div>
+    <article
+      id="atm-simulator"
+      class="case-card tw-overflow-hidden tw-rounded-2xl tw-border tw-border-solid tw-border-line tw-bg-paper"
+      aria-labelledby="atm-simulator-title"
+    >
+      <div class="case-feature">
+        <figure class="case-image case-image-terminal">
+          <div class="case-image-bar">
+            <span class="window-dots" aria-hidden="true"><i></i><i></i><i></i></span
+            ><span>RECORDED TERMINAL DEMO</span
+            ><svg
+              class=""
+              width="13"
+              height="13"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.6"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+              focusable="false"
+            >
+              <path d="M7 17 17 7M7 7h10v10"></path>
+            </svg>
+          </div>
+          <img
+            src="images/atm-demo.gif"
+            alt="Recorded terminal demo of the C++ ATM simulator"
+            loading="lazy"
+            decoding="async"
+          />
+        </figure>
+        <div class="case-overview">
+          <div class="case-category"><span>C++ / CONSOLE</span><span>PROJECT / 02</span></div>
+          <h2 id="atm-simulator-title">ATM Simulator<span class="case-title-dot">.</span></h2>
+          <p class="case-summary">A small console program for exploring transaction state and control flow.</p>
+          <p class="case-description">An early C++ project, kept public with its limitations intact.</p>
+          <ul class="case-tags" aria-label="Technologies">
+            <li>C++</li>
+            <li>Vectors</li>
+            <li>Control flow</li>
           </ul>
-        </div>
-        <div class="case-block">
-          <h2>what i'd fix now</h2>
-          <p>The login and menu loops use goto &mdash; a while loop with small functions would read much better. And the insufficient-funds check tests balance == -1 instead of balance &lt; 0, so it only catches one exact overdraft. Finding those bugs myself was the real lesson: this project taught me to re-read my own code like a reviewer.</p>
+          <div class="case-actions">
+            <a
+              class="case-source-link"
+              href="https://github.com/101dave/EbaleAllanDave/blob/main/ATMSIMMULATOR.txt"
+              target="_blank"
+              rel="noopener noreferrer"
+              ><svg
+                class=""
+                width="15"
+                height="15"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.6"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <path
+                  d="M9 19c-4.5 1.4-4.5-2.5-6-3m12 6v-3.9a3.4 3.4 0 0 0-.9-2.6c3-.3 6.1-1.4 6.1-6.6A5.2 5.2 0 0 0 18.8 5a4.8 4.8 0 0 0-.1-3.6S17.6 1 15 2.8a13 13 0 0 0-6 0C6.4 1 5.3 1.4 5.3 1.4A4.8 4.8 0 0 0 5.2 5a5.2 5.2 0 0 0-1.4 3.9c0 5.2 3.1 6.3 6.1 6.6a3.4 3.4 0 0 0-.9 2.6V22"
+                ></path>
+              </svg>
+              Source
+              <svg
+                class=""
+                width="13"
+                height="13"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.6"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <path d="M7 17 17 7M7 7h10v10"></path></svg
+            ></a>
+          </div>
         </div>
       </div>
-      <div class="case-links">
-        <a href="ATMSIMMULATOR.txt" target="_blank" rel="noopener noreferrer">source <span class="arr">&#8599;</span></a><a href="PROJECTS.html">back to projects <span class="arr">&#8594;</span></a>
+      <div class="case-breakdown">
+        <div class="case-breakdown-item">
+          <p class="case-breakdown-label"><span>01</span> THE TECHNICAL BOTTLENECK</p>
+          <p>
+            The balance has to persist across repeated menu actions; putting login, transactions, and control
+            flow in one function makes safety easy to get wrong.
+          </p>
+        </div>
+        <div class="case-breakdown-item">
+          <p class="case-breakdown-label"><span>02</span> THE TRADE-OFF</p>
+          <p>
+            The program uses in-memory values and vectors instead of storage: easy to run, but nothing persists
+            and there is no complete ledger.
+          </p>
+        </div>
+        <div class="case-breakdown-item case-proof">
+          <p class="case-breakdown-label"><span>03</span> THE PROOF</p>
+          <strong>100 + 500 = 600</strong>
+          <p>
+            A deposit updates the starting balance. The original withdrawal check only catches a balance of −1,
+            so this is not production-safe.
+          </p>
+          <a
+            href="https://github.com/101dave/EbaleAllanDave/blob/main/ATMSIMMULATOR.txt"
+            target="_blank"
+            rel="noopener noreferrer"
+            >Inspect the source
+            <svg
+              class=""
+              width="12"
+              height="12"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.6"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+              focusable="false"
+            >
+              <path d="M7 17 17 7M7 7h10v10"></path></svg
+          ></a>
+        </div>
       </div>
+      <details class="case-details" open="">
+        <summary>
+          <span
+            ><svg
+              class=""
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.6"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+              focusable="false"
+            >
+              <rect x="3" y="3" width="6" height="6" rx="1"></rect>
+              <rect x="15" y="15" width="6" height="6" rx="1"></rect>
+              <rect x="3" y="15" width="6" height="6" rx="1"></rect>
+              <path d="M6 9v6M9 18h6M9 6h9v9"></path>
+            </svg>
+            Walkthrough &amp; system flow</span
+          ><span class="details-action"
+            >EXPLORE
+            <svg
+              class=""
+              width="15"
+              height="15"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.6"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+              focusable="false"
+            >
+              <path d="M12 5v14M5 12h14"></path></svg
+          ></span>
+        </summary>
+        <div class="case-slots">
+          <section class="case-slot" aria-label="ATM Simulator video walkthrough">
+            <div class="case-slot-label">
+              <span
+                ><svg
+                  class=""
+                  width="15"
+                  height="15"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.6"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <rect x="3" y="5" width="13" height="14" rx="2"></rect>
+                  <path d="m16 10 5-3v10l-5-3"></path>
+                </svg>
+                60-SECOND WALKTHROUGH</span
+              ><span>01 / 02</span>
+            </div>
+            <div class="video-frame">
+              <div class="video-empty">
+                <span class="video-empty-icon"
+                  ><svg
+                    class=""
+                    width="21"
+                    height="21"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.6"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                    focusable="false"
+                  >
+                    <rect x="3" y="5" width="13" height="14" rx="2"></rect>
+                    <path d="m16 10 5-3v10l-5-3"></path></svg></span
+                ><strong>Walkthrough not published yet.</strong
+                ><span>The source and project notes are available above.</span>
+              </div>
+            </div>
+          </section>
+          <section class="case-slot" aria-label="ATM Simulator system flow">
+            <div class="case-slot-label">
+              <span
+                ><svg
+                  class=""
+                  width="15"
+                  height="15"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.6"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <rect x="3" y="3" width="6" height="6" rx="1"></rect>
+                  <rect x="15" y="15" width="6" height="6" rx="1"></rect>
+                  <rect x="3" y="15" width="6" height="6" rx="1"></rect>
+                  <path d="M6 9v6M9 18h6M9 6h9v9"></path>
+                </svg>
+                SYSTEM FLOW</span
+              ><span>02 / 02</span>
+            </div>
+            <figure class="flow-frame" aria-label="ATM simulator program flow">
+              <div class="flow-lanes">
+                <ol class="flow-lane">
+                  <li class="flow-step"><strong>Input</strong><span>Card + PIN</span></li>
+                  <li class="flow-step"><strong>Menu</strong><span>Choose action</span></li>
+                  <li class="flow-step"><strong>Balance</strong><span>In memory</span></li>
+                </ol>
+                <ol class="flow-lane">
+                  <li class="flow-step"><strong>Transaction</strong><span>Deposit / withdraw</span></li>
+                  <li class="flow-step"><strong>Update</strong><span>Balance math</span></li>
+                  <li class="flow-step"><strong>Output</strong><span>Printed receipt</span></li>
+                </ol>
+              </div>
+              <figcaption>
+                A learning exercise, not a secure banking system. No state survives a restart.
+              </figcaption>
+            </figure>
+          </section>
+        </div>
+      </details>
+    </article>
+    <section class="contact-banner" aria-labelledby="contact-banner-heading">
+      <div>
+        <p class="contact-eyebrow"><span class="status-dot" aria-hidden="true"></span> WHAT’S NEXT?</p>
+        <h2 id="contact-banner-heading">Let’s build something<br /><span>that works.</span></h2>
+        <p>Open to internships, junior roles, and thoughtful conversations about building software.</p>
+      </div>
+      <a href="mailto:davea0153@gmail.com" class="contact-banner-link"
+        >Get in touch
+        <svg
+          class=""
+          width="17"
+          height="17"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.6"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+          focusable="false"
+        >
+          <path d="M7 17 17 7M7 7h10v10"></path></svg
+      ></a>
     </section>
-  <footer class="site-footer">
-    <p>&copy; <span class="year">2026</span> allan dave ebale &middot; built with plain html, css &amp; js</p>
+  </div>
+  <!-- END PORTFOLIO_CONTENT -->
+  <!-- BEGIN SHARED_FOOTER -->
+  <footer class="site-footer portfolio-footer">
+    <p>© <span class="year">2026</span> ALLAN DAVE EBALE <span class="footer-sep">/</span> BUILT IN THE OPEN</p>
     <p class="footer-links">
-      <a href="MOREINFO.html">r&eacute;sum&eacute;</a>
-      <a href="CONTACT.html">contact</a>
-      <a href="https://github.com/101dave" target="_blank" rel="noopener noreferrer">github <span class="arr">&#8599;</span></a>
+      <a href="MOREINFO.html">Résumé</a><a href="CONTACT.html">Contact</a
+      ><a href="https://github.com/101dave" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
     </p>
   </footer>
+  <!-- END SHARED_FOOTER -->
   </main>
 
 </body>

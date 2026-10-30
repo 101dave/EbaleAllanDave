@@ -10,3 +10,6 @@ sample.cpp
 .idea/
 .DS_Store
 Thumbs.db
+
+# Portfolio build dependencies
+node_modules/
