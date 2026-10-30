@@ -1,0 +1,18 @@
+/* Keep all project cards and navigation usable without JavaScript. */
+.deck-stage {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.deck-card {
+  width: 100%;
+  max-width: 460px;
+  align-self: center;
+}
+
+@media (max-width: 1023px) {
+  header#sidebar { position: static; }
+  nav.Nav-Links { display: flex; }
+  .hamburger-btn, .theme-toggle-btn { display: none; }
+}

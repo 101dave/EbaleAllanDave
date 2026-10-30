@@ -13,3 +13,7 @@ Thumbs.db
 
 # Portfolio build dependencies
 node_modules/
+
+# Python test cache
+__pycache__/
+*.pyc

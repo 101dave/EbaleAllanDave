@@ -72,8 +72,12 @@
      Keyboard arrows and swipe still work. */
   var deck = document.getElementById("projectDeck");
   if (deck) {
+    deck.setAttribute("tabindex", "0");
+    deck.setAttribute("aria-roledescription", "carousel");
+    deck.setAttribute("aria-label", "Projects. Use left and right arrow keys to browse.");
     var cards = Array.prototype.slice.call(deck.querySelectorAll(".deck-card"));
     var stage = deck.querySelector(".deck-stage");
+    var status = document.getElementById("deckStatus");
     var n = cards.length;
     var idx = 0;
     var swiped = false;
@@ -86,7 +90,7 @@
         card.classList.add(pos);
 
         var isCenter = pos === "pos-center";
-        card.setAttribute("aria-hidden", pos === "is-hidden" ? "true" : "false");
+        card.setAttribute("aria-hidden", isCenter ? "false" : "true");
 
         // Only the centered card exposes its links to the keyboard;
         // side cards are click targets that bring themselves forward.
@@ -98,11 +102,21 @@
           }
         });
       });
+      if (status) {
+        var heading = cards[idx].querySelector("h3");
+        status.textContent = "Project " + (idx + 1) + " of " + n + ": " + (heading ? heading.textContent.trim() : "");
+      }
+    }
+
+    function select(nextIndex) {
+      // Do not hide a card while keyboard focus is still inside it.
+      if (cards[idx].contains(document.activeElement)) deck.focus({ preventScroll: true });
+      idx = nextIndex;
+      render();
     }
 
     function go(delta) {
-      idx = (((idx + delta) % n) + n) % n;
-      render();
+      select((((idx + delta) % n) + n) % n);
     }
 
     // Click a side card to bring it to the center
@@ -111,8 +125,7 @@
         if (swiped) { swiped = false; return; }
         if (i === idx) return;
         event.preventDefault();
-        idx = i;
-        render();
+        select(i);
       });
     });
 
