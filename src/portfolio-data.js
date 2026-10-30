@@ -69,6 +69,7 @@ export const projects = [
     fullName: 'Scholog — Student & Attendance Tracker',
     summary: 'Offline-ready attendance for teachers, with QR check-in and daily reports.',
     description: 'Built for classrooms where a reliable connection can’t be taken for granted.',
+    focus: 'Offline queue and stale-response guards',
     tags: ['JavaScript', 'Supabase', 'PostgreSQL', 'PWA'],
     image: 'images/scholog-cover.png',
     imageAlt: 'Sample Scholog teacher dashboard showing attendance by class section',
@@ -82,6 +83,7 @@ export const projects = [
     tradeoff: 'Cached edits and a sync queue instead of network-only saves keep teachers working offline, but require queue management and stale-response guards.',
     proof: {
       value: '~17 KB vs. ~350 KB',
+      short: 'Icon subset vs. the full library',
       text: 'Documented icon subset versus the full library; scanner and PDF libraries are also loaded on demand.',
       href: 'https://github.com/101dave/Scholog#performance-notes',
       linkText: 'See performance notes'
@@ -111,6 +113,7 @@ export const projects = [
     fullName: 'C++ ATM Simulator',
     summary: 'A small console program for exploring transaction state and control flow.',
     description: 'An early C++ project, kept public with its limitations intact.',
+    focus: 'In-memory transaction state',
     tags: ['C++', 'Vectors', 'Control flow'],
     image: 'images/atm-demo.gif',
     imageAlt: 'Recorded terminal demo of the C++ ATM simulator',
@@ -123,6 +126,7 @@ export const projects = [
     tradeoff: 'The program uses in-memory values and vectors instead of storage: easy to run, but nothing persists and there is no complete ledger.',
     proof: {
       value: '100 + 500 = 600',
+      short: 'Deposit example; withdrawal bug documented',
       text: 'A deposit updates the starting balance. The original withdrawal check only catches a balance of −1, so this is not production-safe.',
       href: 'https://github.com/101dave/EbaleAllanDave/blob/main/ATMSIMMULATOR.txt',
       linkText: 'Inspect the source'
@@ -162,6 +166,9 @@ export const archivedCaseStudies = [
     imageCaption: 'ILLUSTRATED PROJECT COVER',
     imageKind: 'illustration',
     source: 'https://github.com/101dave/EbaleAllanDave/blob/main/STUDENTGRADEMANAGEMENTSYSTEM.txt',
+    localSource: 'STUDENTGRADEMANAGEMENTSYSTEM.txt',
+    caseStudy: 'PROJECT-GRADES.html',
+    archiveDescription: 'A records and grading prototype with a documented vector-size bug.',
     video: null,
     bottleneck: 'Keeping names, sections, and grades aligned across students requires careful initialization. The original sizes vectors before reading the student count.',
     tradeoff: 'Parallel vectors instead of a Student struct keep the exercise small, but shared indexes are harder to maintain and the uninitialized size makes the original unsafe.',
@@ -191,14 +198,14 @@ export const archivedCaseStudies = [
 ];
 
 export const archiveProjects = [
-  {
-    name: 'Student Grade Management',
-    kind: 'C++ / RECORDS',
-    description: 'A records and grading prototype with a documented vector-size bug.',
-    image: 'images/grade-management.svg',
-    source: 'STUDENTGRADEMANAGEMENTSYSTEM.txt',
-    caseStudy: 'PROJECT-GRADES.html'
-  },
+  ...archivedCaseStudies.map(project => ({
+    name: project.name,
+    kind: project.category,
+    description: project.archiveDescription || project.description,
+    image: project.image,
+    source: project.localSource || project.source,
+    caseStudy: project.caseStudy
+  })),
   {
     name: 'Cashier Simulator',
     kind: 'C++ / TRANSACTIONS',

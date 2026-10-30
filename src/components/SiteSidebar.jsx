@@ -20,7 +20,7 @@ export function SiteSidebar({ active }) {
       <div className="sidebar-top">
         <div className="mobile-header-bar">
           <a href="index.html" className="portfolio-brand">
-            <span className="portfolio-brand-mark" aria-hidden="true">a.</span>
+            <img className="portfolio-brand-mark" src="images/portrait-icon-192.png" alt="" width="36" height="36" />
             <span className="portfolio-brand-copy"><strong>Allan Dave Ebale</strong><small>SOFTWARE ENGINEER</small></span>
           </a>
           <div className="header-actions">

@@ -4,11 +4,12 @@ import React from 'react';
 import { renderToStaticMarkup } from 'react-dom/server';
 import prettier from 'prettier';
 import { SiteSidebar, SiteFooter } from '../src/components/SiteSidebar.jsx';
+import { SiteIdentity } from '../src/components/SiteIdentity.jsx';
 import { HomePage, ProjectsPage, StackPage, CasePage } from '../src/components/Pages.jsx';
 
 // The checked-in HTML is the deployment artifact for GitHub Pages. The marked
 // regions are generated from these React components; everything else in the
-// older pages (including forms, print styles, and metadata) remains untouched.
+// older pages (including forms, print styles, and page-specific metadata) remains untouched.
 const pages = [
   { file: 'index.html', active: 'home', content: <HomePage /> },
   { file: 'PROJECTS.html', active: 'projects', content: <ProjectsPage /> },
@@ -46,7 +47,8 @@ let stale = false;
 for (const page of pages) {
   const filename = path.resolve(page.file);
   const before = await fs.readFile(filename, 'utf8');
-  let after = replaceRegion(before, 'SHARED_SIDEBAR', await markup(<SiteSidebar active={page.active} />), page.file);
+  let after = replaceRegion(before, 'SHARED_IDENTITY', await markup(<SiteIdentity />), page.file);
+  after = replaceRegion(after, 'SHARED_SIDEBAR', await markup(<SiteSidebar active={page.active} />), page.file);
   after = replaceRegion(after, 'SHARED_FOOTER', await markup(<SiteFooter />), page.file);
   if (page.content) after = replaceRegion(after, 'PORTFOLIO_CONTENT', await markup(page.content), page.file);
   if (before !== after) {

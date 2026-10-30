@@ -21,15 +21,16 @@ Commit the changed source **and** the generated HTML/CSS together. The build pre
 
 All of the new portfolio copy is in `src/portfolio-data.js` and `src/components/Pages.jsx`:
 
+- **Portrait and link previews:** `Me.jpg` is the source photo. To replace it, update that file and run `npm run build:portrait` (requires ImageMagick); this regenerates the header portrait, browser icons, and social preview. Their shared tags are in `src/components/SiteIdentity.jsx`. Social apps and browsers may cache the old image after publishing.
 - **Hero:** edit the headline and subheadline in `HomePage` in `src/components/Pages.jsx`.
 - **Now:** update `now.building`, `now.reading`, `now.exploring`, `asOf`, and `asOfLabel` in `src/portfolio-data.js`. Each entry is `{ text, detail, href }` (the last two are optional). The date is deliberately manual: don't make an old update appear current by changing it automatically. A `null` entry is shown as “not shared yet.” The existing dated entries refer to documented Scholog work; add a book or paper only when you have one to share.
-- **Skills:** edit `skillTiers` to reflect what you actually use. The “Currently Exploring” tier is for recent investigation, not a claim of production experience.
-- **Case studies:** edit `projects` or `archivedCaseStudies`. Each project has a bottleneck, trade-off, and a proof object with a source link. Use a reproducible result or artifact; leave `proof` as `null` if there is no verified result. The Scholog performance comparison links to its documentation; the ATM example acknowledges the original bug.
+- **Skills:** edit `skillTiers` to reflect what you actually use. The home page shows a short summary; `TECHSTACK.html` contains the full tiers and context. “Currently Exploring” is for recent investigation, not a claim of production experience.
+- **Case studies:** edit `projects` or `archivedCaseStudies`. Home and project listings show short previews using `focus` and `proof.short`; the individual case-study pages contain the full breakdown, diagram, and walkthrough slot. Each project has a bottleneck, trade-off, and a proof object with a source link. Use a reproducible result or artifact; leave `proof` as `null` if there is no verified result. The Scholog performance comparison links to its documentation; the ATM example acknowledges the original bug.
 - **Walkthrough:** set a project's `video` to `{ type: 'loom', src: 'https://www.loom.com/share/VIDEO_ID' }` or `{ type: 'mp4', src: 'videos/walkthrough.mp4' }`. Loom share URLs are converted to embeds; an MP4 can be a relative file or HTTPS URL. Add your own recording and make sure you have permission to show any people or data. With `video: null` the card clearly says the walkthrough has not been published.
 - **System flow:** edit `flow.lanes` and `flow.note`. The reusable `ArchitectureSlot` renders a simple, accessible diagram without a Mermaid runtime. Set `flow` to `null` until an accurate diagram is ready.
-- **Archive:** add or change smaller projects in `archiveProjects`; source files and existing case-study pages stay accessible.
+- **Archive:** add or change standalone projects in `archiveProjects`. Previews for case-backed projects are derived from `archivedCaseStudies` using `caseStudy`, `localSource`, and optional `archiveDescription`; their source files and case-study pages stay accessible.
 
-`NowCard`, `SkillsTiers`, and `ProjectCaseStudy` live in `src/components/` and can also be adapted to a client-rendered React/Tailwind app. `tailwind.config.cjs` uses a `tw-` prefix and disables Tailwind's preflight reset so the older pages and print layout are not disturbed.
+`NowCard`, `SkillsTiers`, `ProjectPreview`, and `ProjectCaseStudy` live in `src/components/` and can also be adapted to a client-rendered React/Tailwind app. `tailwind.config.cjs` uses a `tw-` prefix and disables Tailwind's preflight reset so the older pages and print layout are not disturbed.
 
 ## Pages
 
