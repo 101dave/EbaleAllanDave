@@ -122,7 +122,7 @@
     // Click a side card to bring it to the center
     cards.forEach(function (card, i) {
       card.addEventListener("click", function (event) {
-        if (swiped) { swiped = false; return; }
+        if (swiped) { swiped = false; event.preventDefault(); return; }
         if (i === idx) return;
         event.preventDefault();
         select(i);
@@ -150,6 +150,113 @@
     stage.addEventListener("pointercancel", function () { startX = null; });
 
     render();
+  }
+
+  /* ---------- Full-size project images ----------
+     Each preview remains a normal image link when JS or <dialog> is unavailable. */
+  var previewLinks = document.querySelectorAll("a[data-preview]");
+  if (previewLinks.length) {
+    var previewDialog = document.createElement("dialog");
+    if (typeof previewDialog.showModal === "function") {
+      previewDialog.className = "preview-dialog";
+      previewDialog.setAttribute("aria-labelledby", "projectPreviewTitle");
+      previewDialog.setAttribute("aria-describedby", "projectPreviewCaption");
+      previewDialog.innerHTML =
+        '<div class="preview-dialog__header">' +
+          '<h2 class="preview-dialog__title" id="projectPreviewTitle"></h2>' +
+          '<button type="button" class="preview-dialog__close" aria-label="Close preview">&times;</button>' +
+        '</div>' +
+        '<div class="preview-dialog__media"><img alt=""></div>' +
+        '<div class="preview-dialog__footer">' +
+          '<p class="preview-dialog__caption" id="projectPreviewCaption"></p>' +
+          '<div class="preview-dialog__actions">' +
+            '<button type="button" class="preview-dialog__zoom" aria-pressed="false">Zoom in</button>' +
+            '<a class="preview-dialog__original" target="_blank" rel="noopener noreferrer">Open original &#8599;</a>' +
+          '</div>' +
+        '</div>';
+      body.appendChild(previewDialog);
+
+      var previewTitle = previewDialog.querySelector(".preview-dialog__title");
+      var previewCaption = previewDialog.querySelector(".preview-dialog__caption");
+      var previewMedia = previewDialog.querySelector(".preview-dialog__media");
+      var previewImage = previewMedia.querySelector("img");
+      var previewOriginal = previewDialog.querySelector(".preview-dialog__original");
+      var previewClose = previewDialog.querySelector(".preview-dialog__close");
+      var previewZoom = previewDialog.querySelector(".preview-dialog__zoom");
+      var previewTrigger = null;
+      var previewBaseCaption = "";
+
+      function setPreviewZoom(zoomed) {
+        previewMedia.classList.toggle("preview-dialog__media--zoomed", zoomed);
+        previewCaption.textContent = previewBaseCaption + (zoomed ? " Scroll the image to explore." : "");
+        previewZoom.setAttribute("aria-pressed", String(zoomed));
+        previewZoom.textContent = zoomed ? "Zoom out" : "Zoom in";
+        if (zoomed) {
+          previewMedia.setAttribute("tabindex", "0");
+          previewMedia.setAttribute("aria-label", "Zoomed preview; scroll to explore");
+          previewMedia.setAttribute("role", "region");
+        } else {
+          previewMedia.removeAttribute("tabindex");
+          previewMedia.removeAttribute("aria-label");
+          previewMedia.removeAttribute("role");
+        }
+        previewMedia.scrollTop = 0;
+        previewMedia.scrollLeft = 0;
+      }
+
+      document.addEventListener("click", function (event) {
+        if (event.defaultPrevented || event.button !== 0 || event.metaKey ||
+            event.ctrlKey || event.shiftKey || event.altKey || !event.target.closest) return;
+        var link = event.target.closest("a[data-preview]");
+        if (!link || previewDialog.open) return;
+        var image = link.querySelector("img");
+        if (!image) return;
+
+        previewTitle.textContent = link.getAttribute("data-preview-title") || "Project preview";
+        previewBaseCaption = link.getAttribute("data-preview-caption") || "";
+        previewImage.src = link.href;
+        previewImage.alt = image.alt;
+        previewOriginal.href = link.href;
+        setPreviewZoom(false);
+        previewMedia.classList.toggle("preview-dialog__media--terminal", link.classList.contains("thumb--terminal") || link.classList.contains("case-preview--terminal"));
+        previewTrigger = link;
+        try {
+          previewDialog.showModal();
+          event.preventDefault();
+          previewClose.focus();
+        } catch (_) {
+          // Keep the original link usable if the browser cannot open a modal.
+          previewTrigger = null;
+        }
+      });
+
+      previewZoom.addEventListener("click", function () {
+        setPreviewZoom(previewZoom.getAttribute("aria-pressed") !== "true");
+      });
+      previewDialog.addEventListener("keydown", function (event) {
+        if (event.key !== "Tab") return;
+        var focusable = previewDialog.querySelectorAll('button:not([disabled]), a[href], [tabindex="0"]');
+        var first = focusable[0];
+        var last = focusable[focusable.length - 1];
+        if (event.shiftKey && document.activeElement === first) {
+          event.preventDefault();
+          last.focus();
+        } else if (!event.shiftKey && document.activeElement === last) {
+          event.preventDefault();
+          first.focus();
+        }
+      });
+      previewClose.addEventListener("click", function () { previewDialog.close(); });
+      previewDialog.addEventListener("click", function (event) {
+        if (event.target === previewDialog) previewDialog.close();
+      });
+      previewDialog.addEventListener("close", function () {
+        if (previewTrigger && document.contains(previewTrigger)) {
+          previewTrigger.focus({ preventScroll: true });
+        }
+        previewTrigger = null;
+      });
+    }
   }
 
   /* ---------- Contact form → opens the visitor's mail app ---------- */

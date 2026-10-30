@@ -96,14 +96,14 @@
   <main id="main">
     <section>
       <h1 class="page-title">projects</h1>
-      <p class="page-lead">everything i've shipped so far &mdash; live web apps and a collection of C++ console applications. every card links to the live app or the full source code.</p>
+      <p class="page-lead">everything i've shipped so far &mdash; live web apps and a collection of C++ console applications. select a preview to see it larger, or explore the live apps and source code.</p>
 
         <article class="showcase-card featured-project">
           <div class="showcase-visual">
-            <div class="showcase-image-frame">
-              <div class="showcase-image-label"><span>Teacher dashboard</span><span aria-hidden="true">&#8599;</span></div>
-              <img src="images/scholog-cover.png" alt="Scholog teacher dashboard showing attendance statistics by class section" loading="eager" />
-            </div>
+            <a class="showcase-image-frame showcase-image-frame--web" href="images/scholog-cover.png" data-preview data-preview-title="Scholog — Attendance Tracker" data-preview-caption="Scholog teacher dashboard · attendance overview." aria-label="Teacher dashboard — view full-size Scholog preview">
+              <span class="showcase-image-label"><span>Teacher dashboard</span><span aria-hidden="true">&#8599;</span></span>
+              <img src="images/scholog-cover.png" alt="Scholog teacher dashboard showing attendance statistics by class section." width="1280" height="800" decoding="async" loading="eager" fetchpriority="high" />
+            </a>
           </div>
           <div class="showcase-content">
             <div class="showcase-meta"><span>Attendance</span></div>
@@ -119,63 +119,64 @@
       <div class="projects-grid">
         <article class="project-item">
           <div class="project-tags"><span class="tag">web app</span><span class="tag">supabase</span><span class="tag">chart.js</span></div>
-          <div class="thumb"><img src="images/expense-tracker-cover.png" alt="Finora dashboard showing monthly totals, monthly and weekly budget meters, and entry filters" width="1200" height="600" loading="lazy" /></div>
+          <a class="thumb thumb--web" href="images/expense-tracker-cover.png" data-preview data-preview-title="Finora — Personal Expense Tracker" data-preview-caption="Finora dashboard · monthly totals, budgets, and entry filters." aria-label="View full-size preview: Finora — Personal Expense Tracker"><img src="images/expense-tracker-cover.png" alt="Finora dashboard showing monthly totals, budgets, and entry filters." width="1200" height="600" decoding="async" loading="lazy" /></a>
           <h3>Finora &mdash; Personal Expense Tracker</h3>
           <p>Plain-JS expense tracker with Supabase accounts, password recovery, monthly and weekly budgets, filters, and a category breakdown.</p>
           <div class="project-links"><a href="https://101dave.github.io/Finora/" target="_blank" rel="noopener noreferrer">live <span class="arr">&#8599;</span></a><a href="https://github.com/101dave/Finora" target="_blank" rel="noopener noreferrer">source <span class="arr">&#8599;</span></a><a href="PROJECT-EXPENSE.html">case study <span class="arr">&rarr;</span></a></div>
         </article>
         <article class="project-item">
           <div class="project-tags"><span class="tag">c++</span><span class="tag">console</span></div>
-          <div class="thumb"><img src="images/atm-demo.gif" alt="Animated terminal demo of the C++ ATM simulator" width="600" height="300" loading="lazy" /></div>
+          <a class="thumb thumb--terminal" href="images/atm-simulator-preview.png" data-preview data-preview-title="C++ ATM Simulator" data-preview-caption="Sample output from the compiled C++ program; final part of the session." aria-label="View full-size preview: C++ ATM Simulator"><img src="images/atm-simulator-preview.png" alt="ATM terminal sample run showing a withdrawal and a new balance of 400." width="1200" height="750" decoding="async" loading="lazy" /></a>
           <h3>C++ ATM Simulator</h3>
           <p>Console-based ATM with card and PIN verification, balance checking, deposits, withdrawals, and transaction history.</p>
           <div class="project-links"><a href="ATMSIMMULATOR.txt" target="_blank" rel="noopener noreferrer">source <span class="arr">&#8599;</span></a><a href="PROJECT-ATM.html">case study <span class="arr">&rarr;</span></a></div>
         </article>
         <article class="project-item">
           <div class="project-tags"><span class="tag">c++</span><span class="tag">records</span></div>
-          <div class="thumb"><img src="images/grade-management.svg" alt="Student Grade Management System project cover" width="600" height="300" loading="lazy" /></div>
+          <a class="thumb thumb--terminal" href="images/grade-management-preview.png" data-preview data-preview-title="C++ Student Grade Management System" data-preview-caption="Sample output from a temporary demo build with the input-order bug corrected. The linked source is unchanged." aria-label="View full-size preview: C++ Student Grade Management System"><img src="images/grade-management-preview.png" alt="Grade-management terminal sample run showing a student average of 90 and PASS status." width="1200" height="750" decoding="async" loading="lazy" /></a>
           <h3>C++ Student Grade Management System</h3>
           <p>Add student records, input grades, check pass or fail status, and display all student information.</p>
+          <small class="project-preview-note">Preview uses a temporary fix for the input-order bug.</small>
           <div class="project-links"><a href="STUDENTGRADEMANAGEMENTSYSTEM.txt" target="_blank" rel="noopener noreferrer">source <span class="arr">&#8599;</span></a><a href="PROJECT-GRADES.html">case study <span class="arr">&rarr;</span></a></div>
         </article>
         <article class="project-item">
           <div class="project-tags"><span class="tag">c++</span><span class="tag">pos</span></div>
-          <div class="thumb"><img src="images/cashier-simulator.svg" alt="Cashier Simulator project cover" width="600" height="300" loading="lazy" /></div>
+          <a class="thumb thumb--terminal" href="images/cashier-simulator-preview.png" data-preview data-preview-title="C++ Cashier Simulator" data-preview-caption="Sample output from the compiled C++ program." aria-label="View full-size preview: C++ Cashier Simulator"><img src="images/cashier-simulator-preview.png" alt="Cashier terminal sample run showing a total of 100.8, tax of 10.8, and change of 19.2." width="1200" height="750" decoding="async" loading="lazy" /></a>
           <h3>C++ Cashier Simulator</h3>
           <p>Console-based cashier program with tax and change calculation.</p>
           <div class="project-links"><a href="CASHIERSIMULATOR.txt" target="_blank" rel="noopener noreferrer">source <span class="arr">&#8599;</span></a></div>
         </article>
         <article class="project-item">
           <div class="project-tags"><span class="tag">c++</span><span class="tag">grading</span></div>
-          <div class="thumb"><img src="images/honor-calculator.svg" alt="Student Honor Calculator project cover" width="600" height="300" loading="lazy" /></div>
+          <a class="thumb thumb--terminal" href="images/honor-calculator-preview.png" data-preview data-preview-title="C++ Student Honor Calculator" data-preview-caption="Sample output from the compiled C++ program." aria-label="View full-size preview: C++ Student Honor Calculator"><img src="images/honor-calculator-preview.png" alt="Honor-calculator terminal sample run showing an average of 95 and With High Honor status." width="1200" height="750" decoding="async" loading="lazy" /></a>
           <h3>C++ Student Honor Calculator</h3>
           <p>Averages two semester grades and determines the honor status &mdash; Highest Honor, High Honor, Honor, Excellent, or Needs Improvement.</p>
           <div class="project-links"><a href="STUDENTHONORSTATUSCALCULATOR.txt" target="_blank" rel="noopener noreferrer">source <span class="arr">&#8599;</span></a></div>
         </article>
         <article class="project-item">
           <div class="project-tags"><span class="tag">c++</span><span class="tag">geometry</span></div>
-          <div class="thumb"><img src="images/shape-calculator.svg" alt="2D and 3D Shape Calculator project cover" width="600" height="300" loading="lazy" /></div>
+          <a class="thumb thumb--terminal" href="images/shape-calculator-preview.png" data-preview data-preview-title="C++ 2D &amp; 3D Shape Calculator" data-preview-caption="Sample output from the compiled C++ program." aria-label="View full-size preview: C++ 2D &amp; 3D Shape Calculator"><img src="images/shape-calculator-preview.png" alt="Shape-calculator terminal sample run showing the menu and a circle area of 78.5398." width="1200" height="750" decoding="async" loading="lazy" /></a>
           <h3>C++ 2D &amp; 3D Shape Calculator</h3>
           <p>Choose a shape and calculate its area, perimeter, or volume from the dimensions you enter.</p>
           <div class="project-links"><a href="SHAPECALCULATOR.txt" target="_blank" rel="noopener noreferrer">source <span class="arr">&#8599;</span></a></div>
         </article>
         <article class="project-item">
           <div class="project-tags"><span class="tag">c++</span><span class="tag">conversion</span></div>
-          <div class="thumb"><img src="images/temperature-converter.svg" alt="Celsius and Fahrenheit converter project cover" width="600" height="300" loading="lazy" /></div>
+          <a class="thumb thumb--terminal" href="images/temperature-converter-preview.png" data-preview data-preview-title="C++ Celsius ↔ Fahrenheit Converter" data-preview-caption="Sample output from the compiled C++ program." aria-label="View full-size preview: C++ Celsius ↔ Fahrenheit Converter"><img src="images/temperature-converter-preview.png" alt="Temperature-converter terminal sample run converting 30 degrees Celsius to 86 degrees Fahrenheit." width="1200" height="750" decoding="async" loading="lazy" /></a>
           <h3>C++ Celsius &harr; Fahrenheit Converter</h3>
           <p>Converts temperatures between Celsius and Fahrenheit based on user selection.</p>
           <div class="project-links"><a href="FAHRENHEITANDCELSIUSCONVERTER.txt" target="_blank" rel="noopener noreferrer">source <span class="arr">&#8599;</span></a></div>
         </article>
         <article class="project-item">
           <div class="project-tags"><span class="tag">c++</span><span class="tag">base-n</span></div>
-          <div class="thumb"><img src="images/binary-converter.svg" alt="Binary Converter project cover" width="600" height="300" loading="lazy" /></div>
+          <a class="thumb thumb--terminal" href="images/binary-converter-preview.png" data-preview data-preview-title="C++ Binary Converter" data-preview-caption="Sample output from the compiled C++ program." aria-label="View full-size preview: C++ Binary Converter"><img src="images/binary-converter-preview.png" alt="Binary-converter terminal sample run showing the conversion menu and decimal 42 in binary." width="1200" height="750" decoding="async" loading="lazy" /></a>
           <h3>C++ Binary Converter</h3>
           <p>Converts numbers between decimal, binary, hexadecimal, and octal &mdash; and even text strings into binary.</p>
           <div class="project-links"><a href="BINARYConverter.txt" target="_blank" rel="noopener noreferrer">source <span class="arr">&#8599;</span></a></div>
         </article>
         <article class="project-item">
           <div class="project-tags"><span class="tag">c++</span><span class="tag">arithmetic</span></div>
-          <div class="thumb"><img src="images/calculator.svg" alt="Simple Calculator project cover" width="600" height="300" loading="lazy" /></div>
+          <a class="thumb thumb--terminal" href="images/calculator-preview.png" data-preview data-preview-title="C++ Simple Calculator" data-preview-caption="Sample output from the compiled C++ program." aria-label="View full-size preview: C++ Simple Calculator"><img src="images/calculator-preview.png" alt="Calculator terminal sample run adding 24 and 8 to produce 32." width="1200" height="750" decoding="async" loading="lazy" /></a>
           <h3>C++ Simple Calculator</h3>
           <p>Four-operation calculator (+, &minus;, &times;, &divide;) built with clean switch-case logic.</p>
           <div class="project-links"><a href="CALCULATOR.txt" target="_blank" rel="noopener noreferrer">source <span class="arr">&#8599;</span></a></div>
