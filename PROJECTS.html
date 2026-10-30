@@ -47,120 +47,175 @@
   {"@context":"https://schema.org","@type":"Person","name":"Allan Dave Ebale","jobTitle":"Student Developer","url":"https://101dave.github.io/EbaleAllanDave/","email":"mailto:davea0153@gmail.com","image":"https://101dave.github.io/EbaleAllanDave/Me.jpg","sameAs":["https://github.com/101dave","https://web.facebook.com/dave.614149","https://www.instagram.com/davw_zx"]}
   </script>
 </head>
-<body>
+<body class="projects-page">
 
   <a class="skip-link" href="#main">skip to content</a>
 
-  <header id="sidebar">
-    <div class="sidebar-top">
-      <div class="mobile-header-bar">
-        <a href="index.html" class="logo-container">
-          <span class="logo-link">allan dave ebale</span>
-        </a>
-
-        <div class="header-actions">
-          <button id="themeToggle" class="theme-toggle-btn" aria-label="Toggle dark mode" title="Toggle theme">
-            <svg class="sun-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
-            <svg class="moon-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
-          </button>
-
-          <button class="hamburger-btn" id="menuToggle" aria-label="Toggle navigation" aria-controls="navMenu">
-            <svg viewBox="0 0 24 24" aria-hidden="true">
-              <line x1="3" y1="12" x2="21" y2="12"></line>
-              <line x1="3" y1="6" x2="21" y2="6"></line>
-              <line x1="3" y1="18" x2="21" y2="18"></line>
-            </svg>
-          </button>
-        </div>
-      </div>
-
-      <nav class="Nav-Links" id="navMenu" aria-label="Main navigation">
-        <a href="PROJECTS.html" class="active" aria-current="page">projects</a>
-        <a href="EXPERIENCE.html">experience</a>
-        <a href="CERTIFICATE.html">certificates</a>
-        <a href="TECHSTACK.html">stack</a>
-        <a href="RECOMMENDATION.html">recommendations</a>
-        <a href="CONTACT.html">contact</a>
-      </nav>
-    </div>
-
-    <div class="sidebar-bottom">
-      <div class="sidebar-contact">
-        <span class="contact-label">for work &amp; school</span>
-        <a href="mailto:davea0153@gmail.com" class="email-link">davea0153@gmail.com</a>
-      </div>
-      <a class="sidebar-resume-link" href="MOREINFO.html">r&eacute;sum&eacute; &rarr;</a>
+  <header class="projects-header">
+    <nav class="projects-breadcrumb" aria-label="Breadcrumb">
+      <a href="index.html">Portfolio</a><span aria-hidden="true">/</span><span aria-current="page">Projects</span>
+    </nav>
+    <div class="projects-header-actions">
+      <button id="themeToggle" class="theme-toggle-btn" aria-label="Toggle dark mode" title="Toggle theme">
+        <svg class="sun-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+        <svg class="moon-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+      </button>
+      <a href="https://github.com/101dave" target="_blank" rel="noopener noreferrer">GitHub <span aria-hidden="true">&#8599;</span></a>
     </div>
   </header>
 
   <main id="main">
-    <section>
-      <h1 class="page-title">projects</h1>
-      <p class="page-lead">everything i've shipped so far &mdash; a live attendance web app and a collection of C++ console applications. every card links to the live app or the full source code.</p>
+    <section class="projects-showcase" aria-labelledby="projects-title">
+      <div class="projects-intro">
+        <p class="projects-eyebrow">Selected projects</p>
+        <h1 id="projects-title">Work in context<span>.</span></h1>
+        <p>A collection of things I&rsquo;ve built, from web apps to code, with case studies for the deeper engineering decisions.</p>
+      </div>
 
-      <div class="projects-grid">
-        <article class="project-item">
-          <div class="project-tags"><span class="tag featured">flagship</span><span class="tag">web app</span><span class="tag">supabase</span></div>
-          <div class="thumb"><img src="images/scholog-cover.png" alt="Scholog teacher dashboard showing attendance statistics by class section" width="1280" height="800" loading="lazy" /></div>
-          <h3>Scholog &mdash; Student &amp; Attendance Tracker</h3>
-          <p>Installable web app for teachers: manage sections and rosters, take daily attendance, export PDF reports, and let students check in with a QR code or Student ID &mdash; with offline sync.</p>
-          <div class="project-links"><a href="https://scholog.vercel.app" target="_blank" rel="noopener noreferrer">live <span class="arr">&#8599;</span></a><a href="https://github.com/101dave/Scholog" target="_blank" rel="noopener noreferrer">source <span class="arr">&#8599;</span></a><a href="PROJECT-SCHOLOG.html">case study <span class="arr">&rarr;</span></a></div>
+      <div class="showcase-list">
+        <article class="showcase-card">
+          <div class="showcase-visual">
+            <div class="showcase-image-frame">
+              <div class="showcase-image-label"><span>Teacher dashboard</span><span aria-hidden="true">&#8599;</span></div>
+              <img src="images/scholog-cover.png" alt="Scholog teacher dashboard showing attendance statistics by class section" loading="eager" />
+            </div>
+          </div>
+          <div class="showcase-content">
+            <div class="showcase-meta"><span>Attendance / PWA</span><span>Project / 01</span></div>
+            <h2>Scholog<span>.</span></h2>
+            <p class="showcase-summary">Offline-ready attendance for teachers, with QR check-in and daily reports.</p>
+            <p class="showcase-description">Built for classrooms where a reliable connection can&rsquo;t be taken for granted.</p>
+            <div class="showcase-tags" aria-label="Technologies"><span>JavaScript</span><span>Supabase</span><span>PostgreSQL</span><span>PWA</span></div>
+            <div class="showcase-links"><a class="showcase-primary" href="https://scholog.vercel.app" target="_blank" rel="noopener noreferrer">Live project <span aria-hidden="true">&#8599;</span></a><a class="showcase-source" href="https://github.com/101dave/Scholog" target="_blank" rel="noopener noreferrer">Source <span aria-hidden="true">&#8599;</span></a><a class="showcase-case" href="PROJECT-SCHOLOG.html">View case study <span aria-hidden="true">&rarr;</span></a></div>
+          </div>
         </article>
-        <article class="project-item">
-          <div class="project-tags"><span class="tag">c++</span><span class="tag">console</span></div>
-          <div class="thumb"><img src="images/atm-demo.gif" alt="Animated terminal demo of the C++ ATM simulator" width="600" height="300" loading="lazy" /></div>
-          <h3>C++ ATM Simulator</h3>
-          <p>Console-based ATM with card and PIN verification, balance checking, deposits, withdrawals, and transaction history.</p>
-          <div class="project-links"><a href="ATMSIMMULATOR.txt" target="_blank" rel="noopener noreferrer">source <span class="arr">&#8599;</span></a><a href="PROJECT-ATM.html">case study <span class="arr">&rarr;</span></a></div>
+        <article class="showcase-card">
+          <div class="showcase-visual">
+            <div class="showcase-image-frame">
+              <div class="showcase-image-label"><span>Terminal demo</span><span aria-hidden="true">&#8599;</span></div>
+              <img src="images/atm-demo.gif" alt="Animated terminal demo of the C++ ATM simulator" loading="lazy" />
+            </div>
+          </div>
+          <div class="showcase-content">
+            <div class="showcase-meta"><span>Finance / Console</span><span>Project / 02</span></div>
+            <h2>ATM Simulator<span>.</span></h2>
+            <p class="showcase-summary">A console-based ATM for everyday transactions.</p>
+            <p class="showcase-description">Card and PIN verification, balance checks, deposits, withdrawals, and transaction history in C++.</p>
+            <div class="showcase-tags" aria-label="Technologies"><span>C++</span><span>Console</span></div>
+            <div class="showcase-links"><a class="showcase-source" href="ATMSIMMULATOR.txt" target="_blank" rel="noopener noreferrer">Source <span aria-hidden="true">&#8599;</span></a><a class="showcase-case" href="PROJECT-ATM.html">View case study <span aria-hidden="true">&rarr;</span></a></div>
+          </div>
         </article>
-        <article class="project-item">
-          <div class="project-tags"><span class="tag">c++</span><span class="tag">records</span></div>
-          <div class="thumb"><img src="images/grade-management.svg" alt="Student Grade Management System project cover" width="600" height="300" loading="lazy" /></div>
-          <h3>C++ Student Grade Management System</h3>
-          <p>Add student records, input grades, check pass or fail status, and display all student information.</p>
-          <div class="project-links"><a href="STUDENTGRADEMANAGEMENTSYSTEM.txt" target="_blank" rel="noopener noreferrer">source <span class="arr">&#8599;</span></a><a href="PROJECT-GRADES.html">case study <span class="arr">&rarr;</span></a></div>
+        <article class="showcase-card">
+          <div class="showcase-visual">
+            <div class="showcase-image-frame">
+              <div class="showcase-image-label"><span>Project preview</span><span aria-hidden="true">&#8599;</span></div>
+              <img src="images/grade-management.svg" alt="Student Grade Management System project cover" loading="lazy" />
+            </div>
+          </div>
+          <div class="showcase-content">
+            <div class="showcase-meta"><span>Education / Records</span><span>Project / 03</span></div>
+            <h2>Student Grade Management System<span>.</span></h2>
+            <p class="showcase-summary">A simple way to organize student records and grades.</p>
+            <p class="showcase-description">Add student records, input grades, check pass or fail status, and display student information.</p>
+            <div class="showcase-tags" aria-label="Technologies"><span>C++</span><span>Console</span></div>
+            <div class="showcase-links"><a class="showcase-source" href="STUDENTGRADEMANAGEMENTSYSTEM.txt" target="_blank" rel="noopener noreferrer">Source <span aria-hidden="true">&#8599;</span></a><a class="showcase-case" href="PROJECT-GRADES.html">View case study <span aria-hidden="true">&rarr;</span></a></div>
+          </div>
         </article>
-        <article class="project-item">
-          <div class="project-tags"><span class="tag">c++</span><span class="tag">pos</span></div>
-          <div class="thumb"><img src="images/cashier-simulator.svg" alt="Cashier Simulator project cover" width="600" height="300" loading="lazy" /></div>
-          <h3>C++ Cashier Simulator</h3>
-          <p>Console-based cashier program with tax and change calculation.</p>
-          <div class="project-links"><a href="CASHIERSIMULATOR.txt" target="_blank" rel="noopener noreferrer">source <span class="arr">&#8599;</span></a></div>
+        <article class="showcase-card">
+          <div class="showcase-visual">
+            <div class="showcase-image-frame">
+              <div class="showcase-image-label"><span>Project preview</span><span aria-hidden="true">&#8599;</span></div>
+              <img src="images/cashier-simulator.svg" alt="Cashier Simulator project cover" loading="lazy" />
+            </div>
+          </div>
+          <div class="showcase-content">
+            <div class="showcase-meta"><span>Retail / Console</span><span>Project / 04</span></div>
+            <h2>Cashier Simulator<span>.</span></h2>
+            <p class="showcase-summary">A console-based cashier program.</p>
+            <p class="showcase-description">Calculate tax and change for a straightforward checkout experience.</p>
+            <div class="showcase-tags" aria-label="Technologies"><span>C++</span><span>Console</span></div>
+            <div class="showcase-links"><a class="showcase-source" href="CASHIERSIMULATOR.txt" target="_blank" rel="noopener noreferrer">Source <span aria-hidden="true">&#8599;</span></a></div>
+          </div>
         </article>
-        <article class="project-item">
-          <div class="project-tags"><span class="tag">c++</span><span class="tag">grading</span></div>
-          <div class="thumb"><img src="images/honor-calculator.svg" alt="Student Honor Calculator project cover" width="600" height="300" loading="lazy" /></div>
-          <h3>C++ Student Honor Calculator</h3>
-          <p>Averages two semester grades and determines the honor status &mdash; Highest Honor, High Honor, Honor, Excellent, or Needs Improvement.</p>
-          <div class="project-links"><a href="STUDENTHONORSTATUSCALCULATOR.txt" target="_blank" rel="noopener noreferrer">source <span class="arr">&#8599;</span></a></div>
+        <article class="showcase-card">
+          <div class="showcase-visual">
+            <div class="showcase-image-frame">
+              <div class="showcase-image-label"><span>Project preview</span><span aria-hidden="true">&#8599;</span></div>
+              <img src="images/honor-calculator.svg" alt="Student Honor Calculator project cover" loading="lazy" />
+            </div>
+          </div>
+          <div class="showcase-content">
+            <div class="showcase-meta"><span>Education / Grading</span><span>Project / 05</span></div>
+            <h2>Student Honor Calculator<span>.</span></h2>
+            <p class="showcase-summary">A grade calculator for student honor status.</p>
+            <p class="showcase-description">Average two semester grades and determine the corresponding honor status.</p>
+            <div class="showcase-tags" aria-label="Technologies"><span>C++</span><span>Console</span></div>
+            <div class="showcase-links"><a class="showcase-source" href="STUDENTHONORSTATUSCALCULATOR.txt" target="_blank" rel="noopener noreferrer">Source <span aria-hidden="true">&#8599;</span></a></div>
+          </div>
         </article>
-        <article class="project-item">
-          <div class="project-tags"><span class="tag">c++</span><span class="tag">geometry</span></div>
-          <div class="thumb"><img src="images/shape-calculator.svg" alt="2D and 3D Shape Calculator project cover" width="600" height="300" loading="lazy" /></div>
-          <h3>C++ 2D &amp; 3D Shape Calculator</h3>
-          <p>Choose a shape and calculate its area, perimeter, or volume from the dimensions you enter.</p>
-          <div class="project-links"><a href="SHAPECALCULATOR.txt" target="_blank" rel="noopener noreferrer">source <span class="arr">&#8599;</span></a></div>
+        <article class="showcase-card">
+          <div class="showcase-visual">
+            <div class="showcase-image-frame">
+              <div class="showcase-image-label"><span>Project preview</span><span aria-hidden="true">&#8599;</span></div>
+              <img src="images/shape-calculator.svg" alt="2D and 3D Shape Calculator project cover" loading="lazy" />
+            </div>
+          </div>
+          <div class="showcase-content">
+            <div class="showcase-meta"><span>Math / Geometry</span><span>Project / 06</span></div>
+            <h2>2D &amp; 3D Shape Calculator<span>.</span></h2>
+            <p class="showcase-summary">Geometry calculations for a range of shapes.</p>
+            <p class="showcase-description">Enter dimensions to calculate area, perimeter, or volume.</p>
+            <div class="showcase-tags" aria-label="Technologies"><span>C++</span><span>Console</span></div>
+            <div class="showcase-links"><a class="showcase-source" href="SHAPECALCULATOR.txt" target="_blank" rel="noopener noreferrer">Source <span aria-hidden="true">&#8599;</span></a></div>
+          </div>
         </article>
-        <article class="project-item">
-          <div class="project-tags"><span class="tag">c++</span><span class="tag">conversion</span></div>
-          <div class="thumb"><img src="images/temperature-converter.svg" alt="Celsius and Fahrenheit converter project cover" width="600" height="300" loading="lazy" /></div>
-          <h3>C++ Celsius &harr; Fahrenheit Converter</h3>
-          <p>Converts temperatures between Celsius and Fahrenheit based on user selection.</p>
-          <div class="project-links"><a href="FAHRENHEITANDCELSIUSCONVERTER.txt" target="_blank" rel="noopener noreferrer">source <span class="arr">&#8599;</span></a></div>
+        <article class="showcase-card">
+          <div class="showcase-visual">
+            <div class="showcase-image-frame">
+              <div class="showcase-image-label"><span>Project preview</span><span aria-hidden="true">&#8599;</span></div>
+              <img src="images/temperature-converter.svg" alt="Celsius and Fahrenheit converter project cover" loading="lazy" />
+            </div>
+          </div>
+          <div class="showcase-content">
+            <div class="showcase-meta"><span>Tools / Conversion</span><span>Project / 07</span></div>
+            <h2>Celsius &harr; Fahrenheit Converter<span>.</span></h2>
+            <p class="showcase-summary">A simple temperature conversion tool.</p>
+            <p class="showcase-description">Convert between Celsius and Fahrenheit based on user selection.</p>
+            <div class="showcase-tags" aria-label="Technologies"><span>C++</span><span>Console</span></div>
+            <div class="showcase-links"><a class="showcase-source" href="FAHRENHEITANDCELSIUSCONVERTER.txt" target="_blank" rel="noopener noreferrer">Source <span aria-hidden="true">&#8599;</span></a></div>
+          </div>
         </article>
-        <article class="project-item">
-          <div class="project-tags"><span class="tag">c++</span><span class="tag">base-n</span></div>
-          <div class="thumb"><img src="images/binary-converter.svg" alt="Binary Converter project cover" width="600" height="300" loading="lazy" /></div>
-          <h3>C++ Binary Converter</h3>
-          <p>Converts numbers between decimal, binary, hexadecimal, and octal &mdash; and even text strings into binary.</p>
-          <div class="project-links"><a href="BINARYConverter.txt" target="_blank" rel="noopener noreferrer">source <span class="arr">&#8599;</span></a></div>
+        <article class="showcase-card">
+          <div class="showcase-visual">
+            <div class="showcase-image-frame">
+              <div class="showcase-image-label"><span>Project preview</span><span aria-hidden="true">&#8599;</span></div>
+              <img src="images/binary-converter.svg" alt="Binary Converter project cover" loading="lazy" />
+            </div>
+          </div>
+          <div class="showcase-content">
+            <div class="showcase-meta"><span>Tools / Conversion</span><span>Project / 08</span></div>
+            <h2>Binary Converter<span>.</span></h2>
+            <p class="showcase-summary">A converter for numbers and text.</p>
+            <p class="showcase-description">Convert between decimal, binary, hexadecimal, and octal, or turn text strings into binary.</p>
+            <div class="showcase-tags" aria-label="Technologies"><span>C++</span><span>Console</span></div>
+            <div class="showcase-links"><a class="showcase-source" href="BINARYConverter.txt" target="_blank" rel="noopener noreferrer">Source <span aria-hidden="true">&#8599;</span></a></div>
+          </div>
         </article>
-        <article class="project-item">
-          <div class="project-tags"><span class="tag">c++</span><span class="tag">arithmetic</span></div>
-          <div class="thumb"><img src="images/calculator.svg" alt="Simple Calculator project cover" width="600" height="300" loading="lazy" /></div>
-          <h3>C++ Simple Calculator</h3>
-          <p>Four-operation calculator (+, &minus;, &times;, &divide;) built with clean switch-case logic.</p>
-          <div class="project-links"><a href="CALCULATOR.txt" target="_blank" rel="noopener noreferrer">source <span class="arr">&#8599;</span></a></div>
+        <article class="showcase-card">
+          <div class="showcase-visual">
+            <div class="showcase-image-frame">
+              <div class="showcase-image-label"><span>Project preview</span><span aria-hidden="true">&#8599;</span></div>
+              <img src="images/calculator.svg" alt="Simple Calculator project cover" loading="lazy" />
+            </div>
+          </div>
+          <div class="showcase-content">
+            <div class="showcase-meta"><span>Math / Arithmetic</span><span>Project / 09</span></div>
+            <h2>Simple Calculator<span>.</span></h2>
+            <p class="showcase-summary">Four basic operations in a compact console app.</p>
+            <p class="showcase-description">Addition, subtraction, multiplication, and division built with switch-case logic.</p>
+            <div class="showcase-tags" aria-label="Technologies"><span>C++</span><span>Console</span></div>
+            <div class="showcase-links"><a class="showcase-source" href="CALCULATOR.txt" target="_blank" rel="noopener noreferrer">Source <span aria-hidden="true">&#8599;</span></a></div>
+          </div>
         </article>
       </div>
     </section>
