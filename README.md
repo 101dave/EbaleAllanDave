@@ -36,8 +36,9 @@ The C++ console projects showcased on the site live in the repository root as `.
 (e.g. `ATMSIMMULATOR.txt`, `BINARYConverter.txt`) and are linked from the project cards.
 Web apps are linked to their live deployments. **Scholog** ([scholog.vercel.app](https://scholog.vercel.app),
 [github.com/101dave/Scholog](https://github.com/101dave/Scholog)) lives in its own repository.
-**Ledger**, the expense tracker, lives in this repository under `expense-tracker/` and ships with its
-own [setup guide](expense-tracker/README.md).
+**Ledger**, the expense tracker, lives in its own [Finora repository](https://github.com/101dave/Finora),
+deployed at [101dave.github.io/Finora](https://101dave.github.io/Finora/). This repository keeps its
+[case study](PROJECT-EXPENSE.html) and cover image.
 
 ## Running locally
 
@@ -56,8 +57,10 @@ The browser icons and social-sharing image are generated from `Me.jpg`. To repla
 
 ```bash
 python3 -m unittest discover -s tests -v
-cd expense-tracker && node --test   # 15 app unit tests, no install needed
 ```
+
+The app has its own unit tests inside the [Finora repository](https://github.com/101dave/Finora);
+run `node --test` there.
 
 ## résumé
 
