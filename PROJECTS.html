@@ -8,19 +8,31 @@
   <link rel="canonical" href="https://101dave.github.io/EbaleAllanDave/PROJECTS.html" />
   <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
   <meta name="theme-color" content="#0c0c0f" media="(prefers-color-scheme: dark)" />
-  <link rel="icon" type="image/jpeg" href="logo.jpg" />
-  <link rel="apple-touch-icon" href="logo.jpg" />
+  <!-- BEGIN SHARED_IDENTITY -->
+  <link rel="icon" type="image/png" sizes="48x48" href="images/portrait-icon-48.png" /><link
+    rel="icon"
+    type="image/png"
+    sizes="192x192"
+    href="images/portrait-icon-192.png"
+  /><link rel="apple-touch-icon" sizes="180x180" href="images/portrait-touch-180.png" /><meta
+    property="og:image"
+    content="https://101dave.github.io/EbaleAllanDave/images/portrait-share.jpg"
+  /><meta property="og:image:type" content="image/jpeg" /><meta property="og:image:width" content="1200" /><meta
+    property="og:image:height"
+    content="630"
+  /><meta property="og:image:alt" content="Portrait of Allan Dave Ebale" /><meta
+    name="twitter:image"
+    content="https://101dave.github.io/EbaleAllanDave/images/portrait-share.jpg"
+  /><meta name="twitter:image:alt" content="Portrait of Allan Dave Ebale" />
+  <!-- END SHARED_IDENTITY -->
 
   <meta property="og:type" content="website" />
   <meta property="og:title" content="Projects — Allan Dave Ebale" />
   <meta property="og:description" content="C++ console projects and web apps by Allan Dave Ebale: Scholog attendance tracker, ATM simulator, grade management system, converters, and more." />
   <meta property="og:url" content="https://101dave.github.io/EbaleAllanDave/PROJECTS.html" />
-  <meta property="og:image" content="https://101dave.github.io/EbaleAllanDave/Me.jpg" />
-  <meta property="og:image:alt" content="Allan Dave Ebale" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Projects — Allan Dave Ebale" />
   <meta name="twitter:description" content="C++ console projects and web apps by Allan Dave Ebale: Scholog attendance tracker, ATM simulator, grade management system, converters, and more." />
-  <meta name="twitter:image" content="https://101dave.github.io/EbaleAllanDave/Me.jpg" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -52,8 +64,13 @@
     <div class="sidebar-top">
       <div class="mobile-header-bar">
         <a href="index.html" class="portfolio-brand"
-          ><span class="portfolio-brand-mark" aria-hidden="true">a.</span
-          ><span class="portfolio-brand-copy"
+          ><img
+            class="portfolio-brand-mark"
+            src="images/portrait-icon-192.png"
+            alt=""
+            width="36"
+            height="36"
+          /><span class="portfolio-brand-copy"
             ><strong>Allan Dave Ebale</strong><small>SOFTWARE ENGINEER</small></span
           ></a
         >
@@ -247,8 +264,8 @@
   <div class="portfolio-content">
     <div class="portfolio-topbar">
       <span>PORTFOLIO <span class="topbar-slash">/</span> PROJECTS</span
-      ><a href="CONTACT.html"
-        ><span class="topbar-dot" aria-hidden="true"></span> OPEN TO INTERNSHIPS &amp; JUNIOR ROLES
+      ><a href="https://github.com/101dave" target="_blank" rel="noopener noreferrer"
+        >GITHUB
         <svg
           class=""
           width="13"
@@ -267,13 +284,13 @@
     </div>
     <div class="portfolio-page-intro">
       <p class="section-eyebrow"><span> / </span>PROJECTS</p>
-      <h1>Projects, not just previews.</h1>
-      <p>A closer look at what I built, the constraints I worked within, and the evidence I can point to.</p>
+      <h1>Work in context.</h1>
+      <p>Project summaries and source code, with case studies for the deeper engineering details.</p>
     </div>
     <div class="case-list tw-grid tw-gap-6">
       <article
         id="scholog"
-        class="case-card tw-overflow-hidden tw-rounded-2xl tw-border tw-border-solid tw-border-line tw-bg-paper"
+        class="case-card project-preview tw-overflow-hidden tw-rounded-2xl tw-border tw-border-solid tw-border-line tw-bg-paper"
         aria-labelledby="scholog-title"
       >
         <div class="case-feature">
@@ -306,7 +323,7 @@
           </figure>
           <div class="case-overview">
             <div class="case-category"><span>ATTENDANCE / PWA</span><span>PROJECT / 01</span></div>
-            <h3 id="scholog-title">Scholog<span class="case-title-dot">.</span></h3>
+            <h2 id="scholog-title">Scholog<span class="case-title-dot">.</span></h2>
             <p class="case-summary">
               Offline-ready attendance for teachers, with QR check-in and daily reports.
             </p>
@@ -377,8 +394,8 @@
                   focusable="false"
                 >
                   <path d="M7 17 17 7M7 7h10v10"></path></svg></a
-              ><a class="case-more-link" href="PROJECT-SCHOLOG.html"
-                >Full case study
+              ><a class="case-more-link" href="PROJECT-SCHOLOG.html" aria-label="View case study: Scholog"
+                >View case study
                 <svg
                   class=""
                   width="14"
@@ -397,33 +414,18 @@
             </div>
           </div>
         </div>
-        <div class="case-breakdown">
-          <div class="case-breakdown-item">
-            <p class="case-breakdown-label"><span>01</span> THE TECHNICAL BOTTLENECK</p>
-            <p>
-              A background refresh could overwrite a newer local attendance edit; dropped connections made saves
-              harder to trust.
-            </p>
+        <div class="preview-evidence">
+          <div>
+            <span class="preview-label">ENGINEERING FOCUS</span>
+            <p>Offline queue and stale-response guards</p>
           </div>
-          <div class="case-breakdown-item">
-            <p class="case-breakdown-label"><span>02</span> THE TRADE-OFF</p>
-            <p>
-              Cached edits and a sync queue instead of network-only saves keep teachers working offline, but
-              require queue management and stale-response guards.
-            </p>
-          </div>
-          <div class="case-breakdown-item case-proof">
-            <p class="case-breakdown-label"><span>03</span> THE PROOF</p>
-            <strong>~17 KB vs. ~350 KB</strong>
-            <p>
-              Documented icon subset versus the full library; scanner and PDF libraries are also loaded on
-              demand.
-            </p>
-            <a
+          <div>
+            <span class="preview-label">DOCUMENTED PROOF</span
+            ><a
               href="https://github.com/101dave/Scholog#performance-notes"
               target="_blank"
               rel="noopener noreferrer"
-              >See performance notes
+              >~17 KB vs. ~350 KB
               <svg
                 class=""
                 width="12"
@@ -437,144 +439,14 @@
                 aria-hidden="true"
                 focusable="false"
               >
-                <path d="M7 17 17 7M7 7h10v10"></path></svg
-            ></a>
+                <path d="M7 17 17 7M7 7h10v10"></path></svg></a
+            ><small>Icon subset vs. the full library</small>
           </div>
         </div>
-        <details class="case-details">
-          <summary>
-            <span
-              ><svg
-                class=""
-                width="16"
-                height="16"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="1.6"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                aria-hidden="true"
-                focusable="false"
-              >
-                <rect x="3" y="3" width="6" height="6" rx="1"></rect>
-                <rect x="15" y="15" width="6" height="6" rx="1"></rect>
-                <rect x="3" y="15" width="6" height="6" rx="1"></rect>
-                <path d="M6 9v6M9 18h6M9 6h9v9"></path>
-              </svg>
-              Walkthrough &amp; system flow</span
-            ><span class="details-action"
-              >EXPLORE
-              <svg
-                class=""
-                width="15"
-                height="15"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="1.6"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                aria-hidden="true"
-                focusable="false"
-              >
-                <path d="M12 5v14M5 12h14"></path></svg
-            ></span>
-          </summary>
-          <div class="case-slots">
-            <section class="case-slot" aria-label="Scholog video walkthrough">
-              <div class="case-slot-label">
-                <span
-                  ><svg
-                    class=""
-                    width="15"
-                    height="15"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="1.6"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    aria-hidden="true"
-                    focusable="false"
-                  >
-                    <rect x="3" y="5" width="13" height="14" rx="2"></rect>
-                    <path d="m16 10 5-3v10l-5-3"></path>
-                  </svg>
-                  60-SECOND WALKTHROUGH</span
-                ><span>01 / 02</span>
-              </div>
-              <div class="video-frame">
-                <div class="video-empty">
-                  <span class="video-empty-icon"
-                    ><svg
-                      class=""
-                      width="21"
-                      height="21"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="1.6"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      aria-hidden="true"
-                      focusable="false"
-                    >
-                      <rect x="3" y="5" width="13" height="14" rx="2"></rect>
-                      <path d="m16 10 5-3v10l-5-3"></path></svg></span
-                  ><strong>Walkthrough not published yet.</strong
-                  ><span>The source and project notes are available above.</span>
-                </div>
-              </div>
-            </section>
-            <section class="case-slot" aria-label="Scholog system flow">
-              <div class="case-slot-label">
-                <span
-                  ><svg
-                    class=""
-                    width="15"
-                    height="15"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="1.6"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    aria-hidden="true"
-                    focusable="false"
-                  >
-                    <rect x="3" y="3" width="6" height="6" rx="1"></rect>
-                    <rect x="15" y="15" width="6" height="6" rx="1"></rect>
-                    <rect x="3" y="15" width="6" height="6" rx="1"></rect>
-                    <path d="M6 9v6M9 18h6M9 6h9v9"></path>
-                  </svg>
-                  SYSTEM FLOW</span
-                ><span>02 / 02</span>
-              </div>
-              <figure class="flow-frame" aria-label="Scholog system flow">
-                <div class="flow-lanes">
-                  <ol class="flow-lane">
-                    <li class="flow-step"><strong>Teacher</strong><span>Dashboard</span></li>
-                    <li class="flow-step"><strong>Local cache</strong><span>Offline queue</span></li>
-                    <li class="flow-step"><strong>Supabase</strong><span>Postgres + RLS</span></li>
-                  </ol>
-                  <ol class="flow-lane">
-                    <li class="flow-step"><strong>Student</strong><span>QR / student ID</span></li>
-                    <li class="flow-step"><strong>Check-in RPC</strong><span>Validates session</span></li>
-                    <li class="flow-step"><strong>Supabase</strong><span>Attendance</span></li>
-                  </ol>
-                </div>
-                <figcaption>
-                  The teacher dashboard queues offline edits; student check-in needs a live session.
-                </figcaption>
-              </figure>
-            </section>
-          </div>
-        </details>
       </article>
       <article
         id="atm-simulator"
-        class="case-card tw-overflow-hidden tw-rounded-2xl tw-border tw-border-solid tw-border-line tw-bg-paper"
+        class="case-card project-preview tw-overflow-hidden tw-rounded-2xl tw-border tw-border-solid tw-border-line tw-bg-paper"
         aria-labelledby="atm-simulator-title"
       >
         <div class="case-feature">
@@ -607,7 +479,7 @@
           </figure>
           <div class="case-overview">
             <div class="case-category"><span>C++ / CONSOLE</span><span>PROJECT / 02</span></div>
-            <h3 id="atm-simulator-title">ATM Simulator<span class="case-title-dot">.</span></h3>
+            <h2 id="atm-simulator-title">ATM Simulator<span class="case-title-dot">.</span></h2>
             <p class="case-summary">
               A small console program for exploring transaction state and control flow.
             </p>
@@ -655,8 +527,8 @@
                   focusable="false"
                 >
                   <path d="M7 17 17 7M7 7h10v10"></path></svg></a
-              ><a class="case-more-link" href="PROJECT-ATM.html"
-                >Full case study
+              ><a class="case-more-link" href="PROJECT-ATM.html" aria-label="View case study: ATM Simulator"
+                >View case study
                 <svg
                   class=""
                   width="14"
@@ -675,33 +547,18 @@
             </div>
           </div>
         </div>
-        <div class="case-breakdown">
-          <div class="case-breakdown-item">
-            <p class="case-breakdown-label"><span>01</span> THE TECHNICAL BOTTLENECK</p>
-            <p>
-              The balance has to persist across repeated menu actions; putting login, transactions, and control
-              flow in one function makes safety easy to get wrong.
-            </p>
+        <div class="preview-evidence">
+          <div>
+            <span class="preview-label">ENGINEERING FOCUS</span>
+            <p>In-memory transaction state</p>
           </div>
-          <div class="case-breakdown-item">
-            <p class="case-breakdown-label"><span>02</span> THE TRADE-OFF</p>
-            <p>
-              The program uses in-memory values and vectors instead of storage: easy to run, but nothing
-              persists and there is no complete ledger.
-            </p>
-          </div>
-          <div class="case-breakdown-item case-proof">
-            <p class="case-breakdown-label"><span>03</span> THE PROOF</p>
-            <strong>100 + 500 = 600</strong>
-            <p>
-              A deposit updates the starting balance. The original withdrawal check only catches a balance of
-              −1, so this is not production-safe.
-            </p>
-            <a
+          <div>
+            <span class="preview-label">DOCUMENTED PROOF</span
+            ><a
               href="https://github.com/101dave/EbaleAllanDave/blob/main/ATMSIMMULATOR.txt"
               target="_blank"
               rel="noopener noreferrer"
-              >Inspect the source
+              >100 + 500 = 600
               <svg
                 class=""
                 width="12"
@@ -715,146 +572,16 @@
                 aria-hidden="true"
                 focusable="false"
               >
-                <path d="M7 17 17 7M7 7h10v10"></path></svg
-            ></a>
+                <path d="M7 17 17 7M7 7h10v10"></path></svg></a
+            ><small>Deposit example; withdrawal bug documented</small>
           </div>
         </div>
-        <details class="case-details">
-          <summary>
-            <span
-              ><svg
-                class=""
-                width="16"
-                height="16"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="1.6"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                aria-hidden="true"
-                focusable="false"
-              >
-                <rect x="3" y="3" width="6" height="6" rx="1"></rect>
-                <rect x="15" y="15" width="6" height="6" rx="1"></rect>
-                <rect x="3" y="15" width="6" height="6" rx="1"></rect>
-                <path d="M6 9v6M9 18h6M9 6h9v9"></path>
-              </svg>
-              Walkthrough &amp; system flow</span
-            ><span class="details-action"
-              >EXPLORE
-              <svg
-                class=""
-                width="15"
-                height="15"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="1.6"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                aria-hidden="true"
-                focusable="false"
-              >
-                <path d="M12 5v14M5 12h14"></path></svg
-            ></span>
-          </summary>
-          <div class="case-slots">
-            <section class="case-slot" aria-label="ATM Simulator video walkthrough">
-              <div class="case-slot-label">
-                <span
-                  ><svg
-                    class=""
-                    width="15"
-                    height="15"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="1.6"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    aria-hidden="true"
-                    focusable="false"
-                  >
-                    <rect x="3" y="5" width="13" height="14" rx="2"></rect>
-                    <path d="m16 10 5-3v10l-5-3"></path>
-                  </svg>
-                  60-SECOND WALKTHROUGH</span
-                ><span>01 / 02</span>
-              </div>
-              <div class="video-frame">
-                <div class="video-empty">
-                  <span class="video-empty-icon"
-                    ><svg
-                      class=""
-                      width="21"
-                      height="21"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="1.6"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      aria-hidden="true"
-                      focusable="false"
-                    >
-                      <rect x="3" y="5" width="13" height="14" rx="2"></rect>
-                      <path d="m16 10 5-3v10l-5-3"></path></svg></span
-                  ><strong>Walkthrough not published yet.</strong
-                  ><span>The source and project notes are available above.</span>
-                </div>
-              </div>
-            </section>
-            <section class="case-slot" aria-label="ATM Simulator system flow">
-              <div class="case-slot-label">
-                <span
-                  ><svg
-                    class=""
-                    width="15"
-                    height="15"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="1.6"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    aria-hidden="true"
-                    focusable="false"
-                  >
-                    <rect x="3" y="3" width="6" height="6" rx="1"></rect>
-                    <rect x="15" y="15" width="6" height="6" rx="1"></rect>
-                    <rect x="3" y="15" width="6" height="6" rx="1"></rect>
-                    <path d="M6 9v6M9 18h6M9 6h9v9"></path>
-                  </svg>
-                  SYSTEM FLOW</span
-                ><span>02 / 02</span>
-              </div>
-              <figure class="flow-frame" aria-label="ATM simulator program flow">
-                <div class="flow-lanes">
-                  <ol class="flow-lane">
-                    <li class="flow-step"><strong>Input</strong><span>Card + PIN</span></li>
-                    <li class="flow-step"><strong>Menu</strong><span>Choose action</span></li>
-                    <li class="flow-step"><strong>Balance</strong><span>In memory</span></li>
-                  </ol>
-                  <ol class="flow-lane">
-                    <li class="flow-step"><strong>Transaction</strong><span>Deposit / withdraw</span></li>
-                    <li class="flow-step"><strong>Update</strong><span>Balance math</span></li>
-                    <li class="flow-step"><strong>Output</strong><span>Printed receipt</span></li>
-                  </ol>
-                </div>
-                <figcaption>
-                  A learning exercise, not a secure banking system. No state survives a restart.
-                </figcaption>
-              </figure>
-            </section>
-          </div>
-        </details>
       </article>
     </div>
     <section class="portfolio-section archive-section" aria-labelledby="archive-heading">
       <div class="portfolio-section-heading">
         <div>
-          <p class="section-eyebrow"><span>03 /</span> THE ARCHIVE</p>
+          <p class="section-eyebrow"><span> / </span> THE ARCHIVE</p>
           <h2 id="archive-heading">More experiments.</h2>
           <p class="section-description">
             Smaller programs, kept here with their source and their rough edges intact.
@@ -1070,30 +797,6 @@
           </div>
         </article>
       </div>
-    </section>
-    <section class="contact-banner" aria-labelledby="contact-banner-heading">
-      <div>
-        <p class="contact-eyebrow"><span class="status-dot" aria-hidden="true"></span> WHAT’S NEXT?</p>
-        <h2 id="contact-banner-heading">Let’s build something<br /><span>that works.</span></h2>
-        <p>Open to internships, junior roles, and thoughtful conversations about building software.</p>
-      </div>
-      <a href="mailto:davea0153@gmail.com" class="contact-banner-link"
-        >Get in touch
-        <svg
-          class=""
-          width="17"
-          height="17"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="1.6"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          aria-hidden="true"
-          focusable="false"
-        >
-          <path d="M7 17 17 7M7 7h10v10"></path></svg
-      ></a>
     </section>
   </div>
   <!-- END PORTFOLIO_CONTENT -->

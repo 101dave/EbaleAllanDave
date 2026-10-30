@@ -8,19 +8,31 @@
   <link rel="canonical" href="https://101dave.github.io/EbaleAllanDave/PROJECT-SCHOLOG.html" />
   <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
   <meta name="theme-color" content="#0c0c0f" media="(prefers-color-scheme: dark)" />
-  <link rel="icon" type="image/jpeg" href="logo.jpg" />
-  <link rel="apple-touch-icon" href="logo.jpg" />
+  <!-- BEGIN SHARED_IDENTITY -->
+  <link rel="icon" type="image/png" sizes="48x48" href="images/portrait-icon-48.png" /><link
+    rel="icon"
+    type="image/png"
+    sizes="192x192"
+    href="images/portrait-icon-192.png"
+  /><link rel="apple-touch-icon" sizes="180x180" href="images/portrait-touch-180.png" /><meta
+    property="og:image"
+    content="https://101dave.github.io/EbaleAllanDave/images/portrait-share.jpg"
+  /><meta property="og:image:type" content="image/jpeg" /><meta property="og:image:width" content="1200" /><meta
+    property="og:image:height"
+    content="630"
+  /><meta property="og:image:alt" content="Portrait of Allan Dave Ebale" /><meta
+    name="twitter:image"
+    content="https://101dave.github.io/EbaleAllanDave/images/portrait-share.jpg"
+  /><meta name="twitter:image:alt" content="Portrait of Allan Dave Ebale" />
+  <!-- END SHARED_IDENTITY -->
 
   <meta property="og:type" content="article" />
   <meta property="og:title" content="Case study: Scholog — Student & Attendance Tracker" />
   <meta property="og:description" content="How and why I built Scholog, an installable attendance web app with QR self check-in, offline sync, and daily PDF reports." />
   <meta property="og:url" content="https://101dave.github.io/EbaleAllanDave/PROJECT-SCHOLOG.html" />
-  <meta property="og:image" content="https://101dave.github.io/EbaleAllanDave/images/scholog-cover.png" />
-  <meta property="og:image:alt" content="Case study: Scholog — Student & Attendance Tracker" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Case study: Scholog — Student & Attendance Tracker" />
   <meta name="twitter:description" content="How and why I built Scholog, an installable attendance web app with QR self check-in, offline sync, and daily PDF reports." />
-  <meta name="twitter:image" content="https://101dave.github.io/EbaleAllanDave/images/scholog-cover.png" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -52,8 +64,13 @@
     <div class="sidebar-top">
       <div class="mobile-header-bar">
         <a href="index.html" class="portfolio-brand"
-          ><span class="portfolio-brand-mark" aria-hidden="true">a.</span
-          ><span class="portfolio-brand-copy"
+          ><img
+            class="portfolio-brand-mark"
+            src="images/portrait-icon-192.png"
+            alt=""
+            width="36"
+            height="36"
+          /><span class="portfolio-brand-copy"
             ><strong>Allan Dave Ebale</strong><small>SOFTWARE ENGINEER</small></span
           ></a
         >
@@ -247,8 +264,8 @@
   <div class="portfolio-content">
     <div class="portfolio-topbar">
       <span>PORTFOLIO <span class="topbar-slash">/</span> CASE STUDY</span
-      ><a href="CONTACT.html"
-        ><span class="topbar-dot" aria-hidden="true"></span> OPEN TO INTERNSHIPS &amp; JUNIOR ROLES
+      ><a href="https://github.com/101dave" target="_blank" rel="noopener noreferrer"
+        >GITHUB
         <svg
           class=""
           width="13"
@@ -284,11 +301,7 @@
         </svg>
         All projects</a
       >
-      <div class="portfolio-page-intro">
-        <p class="section-eyebrow"><span> / </span>CASE STUDY</p>
-        <h1>Scholog — Student &amp; Attendance Tracker</h1>
-        <p>Built for classrooms where a reliable connection can’t be taken for granted.</p>
-      </div>
+      <p class="section-eyebrow"><span>01 /</span> CASE STUDY</p>
     </div>
     <article
       id="scholog"
@@ -325,7 +338,9 @@
         </figure>
         <div class="case-overview">
           <div class="case-category"><span>ATTENDANCE / PWA</span><span>PROJECT / 01</span></div>
-          <h2 id="scholog-title">Scholog<span class="case-title-dot">.</span></h2>
+          <h1 id="scholog-title">
+            Scholog — Student &amp; Attendance Tracker<span class="case-title-dot">.</span>
+          </h1>
           <p class="case-summary">Offline-ready attendance for teachers, with QR check-in and daily reports.</p>
           <p class="case-description">
             Built for classrooms where a reliable connection can’t be taken for granted.
@@ -400,21 +415,21 @@
       </div>
       <div class="case-breakdown">
         <div class="case-breakdown-item">
-          <p class="case-breakdown-label"><span>01</span> THE TECHNICAL BOTTLENECK</p>
+          <h2 class="case-breakdown-label"><span>01</span> THE TECHNICAL BOTTLENECK</h2>
           <p>
             A background refresh could overwrite a newer local attendance edit; dropped connections made saves
             harder to trust.
           </p>
         </div>
         <div class="case-breakdown-item">
-          <p class="case-breakdown-label"><span>02</span> THE TRADE-OFF</p>
+          <h2 class="case-breakdown-label"><span>02</span> THE TRADE-OFF</h2>
           <p>
             Cached edits and a sync queue instead of network-only saves keep teachers working offline, but
             require queue management and stale-response guards.
           </p>
         </div>
         <div class="case-breakdown-item case-proof">
-          <p class="case-breakdown-label"><span>03</span> THE PROOF</p>
+          <h2 class="case-breakdown-label"><span>03</span> THE PROOF</h2>
           <strong>~17 KB vs. ~350 KB</strong>
           <p>
             Documented icon subset versus the full library; scanner and PDF libraries are also loaded on demand.
@@ -464,8 +479,8 @@
             </svg>
             Walkthrough &amp; system flow</span
           ><span class="details-action"
-            >EXPLORE
-            <svg
+            ><span class="details-closed">EXPLORE</span><span class="details-open">CLOSE</span
+            ><svg
               class=""
               width="15"
               height="15"
@@ -572,30 +587,6 @@
         </div>
       </details>
     </article>
-    <section class="contact-banner" aria-labelledby="contact-banner-heading">
-      <div>
-        <p class="contact-eyebrow"><span class="status-dot" aria-hidden="true"></span> WHAT’S NEXT?</p>
-        <h2 id="contact-banner-heading">Let’s build something<br /><span>that works.</span></h2>
-        <p>Open to internships, junior roles, and thoughtful conversations about building software.</p>
-      </div>
-      <a href="mailto:davea0153@gmail.com" class="contact-banner-link"
-        >Get in touch
-        <svg
-          class=""
-          width="17"
-          height="17"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="1.6"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          aria-hidden="true"
-          focusable="false"
-        >
-          <path d="M7 17 17 7M7 7h10v10"></path></svg
-      ></a>
-    </section>
   </div>
   <!-- END PORTFOLIO_CONTENT -->
   <!-- BEGIN SHARED_FOOTER -->
