@@ -11,8 +11,6 @@
   align-self: center;
 }
 
-.deck-hint--interactive { display: none; }
-
 @media (max-width: 1023px) {
   header#sidebar { position: static; }
   nav.Nav-Links { display: flex; }
