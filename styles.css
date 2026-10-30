@@ -313,9 +313,13 @@ html.dark-mode-init .moon-icon { display: block; }
 
 /* ---------- Main ---------- */
 main {
-  margin-left: 224px;
-  padding: 56px 40px 32px;
-  max-width: calc(896px + 80px);
+  /* Center the content column in the space left by the fixed 224px sidebar.
+     The sidebar width is baked into the padding/max-width so the visible
+     text column sits in the middle of the remaining viewport, not flush
+     against the sidebar with all the slack on the right. */
+  margin: 0 auto;
+  padding: 56px 40px 32px calc(224px + 40px);
+  max-width: calc(896px + 80px + 224px);
   display: flex;
   flex-direction: column;
   gap: 56px;
@@ -1237,7 +1241,7 @@ a.submit-btn {
   }
 
   main {
-    margin-left: 0;
+    margin: 0;
     padding: 32px 20px 24px;
     gap: 44px;
   }
@@ -1312,8 +1316,9 @@ a.submit-btn {
   }
 
   main {
-    margin-left: 0;
+    margin: 0;
     padding: 0;
+    max-width: none;
     animation: none;
   }
 
