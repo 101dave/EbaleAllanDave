@@ -45,3 +45,16 @@ Any static file server works:
 python3 -m http.server 8000
 # then open http://localhost:8000
 ```
+
+## résumé
+
+`MOREINFO.html` renders the résumé in a single-column, print-first layout (centered header, uppercase section rules, org/place and role/date rows). The same content ships as `resume.pdf`.
+
+Regenerate the PDF after editing the résumé:
+
+```bash
+pip install fpdf2
+python3 scripts/build-resume-pdf.py   # writes resume.pdf
+```
+
+The script embeds DejaVu (regular/bold/oblique + serif bold) when it can find the TTFs, so en dashes and bullets survive. Point `RESUME_FONT_DIR` at a folder of DejaVu fonts if they live outside the usual Linux paths. Printing from the browser (`print / save as pdf`) uses the page's A4 `@media print` rules and matches the generated file.
