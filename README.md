@@ -27,7 +27,7 @@ My personal portfolio site, built with **plain HTML, CSS, and JavaScript** — n
 - Printable résumé page (`Ctrl/Cmd + P` friendly)
 - SEO meta tags, Open Graph/Twitter cards, `robots.txt`, and `sitemap.xml`
 - Accessibility: skip link, `aria-expanded`/`aria-pressed` states, keyboard (Esc) support, reduced-motion support
-- SVG project covers in `images/` (crisp at any size, tiny file size)
+- Uncropped app screenshots and C++ terminal previews, with a keyboard-accessible, zoomable image viewer (ordinary image links still work without JavaScript)
 - Design language inspired by [bryl-minimal](https://github.com/bryllim/bryl-minimal-design) (bryllim.com): monochrome ramp, mono micro-labels, numbered sections, halftone accent, soft shadows
 
 ## Project source code
@@ -48,6 +48,30 @@ Any static file server works:
 python3 -m http.server 8000
 # then open http://localhost:8000
 ```
+
+## Project previews
+
+Scholog and Finora use existing screenshots of the web apps. The C++ images are
+plain terminal-style renderings of sample sessions captured from the compiled
+programs; they are not stock or AI-generated images. The ATM case study also
+links to the original animated recording.
+
+The grade-management source has a known uninitialized vector-size bug. Its
+preview is captured from a **temporary copy** with the input-order corrected,
+as disclosed on the project card and case study. The linked source is unchanged.
+
+The generated PNGs are checked in, so running the site does not require a
+build. To regenerate them after editing a C++ project, use Python 3, Pillow,
+`g++`, the DejaVu Sans Mono font, and a Unix-like system with PTY support:
+
+```bash
+python3 -m pip install Pillow
+python3 scripts/build-project-previews.py
+```
+
+The script compiles in temporary directories, supplies sample inputs through a
+pseudo-terminal, checks key outputs, and records the source and sample inputs
+in the PNG metadata. It does not alter the linked `.txt` source files.
 
 ## Portrait and link preview
 

@@ -538,7 +538,8 @@ main > *:nth-child(n+5) { animation-delay: 0.33s; }
 /* ---------- Project cards ---------- */
 .projects-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  /* Two roomy columns keep real interface/terminal previews recognizable. */
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 20px;
 }
 
@@ -583,22 +584,205 @@ main > *:nth-child(n+5) { animation-delay: 0.33s; }
   border-color: var(--ink);
 }
 
+/* previews: keep the entire captured image visible, without crop or zoom. */
 .thumb {
+  display: block;
+  position: relative;
+  aspect-ratio: 8 / 5;
   overflow: hidden;
-  border-radius: 10px;
+  border-radius: 8px;
   border: 1px solid var(--g200);
-  background: var(--g100);
+  background: #fff;
+  cursor: zoom-in;
+  text-decoration: none;
+}
+
+.thumb--terminal {
+  background: #0c0e10;
+  border-color: #2a2d32;
 }
 
 .thumb img {
   width: 100%;
-  height: 150px;
-  object-fit: cover;
-  transition: transform 0.5s var(--ease);
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
 }
 
-.project-item:hover .thumb img {
-  transform: scale(1.04);
+/* A quiet affordance; the image itself never moves or gets a synthetic filter. */
+.thumb::after,
+.case-preview::after {
+  content: "View ↗";
+  position: absolute;
+  right: 8px;
+  bottom: 8px;
+  padding: 4px 7px;
+  border: 1px solid #d4d4d4;
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.95);
+  color: #404040;
+  font: 500 9px/1.3 var(--font-mono);
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  pointer-events: none;
+}
+
+.thumb:hover::after,
+.thumb:focus-visible::after,
+.case-preview:hover::after,
+.case-preview:focus-visible::after {
+  opacity: 1;
+}
+
+.project-preview-note {
+  color: var(--g500);
+  font: 400 11px/1.5 var(--font-mono);
+}
+
+/* Full-size viewer enhances the ordinary image links when JavaScript is on. */
+.preview-dialog {
+  inset: 0;
+  margin: auto;
+  padding: 0;
+  width: min(1100px, calc(100% - 32px));
+  max-width: none;
+  max-height: calc(100vh - 32px);
+  max-height: calc(100dvh - 32px);
+  overflow: auto;
+  overscroll-behavior: contain;
+  border: 1px solid var(--g200);
+  border-radius: 12px;
+  background: var(--bg);
+  color: var(--ink);
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.3);
+}
+
+.preview-dialog::backdrop {
+  background: rgba(0, 0, 0, 0.76);
+}
+
+.preview-dialog__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  padding: 14px 18px;
+}
+
+.preview-dialog__title {
+  font: 600 14px/1.4 var(--font-sans);
+}
+
+.preview-dialog__close {
+  flex: 0 0 auto;
+  width: 36px;
+  height: 36px;
+  border: 1px solid var(--g200);
+  border-radius: 7px;
+  background: var(--bg);
+  color: var(--ink);
+  font: 400 24px/1 var(--font-sans);
+  cursor: pointer;
+}
+
+.preview-dialog__close:hover {
+  background: var(--g100);
+}
+
+.preview-dialog__media {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-block: 1px solid var(--g200);
+  background: #fff;
+}
+
+.preview-dialog__media--terminal {
+  background: #0c0e10;
+}
+
+.preview-dialog__media img {
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: max(120px, calc(100vh - 190px));
+  max-height: max(120px, calc(100dvh - 190px));
+}
+
+.preview-dialog__footer {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px 16px;
+  padding: 13px 18px 16px;
+}
+
+.preview-dialog__caption {
+  flex: 1 1 360px;
+  color: var(--g500);
+  font: 400 12px/1.55 var(--font-mono);
+}
+
+.preview-dialog__actions {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.preview-dialog__zoom {
+  padding: 6px 9px;
+  border: 1px solid var(--g300);
+  border-radius: 5px;
+  background: var(--bg);
+  color: var(--ink);
+  font: 500 12px/1.4 var(--font-mono);
+  cursor: pointer;
+}
+
+.preview-dialog__zoom:hover {
+  background: var(--g100);
+}
+
+.preview-dialog__original {
+  flex: 0 0 auto;
+  font: 500 12px/1.4 var(--font-mono);
+  text-underline-offset: 3px;
+}
+
+@media (max-width: 560px) {
+  .preview-dialog__media img {
+    max-height: max(120px, calc(100vh - 230px));
+    max-height: max(120px, calc(100dvh - 230px));
+  }
+}
+
+/* In zoom mode the whole image remains available by scrolling, not cropping. */
+.preview-dialog__media--zoomed {
+  display: block;
+  max-height: min(60vh, 600px);
+  max-height: min(60dvh, 600px);
+  overflow: auto;
+  overscroll-behavior: contain;
+}
+
+.preview-dialog__media--zoomed img {
+  width: max(900px, 150%);
+  max-width: none;
+  max-height: none;
+}
+
+@media (hover: none) {
+  .thumb::after,
+  .case-preview::after {
+    opacity: 1;
+  }
+}
+
+@media (max-width: 700px) {
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 .project-item h2,
@@ -729,12 +913,35 @@ main > *:nth-child(n+5) { animation-delay: 0.33s; }
   margin: 8px 0 24px;
 }
 
-.case-media img {
-  width: 100%;
-  border-radius: 12px;
+.case-preview {
+  position: relative;
+  display: block;
+  overflow: hidden;
   border: 1px solid var(--g200);
+  border-radius: 10px;
   box-shadow: var(--shadow-rest);
-  background: #0d1013;
+  background: #fff;
+  cursor: zoom-in;
+}
+
+.case-preview--terminal {
+  background: #0c0e10;
+  border-color: #2a2d32;
+}
+
+.case-preview img {
+  width: 100%;
+  height: auto;
+}
+
+.media-caption {
+  margin-top: 9px;
+  color: var(--g500);
+  font: 400 11px/1.6 var(--font-mono);
+}
+
+.media-caption a {
+  text-underline-offset: 3px;
 }
 
 .terminal {
@@ -1560,12 +1767,15 @@ html.dark-mode-init .featured-project {
   align-items: stretch;
 }
 .showcase-image-frame {
+  display: block;
   width: 100%;
   border: 1px solid var(--showcase-line);
   border-radius: 11px;
   overflow: hidden;
-  background: var(--showcase-card);
+  background: #fff;
   align-self: center;
+  cursor: zoom-in;
+  text-decoration: none;
 }
 .showcase-image-label {
   color: var(--showcase-muted);
@@ -1578,9 +1788,7 @@ html.dark-mode-init .featured-project {
 }
 .showcase-image-frame img {
   width: 100%;
-  aspect-ratio: 16 / 10;
-  object-fit: cover;
-  object-position: top center;
+  height: auto;
 }
 .showcase-content {
   padding: 36px;
