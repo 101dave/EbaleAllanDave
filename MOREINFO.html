@@ -85,69 +85,110 @@
   </header>
 
   <main id="main">
-    <section class="resume-card">
-      <div class="resume-side">
-        <div>
-          <img src="images/me.webp" alt="Allan Dave Ebale" width="110" height="110" />
-          <h2>Allan Dave E Ebale</h2>
-          <p class="resume-role">student developer</p>
-        </div>
+    <section class="cv" aria-labelledby="cv-name">
+      <header class="cv-head">
+        <h1 id="cv-name">Allan Dave Ebale</h1>
+        <p class="cv-contact">
+          <span>Angeles City, Pampanga, Philippines</span>
+          <span class="cv-sep" aria-hidden="true">&bull;</span>
+          <a href="tel:+639939357601">993-935-7601</a>
+          <span class="cv-sep" aria-hidden="true">&bull;</span>
+          <a href="mailto:davea0153@gmail.com">davea0153@gmail.com</a>
+          <span class="cv-sep" aria-hidden="true">&bull;</span>
+          <a href="https://github.com/101dave" target="_blank" rel="noopener noreferrer">github.com/101dave</a>
+          <span class="cv-sep" aria-hidden="true">&bull;</span>
+          <a href="https://scholog.vercel.app" target="_blank" rel="noopener noreferrer">scholog.vercel.app</a>
+        </p>
+      </header>
 
-        <div class="resume-section">
-          <h3>contact</h3>
-          <ul>
-            <li><a href="mailto:davea0153@gmail.com">davea0153@gmail.com</a></li>
-            <li>993-935-7601</li>
+      <section class="cv-section">
+        <h2>education</h2>
+        <div class="cv-entry">
+          <p class="cv-row"><span class="cv-org">Next Generation Technological College</span><span class="cv-place">Angeles City</span></p>
+          <p class="cv-row"><span class="cv-role">Senior High School</span><span class="cv-date">2024 &ndash; Present</span></p>
+        </div>
+        <div class="cv-entry">
+          <p class="cv-row"><span class="cv-org">Diosdado Macapagal High School</span><span class="cv-place">Angeles City</span></p>
+          <p class="cv-row"><span class="cv-role">Junior High School</span><span class="cv-date">2020 &ndash; 2024</span></p>
+        </div>
+        <div class="cv-entry">
+          <p class="cv-row"><span class="cv-org">Dolores Piring Elementary School</span><span class="cv-place">Angeles City</span></p>
+          <p class="cv-row"><span class="cv-role">Elementary</span><span class="cv-date">2013 &ndash; 2020</span></p>
+        </div>
+      </section>
+
+      <section class="cv-section">
+        <h2>experience</h2>
+        <div class="cv-entry">
+          <p class="cv-row"><span class="cv-org">Independent Software Projects</span><span class="cv-place">Angeles City</span></p>
+          <p class="cv-row"><span class="cv-role">Frontend Web Developer</span><span class="cv-date">2024 &ndash; Present</span></p>
+          <ul class="cv-bullets">
+            <li>Built responsive, mobile-first sites and an installable attendance web app, Scholog, using HTML5, CSS3, JavaScript, and Supabase.</li>
+            <li>Handled the full cycle solo: layout and navigation, dark-mode theming, database modeling, and deployment on Vercel.</li>
           </ul>
         </div>
-
-        <div class="resume-section">
-          <h3>links</h3>
-          <ul>
-            <li><a href="https://github.com/101dave" target="_blank" rel="noopener noreferrer">github &#8599;</a></li>
-            <li><a href="https://web.facebook.com/dave.614149" target="_blank" rel="noopener noreferrer">facebook &#8599;</a></li>
-            <li><a href="https://www.instagram.com/davw_zx" target="_blank" rel="noopener noreferrer">instagram &#8599;</a></li>
+        <div class="cv-entry">
+          <p class="cv-row"><span class="cv-org">Academic &amp; Personal Programming Work</span><span class="cv-place">Angeles City</span></p>
+          <p class="cv-row"><span class="cv-role">C++ Programmer</span><span class="cv-date">2025 &ndash; Present</span></p>
+          <ul class="cv-bullets">
+            <li>Wrote and debugged 8+ console programs covering user authentication (card and PIN), record management, and arithmetic and geometry logic.</li>
+            <li>Added input validation and menu loops so each program runs end-to-end without crashing on bad input.</li>
+            <li>Used the work to practise control flow, functions, arrays, structs, and formatted output.</li>
           </ul>
         </div>
+        <p class="cv-note">No formal employment yet &mdash; actively seeking an internship (OJT) or first junior developer role.</p>
+      </section>
 
-        <div class="resume-section">
-          <h3>hobbies</h3>
-          <ul>
-            <li>coding</li>
-            <li>chess</li>
-            <li>cycling</li>
+      <section class="cv-section">
+        <h2>projects</h2>
+        <div class="cv-entry">
+          <p class="cv-row"><span class="cv-org">Scholog &mdash; Student &amp; Attendance Tracker</span><span class="cv-date">2025 &ndash; Present</span></p>
+          <ul class="cv-bullets">
+            <li>Installable web app for teachers: manage sections and rosters, take daily attendance, and export PDF reports.</li>
+            <li>Students check in with a QR code or Student ID; records sync offline and reconcile when the connection returns.</li>
+            <li>Front end in HTML, CSS, and JavaScript; Supabase and PostgreSQL for authentication, records, and attendance data.</li>
           </ul>
         </div>
-      </div>
-
-      <div class="resume-main">
-        <h1>r&eacute;sum&eacute;</h1>
-        <p class="resume-summary">I'm a student developer who enjoys turning ideas into working programs &mdash; from C++ console applications to responsive websites. Always learning, always building.</p>
-
-        <div class="resume-section">
-          <h2>experience</h2>
-          <ul>
-            <li>Frontend web development projects (HTML, CSS, JavaScript) <span class="years">2024 &mdash; now</span></li>
-            <li>C++ academic &amp; independent programming projects <span class="years">2025 &mdash; now</span></li>
-            <li>No formal work experience yet &mdash; but willing to learn.</li>
+        <div class="cv-entry">
+          <p class="cv-row"><span class="cv-org">C++ ATM Simulator</span><span class="cv-date">2025</span></p>
+          <ul class="cv-bullets">
+            <li>Console ATM with card and PIN verification, balance inquiry, deposits, withdrawals, and transaction history.</li>
           </ul>
         </div>
-
-        <div class="resume-section">
-          <h2>education</h2>
-          <ul>
-            <li>Senior High School &mdash; Next Generation Technological College <span class="years">2024 &mdash; now</span></li>
-            <li>Junior High School &mdash; Diosdado Macapagal High School <span class="years">2020 &mdash; 2024</span></li>
-            <li>Elementary &mdash; Doleres Piring Elementary School <span class="years">2013 &mdash; 2020</span></li>
+        <div class="cv-entry">
+          <p class="cv-row"><span class="cv-org">C++ Student Grade Management System</span><span class="cv-date">2025</span></p>
+          <ul class="cv-bullets">
+            <li>Add student records, encode grades, check pass or fail status, and display all student information from a menu-driven interface.</li>
           </ul>
         </div>
-
-        <div class="resume-actions">
-          <a class="submit-btn" href="resume.pdf" download>download pdf</a>
-          <button class="submit-btn" onclick="window.print()">print / save as pdf</button>
+        <div class="cv-entry">
+          <p class="cv-row"><span class="cv-org">Other C++ Console Programs</span><span class="cv-date">2025</span></p>
+          <ul class="cv-bullets">
+            <li>Cashier simulator, student honor status calculator, 2D &amp; 3D shape calculator, Celsius&ndash;Fahrenheit and number-base converters, and a four-operation calculator.</li>
+          </ul>
         </div>
+      </section>
+
+      <section class="cv-section">
+        <h2>technical skills</h2>
+        <p class="cv-skill"><span class="cv-skill-label">Languages:</span> C++, JavaScript, HTML5, CSS3</p>
+        <p class="cv-skill"><span class="cv-skill-label">Backend &amp; data:</span> PHP, Supabase, PostgreSQL</p>
+        <p class="cv-skill"><span class="cv-skill-label">Tools:</span> Git &amp; GitHub, VS Code, Vercel</p>
+      </section>
+
+      <section class="cv-section">
+        <h2>additional</h2>
+        <p class="cv-skill"><span class="cv-skill-label">Availability:</span> Open to OJT / internship and entry-level junior developer roles.</p>
+        <p class="cv-skill"><span class="cv-skill-label">Languages:</span> Filipino (native), English (fluent)</p>
+        <p class="cv-skill"><span class="cv-skill-label">Interests:</span> chess, cycling, tinkering with small side projects</p>
+      </section>
+
+      <div class="resume-actions">
+        <a class="submit-btn" href="resume.pdf" download>download pdf</a>
+        <button class="submit-btn" onclick="window.print()">print / save as pdf</button>
       </div>
     </section>
+
   <footer class="site-footer">
     <p>&copy; <span class="year">2026</span> allan dave ebale &middot; built with plain html, css &amp; js</p>
     <p class="footer-links">

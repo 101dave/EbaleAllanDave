@@ -989,124 +989,158 @@ a.submit-btn {
   min-height: 1.2em;
 }
 
-/* ---------- Résumé ---------- */
-.resume-card {
-  display: grid;
-  grid-template-columns: 260px 1fr;
+/* ---------- Résumé (single-column, print-first) ---------- */
+.cv {
+  --cv-ink: #0a0a0a;
+  --cv-muted: #4a4a4a;
+  --cv-rule: #c9c9c9;
+  background: var(--bg);
+  color: var(--cv-ink);
   border: 1px solid var(--g200);
   border-radius: 16px;
-  overflow: hidden;
-  background: var(--bg);
   box-shadow: var(--shadow-rest);
-}
-
-.resume-side {
-  background: var(--g50);
-  border-right: 1px solid var(--g200);
-  padding: 28px 22px;
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-}
-
-.resume-side img {
-  width: 110px;
-  height: 110px;
-  object-fit: cover;
-  border-radius: 12px;
+  max-width: 820px;
   margin: 0 auto;
-  border: 1px solid var(--g200);
+  padding: 46px 52px 42px;
+  font-size: 13.5px;
+  line-height: 1.5;
 }
 
-.resume-side h2 {
+/* Keep the paper readable in dark mode */
+body.dark-mode .cv,
+html.dark-mode-init body .cv {
+  --cv-ink: #f4f4f5;
+  --cv-muted: #b9b9c0;
+  --cv-rule: #3a3a42;
+}
+
+.cv-head {
   text-align: center;
-  font-size: 16px;
-  letter-spacing: -0.01em;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--cv-rule);
 }
 
-.resume-role {
-  text-align: center;
-  font: 500 10px var(--font-mono);
+.cv-head h1 {
+  font: 600 25px var(--font-sans);
   text-transform: uppercase;
-  letter-spacing: 1px;
-  color: var(--g400);
-  margin-top: 4px;
+  letter-spacing: 0.09em;
+  color: var(--cv-ink);
 }
 
-.resume-side h3,
-.resume-main h2 {
-  font: 500 10px var(--font-mono);
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  color: var(--g400);
-  border-bottom: 1px solid var(--g200);
-  padding-bottom: 6px;
-  margin-bottom: 10px;
+.cv-contact {
+  margin-top: 8px;
+  font: 400 12px var(--font-sans);
+  color: var(--cv-muted);
+  /* contact line wraps cleanly on narrow screens */
+  line-height: 1.7;
 }
 
-.resume-side ul {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  font-size: 13px;
-}
-
-.resume-side a {
-  color: var(--ink);
+.cv-contact a {
+  color: var(--cv-muted);
   text-decoration: none;
-  font: 600 12px var(--font-mono);
-  word-break: break-all;
 }
 
-.resume-side a:hover {
+.cv-contact a:hover {
+  color: var(--cv-ink);
   text-decoration: underline;
 }
 
-.resume-main {
-  padding: 30px;
+.cv-sep {
+  margin: 0 7px;
+  color: var(--cv-rule);
 }
 
-.resume-main h1 {
-  font: 600 26px var(--font-mono);
+.cv-section {
+  margin-top: 20px;
+}
+
+.cv-section h2 {
+  font: 600 11.5px var(--font-sans);
   text-transform: uppercase;
-  letter-spacing: -0.01em;
+  letter-spacing: 0.11em;
+  color: var(--cv-ink);
+  padding-bottom: 4px;
+  border-bottom: 1px solid var(--cv-rule);
+  margin-bottom: 10px;
 }
 
-.resume-summary {
-  color: var(--g500);
-  font-size: 14px;
-  margin-top: 8px;
-  max-width: 58ch;
+.cv-entry + .cv-entry {
+  margin-top: 11px;
 }
 
-.resume-section {
-  margin-top: 26px;
-}
-
-.resume-section ul {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  font-size: 14px;
-}
-
-.resume-section li {
+.cv-row {
   display: flex;
   justify-content: space-between;
-  gap: 12px;
-  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 14px;
 }
 
-.resume-section .years {
-  color: var(--g400);
-  font: 500 11px var(--font-mono);
+.cv-org {
+  font-weight: 600;
+  font-size: 13.5px;
+}
+
+.cv-role {
+  font-style: italic;
+  font-size: 13px;
+  color: var(--cv-muted);
+}
+
+.cv-place,
+.cv-date {
+  font-size: 12.5px;
+  color: var(--cv-muted);
   white-space: nowrap;
+  text-align: right;
+}
+
+.cv-bullets {
+  list-style: none;
+  margin-top: 3px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.cv-bullets li {
+  position: relative;
+  padding-left: 15px;
+  font-size: 13px;
+}
+
+.cv-bullets li::before {
+  content: "\2022";
+  position: absolute;
+  left: 3px;
+  color: var(--cv-muted);
+}
+
+.cv-note {
+  margin-top: 8px;
+  font-size: 12.5px;
+  font-style: italic;
+  color: var(--cv-muted);
+}
+
+.cv-skill {
+  font-size: 13px;
+}
+
+.cv-skill + .cv-skill {
+  margin-top: 2px;
+}
+
+.cv-skill-label {
+  font-weight: 600;
 }
 
 .resume-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
   margin-top: 28px;
+  padding-top: 18px;
+  border-top: 1px solid var(--g200);
 }
 
 /* ---------- 404 ---------- */
@@ -1257,14 +1291,29 @@ a.submit-btn {
     height: 120px;
   }
 
-  .contact-grid,
-  .resume-card {
+  .contact-grid {
     grid-template-columns: 1fr;
   }
 
-  .resume-side {
-    border-right: 0;
-    border-bottom: 1px solid var(--g200);
+  .cv {
+    padding: 28px 20px 26px;
+    border-radius: 12px;
+  }
+
+  .cv-head h1 {
+    font-size: 21px;
+    letter-spacing: 0.06em;
+  }
+
+  .cv-row {
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .cv-place,
+  .cv-date {
+    text-align: left;
+    white-space: normal;
   }
 
   .exp-row,
@@ -1307,6 +1356,17 @@ a.submit-btn {
 
 /* ---------- Print (résumé) ---------- */
 @media print {
+  @page {
+    size: A4;
+    margin: 14mm 15mm;
+  }
+
+  html,
+  body {
+    background: #fff !important;
+    color: #000 !important;
+  }
+
   header#sidebar,
   .skip-link,
   .site-footer,
@@ -1322,7 +1382,69 @@ a.submit-btn {
     animation: none;
   }
 
-  .resume-card {
+  /* Paper look in the browser, plain ink on paper. */
+  .cv {
+    --cv-ink: #000;
+    --cv-muted: #333;
+    --cv-rule: #999;
+    border: 0;
+    border-radius: 0;
     box-shadow: none;
+    max-width: none;
+    padding: 0;
+    font-size: 10.5pt;
+    line-height: 1.35;
+  }
+
+  .cv-head {
+    padding-bottom: 8pt;
+  }
+
+  .cv-head h1 {
+    font-size: 17pt;
+    letter-spacing: 0.08em;
+  }
+
+  .cv-contact {
+    font-size: 9pt;
+  }
+
+  .cv-section {
+    margin-top: 11pt;
+  }
+
+  .cv-section h2 {
+    font-size: 9.5pt;
+    margin-bottom: 6pt;
+  }
+
+  .cv-entry + .cv-entry {
+    margin-top: 7pt;
+  }
+
+  .cv-org,
+  .cv-row {
+    font-size: 10.5pt;
+  }
+
+  .cv-role,
+  .cv-bullets li,
+  .cv-skill {
+    font-size: 10pt;
+  }
+
+  .cv-place,
+  .cv-date,
+  .cv-note {
+    font-size: 9.5pt;
+  }
+
+  /* Don't split an entry across pages. */
+  .cv-entry {
+    break-inside: avoid;
+  }
+
+  .cv-section h2 {
+    break-after: avoid;
   }
 }
