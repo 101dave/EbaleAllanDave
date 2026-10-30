@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Case study: Ledger — personal expense tracker</title>
-  <meta name="description" content="A framework-free expense tracker with Supabase auth, monthly budgets, a Chart.js breakdown, and a local-only demo visitors can explore." />
+  <title>Case study: Finora — Personal Expense Tracker</title>
+  <meta name="description" content="A framework-free personal expense tracker with Supabase auth, monthly and weekly budgets, entry filters, and a Chart.js breakdown." />
   <link rel="canonical" href="https://101dave.github.io/EbaleAllanDave/PROJECT-EXPENSE.html" />
   <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
   <meta name="theme-color" content="#0c0c0f" media="(prefers-color-scheme: dark)" />
@@ -13,8 +13,8 @@
   <link rel="apple-touch-icon" sizes="180x180" href="images/portrait-touch-180.png" />
 
   <meta property="og:type" content="article" />
-  <meta property="og:title" content="Case study: Ledger — personal expense tracker" />
-  <meta property="og:description" content="A framework-free expense tracker with Supabase auth, monthly budgets, a Chart.js breakdown, and a local-only demo visitors can explore." />
+  <meta property="og:title" content="Case study: Finora — Personal Expense Tracker" />
+  <meta property="og:description" content="A framework-free personal expense tracker with Supabase auth, monthly and weekly budgets, entry filters, and a Chart.js breakdown." />
   <meta property="og:url" content="https://101dave.github.io/EbaleAllanDave/PROJECT-EXPENSE.html" />
   <meta property="og:image" content="https://101dave.github.io/EbaleAllanDave/images/portrait-share.jpg" />
   <meta property="og:image:type" content="image/jpeg" />
@@ -22,8 +22,8 @@
   <meta property="og:image:height" content="630" />
   <meta property="og:image:alt" content="Portrait of Allan Dave Ebale" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Case study: Ledger — personal expense tracker" />
-  <meta name="twitter:description" content="A framework-free expense tracker with Supabase auth, monthly budgets, a Chart.js breakdown, and a local-only demo visitors can explore." />
+  <meta name="twitter:title" content="Case study: Finora — Personal Expense Tracker" />
+  <meta name="twitter:description" content="A framework-free personal expense tracker with Supabase auth, monthly and weekly budgets, entry filters, and a Chart.js breakdown." />
   <meta name="twitter:image" content="https://101dave.github.io/EbaleAllanDave/images/portrait-share.jpg" />
   <meta name="twitter:image:alt" content="Portrait of Allan Dave Ebale" />
 
@@ -95,56 +95,56 @@
 
   <main id="main">
     <section>
-      <p class="crumb"><a href="PROJECTS.html">projects</a> / ledger</p>
-      <h1 class="page-title">ledger &mdash; personal expense tracker</h1>
-      <p class="page-lead">a quiet place to log what comes in and what goes out, set a monthly budget, and see the whole month honestly.</p>
+      <p class="crumb"><a href="PROJECTS.html">projects</a> / finora</p>
+      <h1 class="page-title">finora &mdash; personal expense tracker</h1>
+      <p class="page-lead">a quiet place to log what comes in and what goes out, set a monthly and a weekly budget, and see the whole month honestly.</p>
       <div class="stack-cloud"><span class="tag">plain html</span><span class="tag">css</span><span class="tag">javascript</span><span class="tag">supabase</span><span class="tag">postgresql</span><span class="tag">row level security</span><span class="tag">chart.js</span></div>
       <div class="case-media">
-        <img src="images/expense-tracker-cover.png" alt="Ledger dashboard showing monthly income, expenses, balance, budget progress, and a category doughnut chart" width="1200" height="600" />
+        <img src="images/expense-tracker-cover.png" alt="Finora dashboard showing monthly income, expenses, balance, monthly and weekly budget meters, and entry filters" width="1200" height="600" />
       </div>
       <div class="case-grid">
         <div class="case-block">
           <h2>the brief</h2>
-          <p>Build a personal expense tracker that is simple enough to explain in a minute and complete enough to be useful: accounts, income and expense entries, a monthly summary, one budget, filters, a category chart &mdash; and a way for visitors to try it without typing real financial information.</p>
-          <p>The constraints mattered as much as the features: plain HTML, CSS and JavaScript; no React, no build step; separate files; and a Supabase publishable key in the browser with Row Level Security doing the real work.</p>
+          <p>Build a personal expense tracker that is simple enough to explain in a minute and complete enough for everyday use: real accounts with email confirmation and password recovery, income and expense entries, a monthly summary, monthly and weekly budgets, filters, and a category breakdown.</p>
+          <p>The constraints mattered as much as the features: plain HTML, CSS, and ES modules; no framework, no build step, and no runtime CDN (Chart.js is vendored locally); plus a Supabase publishable key in the browser with Row Level Security doing the real access control.</p>
         </div>
         <div class="case-block">
           <h2>the approach</h2>
-          <p>The app is a static shell plus eleven small ES modules. <code>app.js</code> decides between the auth screen and the dashboard, <code>dashboard.js</code> owns one month of state, and a tiny store interface has two implementations: Supabase for real accounts and <code>localStorage</code> for demo mode.</p>
-          <p>That seam is the main design decision. The demo is not a separate mock screen &mdash; it runs the same filters, dialogs, stats, chart and validation as the real app. It also meant the UI could be tested thoroughly without a database.</p>
+          <p>Finora lives in its own <a href="https://github.com/101dave/Finora" target="_blank" rel="noopener noreferrer">repository</a> as a static shell plus eleven small ES modules. <code>app.js</code> chooses between the auth screen and the dashboard, <code>dashboard.js</code> owns one month of state alongside the current ISO week, and <code>supabase-store.js</code> wraps GoTrue and PostgREST behind a small store interface.</p>
+          <p>Sample-data mode was deliberately removed so the app is real accounts only &mdash; one store, one data path, and zero drift between mock state and Postgres. Request tokens guard month navigation so a slow response never overwrites a newly selected month.</p>
         </div>
         <div class="case-block">
-          <h2>accounts and data</h2>
-          <p>Supabase Auth handles email/password sign-up, login, logout and confirmation links. Transactions and budgets live in two Postgres tables; money is <code>numeric(12,2)</code>, dates are real <code>date</code> values, and a user has at most one budget per month.</p>
-          <p>Every transaction is owned by <code>auth.uid()</code> through a default plus a foreign key to <code>auth.users</code>. The frontend never filters by user id in its queries &mdash; policies on the table do that, so a manipulated request cannot widen its own access.</p>
+          <h2>accounts and budgets</h2>
+          <p>Supabase Auth handles email/password sign-up, confirmation links, sign-in, and a non-enumerating forgot-password flow that saves a new password through <code>PUT /auth/v1/user</code> and opens the dashboard directly.</p>
+          <p>Entries and limits live in two Postgres tables: <code>transactions</code> uses <code>numeric(12,2)</code> amounts and real <code>date</code> values, while <code>budgets</code> keys on <code>(user_id, period, period_start)</code> to support both monthly budgets and Monday&ndash;Sunday ISO weekly budgets.</p>
         </div>
         <div class="case-block">
           <h2>security</h2>
-          <p>Each table has four owner-only policies and the <code>anon</code> role has no table privileges at all. Only the publishable key ships; no service-role key exists anywhere in the folder.</p>
-          <p>I verified this in the live database with two impersonated users: each saw only their own rows, cross-user updates and deletes affected zero rows, a forged <code>user_id</code> insert was rejected with <code>42501</code>, and <code>anon</code> was denied. The temporary users and rows were deleted afterwards.</p>
+          <p>Each table enforces four owner-only policies comparing <code>(select auth.uid()) = user_id</code>, <code>anon</code> holds zero table privileges, and default <code>TRUNCATE</code> grants (which bypass RLS in Postgres) are explicitly revoked from both <code>anon</code> and <code>authenticated</code>.</p>
+          <p>I verified this against the live database with two impersonated users: each saw only their own rows, cross-user updates and deletes affected zero rows, a forged <code>user_id</code> insert failed with <code>42501</code>, and <code>anon</code> was denied. Test accounts and rows were cleaned up afterwards.</p>
         </div>
         <div class="case-block">
-          <h2>the demo</h2>
-          <p>Ledger now lives in its own <a href="https://github.com/101dave/Finora">Finora repository</a>, separate from this portfolio. <a href="https://101dave.github.io/Finora/?demo=1">The demo</a> seeds a current month clipped to today, a previous month with a budget, and a month before that without one. Everything is editable, the state survives a refresh in that browser, and <em>Reset sample data</em> restores the seed.</p>
-          <p>It never calls Supabase and never uploads anything. The tradeoff is honest: it is local sample data for exploring the interface, not private storage.</p>
+          <h2>monochrome single-column design</h2>
+          <p>The dashboard reads top to bottom in one column capped at 760px: month bar &rarr; three summary numbers (<em>In</em>, <em>Out</em>, <em>Left</em>) &rarr; monthly and weekly budget meters &rarr; entries &rarr; a collapsed native <code>&lt;details&gt;</code> panel for the category doughnut and daily insights.</p>
+          <p>The palette is strictly black ink on white paper with a ten-step grey ramp. Meaning rides on weight, sign, and shape instead of colour: bold <code>+</code> for income, regular <code>&minus;</code> for expenses, grey fill near a budget limit, and black diagonal hatching past it.</p>
         </div>
         <div class="case-block">
-          <h2>design and accessibility</h2>
-          <p>The interface uses one warm neutral palette, a mono micro-label system, and a single accent for action. On mobile the table becomes labelled cards rather than shrinking into unreadable columns; the chart legend carries the category values so the canvas is never the only source of information.</p>
-          <p>Forms keep visible labels, link errors with <code>aria-describedby</code>, and announce them; native <code>&lt;dialog&gt;</code> provides the focus trap and Escape handling; the theme respects the system preference and remembers the choice. An axe-core pass in Chromium found no WCAG A/AA violations across the auth screen, dashboard, empty month and entry dialog, in light and dark themes.</p>
+          <h2>phone layout and accessibility</h2>
+          <p>Fluid <code>clamp()</code> sizing and a six-tier phone breakpoint ladder down to 320px turn table rows into bordered cards with 44&times;44px touch targets, dock dialogs to the bottom as sheets, and respect device <code>safe-area-inset-*</code> margins.</p>
+          <p>Every field keeps a visible label and <code>aria-describedby</code> alert errors, native <code>&lt;dialog&gt;</code> handles focus trapping and Escape, and a text legend repeats every category value beside the decorative canvas. Four axe-core runs across auth, recovery, and the dashboard reported zero WCAG A/AA violations.</p>
         </div>
         <div class="case-block">
-          <h2>testing</h2>
-          <p>Fifteen dependency-free unit tests cover formatting and the demo store, including persistence failures and rollback. During development I also ran 14 jsdom UI-flow checks and 40 real-Chromium checks covering add/edit/delete, reload persistence, budgets, filters, empty states, validation, focus return, dark mode and mobile layout.</p>
-          <p>The one thing automated checks cannot prove here is the full email-confirmation round trip; that is a browser step after deployment, and it is listed in the README checklist.</p>
+          <h2>testing and deployment</h2>
+          <p>Twelve dependency-free <code>node --test</code> unit tests cover money formatting, date boundaries, and ISO week maths, backed by 41 jsdom integration checks across the dashboard, budget meters, and password-recovery flows.</p>
+          <p>GitHub Actions runs the unit suite before deploying every push to GitHub Pages, and <code>vercel.json</code> ships clean URLs and security headers with zero build step.</p>
         </div>
         <div class="case-block">
           <h2>what i&rsquo;d add next</h2>
-          <p>CSV export, recurring entries, a password-reset screen, and user-defined categories stored per account. Each is a real improvement, but none of them is needed to make the core loop feel finished &mdash; and keeping that loop small is why the app is easy to read.</p>
+          <p>CSV export, recurring entries, custom SMTP to lift Supabase&rsquo;s default email rate ceiling, and user-defined categories stored per account. Each is a real improvement, while keeping the core loop small and readable.</p>
         </div>
       </div>
       <div class="case-links">
-        <a href="https://101dave.github.io/Finora/">open the app <span class="arr">&#8599;</span></a><a href="https://101dave.github.io/Finora/?demo=1">try the demo <span class="arr">&#8599;</span></a><a href="https://github.com/101dave/Finora" target="_blank" rel="noopener noreferrer">source <span class="arr">&#8599;</span></a><a href="PROJECTS.html">back to projects <span class="arr">&#8594;</span></a>
+        <a href="https://101dave.github.io/Finora/" target="_blank" rel="noopener noreferrer">live app <span class="arr">&#8599;</span></a><a href="https://github.com/101dave/Finora" target="_blank" rel="noopener noreferrer">source <span class="arr">&#8599;</span></a><a href="PROJECTS.html">back to projects <span class="arr">&#8594;</span></a>
       </div>
     </section>
   <footer class="site-footer">

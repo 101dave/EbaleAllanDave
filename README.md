@@ -36,7 +36,7 @@ The C++ console projects showcased on the site live in the repository root as `.
 (e.g. `ATMSIMMULATOR.txt`, `BINARYConverter.txt`) and are linked from the project cards.
 Web apps are linked to their live deployments. **Scholog** ([scholog.vercel.app](https://scholog.vercel.app),
 [github.com/101dave/Scholog](https://github.com/101dave/Scholog)) lives in its own repository.
-**Ledger**, the expense tracker, lives in its own [Finora repository](https://github.com/101dave/Finora),
+**Finora**, the personal expense tracker, lives in its own [repository](https://github.com/101dave/Finora),
 deployed at [101dave.github.io/Finora](https://101dave.github.io/Finora/). This repository keeps its
 [case study](PROJECT-EXPENSE.html) and cover image.
 
