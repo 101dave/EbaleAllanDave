@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Case study: Scholog — Student & Attendance Tracker</title>
+  <meta name="description" content="How and why I built Scholog, an installable attendance web app with QR self check-in, offline sync, and daily PDF reports." />
+  <link rel="canonical" href="https://101dave.github.io/EbaleAllanDave/PROJECT-SCHOLOG.html" />
+  <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
+  <meta name="theme-color" content="#0c0c0f" media="(prefers-color-scheme: dark)" />
+  <link rel="icon" type="image/png" sizes="48x48" href="images/portrait-icon-48.png" />
+  <link rel="icon" type="image/png" sizes="192x192" href="images/portrait-icon-192.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="images/portrait-touch-180.png" />
+
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Case study: Scholog — Student & Attendance Tracker" />
+  <meta property="og:description" content="How and why I built Scholog, an installable attendance web app with QR self check-in, offline sync, and daily PDF reports." />
+  <meta property="og:url" content="https://101dave.github.io/EbaleAllanDave/PROJECT-SCHOLOG.html" />
+  <meta property="og:image" content="https://101dave.github.io/EbaleAllanDave/images/portrait-share.jpg" />
+  <meta property="og:image:type" content="image/jpeg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Portrait of Allan Dave Ebale" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Case study: Scholog — Student & Attendance Tracker" />
+  <meta name="twitter:description" content="How and why I built Scholog, an installable attendance web app with QR self check-in, offline sync, and daily PDF reports." />
+  <meta name="twitter:image" content="https://101dave.github.io/EbaleAllanDave/images/portrait-share.jpg" />
+  <meta name="twitter:image:alt" content="Portrait of Allan Dave Ebale" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <script>
+    try {
+      var savedTheme = localStorage.getItem('darkMode');
+      if (savedTheme === 'enabled' || (!savedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        document.documentElement.classList.add('dark-mode-init');
+      }
+    } catch (_) { /* The site remains usable if storage is unavailable. */ }
+  </script>
+
+  <link rel="stylesheet" href="styles.css" />
+  <noscript><link rel="stylesheet" href="styles-nojs.css" /></noscript>
+  <script src="script.js" defer></script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"Person","name":"Allan Dave Ebale","jobTitle":"Student Developer","url":"https://101dave.github.io/EbaleAllanDave/","email":"mailto:davea0153@gmail.com","image":"https://101dave.github.io/EbaleAllanDave/Me.jpg","sameAs":["https://github.com/101dave","https://web.facebook.com/dave.614149","https://www.instagram.com/davw_zx"]}
+  </script>
+</head>
+<body>
+
+  <a class="skip-link" href="#main">skip to content</a>
+
+  <header id="sidebar">
+    <div class="sidebar-top">
+      <div class="mobile-header-bar">
+        <a href="index.html" class="logo-container">
+          <span class="logo-link">allan dave ebale</span>
+        </a>
+
+        <div class="header-actions">
+          <button id="themeToggle" class="theme-toggle-btn" aria-label="Toggle dark mode" title="Toggle theme">
+            <svg class="sun-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+            <svg class="moon-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+          </button>
+
+          <button class="hamburger-btn" id="menuToggle" aria-label="Toggle navigation" aria-controls="navMenu">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <line x1="3" y1="12" x2="21" y2="12"></line>
+              <line x1="3" y1="6" x2="21" y2="6"></line>
+              <line x1="3" y1="18" x2="21" y2="18"></line>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <nav class="Nav-Links" id="navMenu" aria-label="Main navigation">
+        <a href="PROJECTS.html" class="active" aria-current="page">projects</a>
+        <a href="EXPERIENCE.html">experience</a>
+        <a href="CERTIFICATE.html">certificates</a>
+        <a href="TECHSTACK.html">stack</a>
+        <a href="RECOMMENDATION.html">recommendations</a>
+        <a href="CONTACT.html">contact</a>
+      </nav>
+    </div>
+
+    <div class="sidebar-bottom">
+      <div class="sidebar-contact">
+        <span class="contact-label">for work &amp; school</span>
+        <a href="mailto:davea0153@gmail.com" class="email-link">davea0153@gmail.com</a>
+      </div>
+      <a class="sidebar-resume-link" href="MOREINFO.html">r&eacute;sum&eacute; &rarr;</a>
+    </div>
+  </header>
+
+  <main id="main">
+    <section>
+      <p class="crumb"><a href="PROJECTS.html">projects</a> / scholog</p>
+      <h1 class="page-title">scholog</h1>
+      <p class="page-lead">an installable attendance web app for teachers &mdash; QR self check-in, offline sync, and daily PDF reports.</p>
+      <div class="stack-cloud"><span class="tag">web app</span><span class="tag">pwa</span><span class="tag">javascript</span><span class="tag">supabase</span><span class="tag">postgresql</span><span class="tag">vercel</span></div>
+      <div class="case-media">
+        <img src="images/scholog-cover.png" alt="Scholog teacher dashboard showing attendance statistics by class section" width="1280" height="800" />
+      </div>
+      <div class="case-grid">
+        <div class="case-block">
+          <h2>the problem</h2>
+          <p>Taking attendance by hand eats class time: paper sheets get lost, summaries take hours, and students can't check their own records. I wanted something a teacher could open on any device and use in seconds &mdash; even on bad classroom wifi.</p>
+        </div>
+        <div class="case-block">
+          <h2>the approach</h2>
+          <p>A static, installable PWA (no server to maintain) with Supabase Postgres behind per-account Row Level Security. Attendance is cached locally and synced automatically when the device is back online. The check-in scanner lives on its own page, so students never see the teacher dashboard &mdash; and don't even need an account: they scan a session QR or type their Student ID.</p>
+        </div>
+        <div class="case-block">
+          <h2>key features</h2>
+          <ul>
+            <li>class sections &amp; student rosters</li>
+            <li>daily attendance (Present / Absent / Late / Excused) with a manual fallback &mdash; no QR session means &ldquo;walang pasok&rdquo;</li>
+            <li>daily PDF export with roster, statuses, and summary</li>
+            <li>QR check-in sessions with share link and full-screen projector mode</li>
+            <li>student camera scan or ID entry &mdash; no login needed</li>
+            <li>password reset flow and installable app (manifest, icons, offline cache)</li>
+          </ul>
+        </div>
+        <div class="case-block">
+          <h2>what i learned</h2>
+          <p>Designing for flaky connectivity (offline-first, sync later) changes every data decision you make. Row Level Security is a feature, not an afterthought. Keeping the scan flow separate from the dashboard kept both simple. And small rules like &ldquo;no QR session = no class today&rdquo; prevent whole categories of bad data.</p>
+        </div>
+      </div>
+      <div class="case-links">
+        <a href="https://scholog.vercel.app" target="_blank" rel="noopener noreferrer">live app <span class="arr">&#8599;</span></a><a href="https://github.com/101dave/Scholog" target="_blank" rel="noopener noreferrer">source <span class="arr">&#8599;</span></a><a href="PROJECTS.html">back to projects <span class="arr">&#8594;</span></a>
+      </div>
+    </section>
+  <footer class="site-footer">
+    <p>&copy; <span class="year">2026</span> allan dave ebale &middot; built with plain html, css &amp; js</p>
+    <p class="footer-links">
+      <a href="MOREINFO.html">r&eacute;sum&eacute;</a>
+      <a href="CONTACT.html">contact</a>
+      <a href="https://github.com/101dave" target="_blank" rel="noopener noreferrer">github <span class="arr">&#8599;</span></a>
+    </p>
+  </footer>
+  </main>
+
+</body>
+</html>

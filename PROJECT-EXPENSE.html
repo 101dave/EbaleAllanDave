@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Case study: Finora — Personal Expense Tracker</title>
+  <meta name="description" content="A framework-free personal expense tracker with Supabase auth, monthly and weekly budgets, entry filters, and a Chart.js breakdown." />
+  <link rel="canonical" href="https://101dave.github.io/EbaleAllanDave/PROJECT-EXPENSE.html" />
+  <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
+  <meta name="theme-color" content="#0c0c0f" media="(prefers-color-scheme: dark)" />
+  <link rel="icon" type="image/png" sizes="48x48" href="images/portrait-icon-48.png" />
+  <link rel="icon" type="image/png" sizes="192x192" href="images/portrait-icon-192.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="images/portrait-touch-180.png" />
+
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Case study: Finora — Personal Expense Tracker" />
+  <meta property="og:description" content="A framework-free personal expense tracker with Supabase auth, monthly and weekly budgets, entry filters, and a Chart.js breakdown." />
+  <meta property="og:url" content="https://101dave.github.io/EbaleAllanDave/PROJECT-EXPENSE.html" />
+  <meta property="og:image" content="https://101dave.github.io/EbaleAllanDave/images/portrait-share.jpg" />
+  <meta property="og:image:type" content="image/jpeg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Portrait of Allan Dave Ebale" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Case study: Finora — Personal Expense Tracker" />
+  <meta name="twitter:description" content="A framework-free personal expense tracker with Supabase auth, monthly and weekly budgets, entry filters, and a Chart.js breakdown." />
+  <meta name="twitter:image" content="https://101dave.github.io/EbaleAllanDave/images/portrait-share.jpg" />
+  <meta name="twitter:image:alt" content="Portrait of Allan Dave Ebale" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <script>
+    try {
+      var savedTheme = localStorage.getItem('darkMode');
+      if (savedTheme === 'enabled' || (!savedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        document.documentElement.classList.add('dark-mode-init');
+      }
+    } catch (_) { /* The site remains usable if storage is unavailable. */ }
+  </script>
+
+  <link rel="stylesheet" href="styles.css" />
+  <noscript><link rel="stylesheet" href="styles-nojs.css" /></noscript>
+  <script src="script.js" defer></script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"Person","name":"Allan Dave Ebale","jobTitle":"Student Developer","url":"https://101dave.github.io/EbaleAllanDave/","email":"mailto:davea0153@gmail.com","image":"https://101dave.github.io/EbaleAllanDave/Me.jpg","sameAs":["https://github.com/101dave","https://web.facebook.com/dave.614149","https://www.instagram.com/davw_zx"]}
+  </script>
+</head>
+<body>
+
+  <a class="skip-link" href="#main">skip to content</a>
+
+  <header id="sidebar">
+    <div class="sidebar-top">
+      <div class="mobile-header-bar">
+        <a href="index.html" class="logo-container">
+          <span class="logo-link">allan dave ebale</span>
+        </a>
+
+        <div class="header-actions">
+          <button id="themeToggle" class="theme-toggle-btn" aria-label="Toggle dark mode" title="Toggle theme">
+            <svg class="sun-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+            <svg class="moon-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+          </button>
+
+          <button class="hamburger-btn" id="menuToggle" aria-label="Toggle navigation" aria-controls="navMenu">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <line x1="3" y1="12" x2="21" y2="12"></line>
+              <line x1="3" y1="6" x2="21" y2="6"></line>
+              <line x1="3" y1="18" x2="21" y2="18"></line>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <nav class="Nav-Links" id="navMenu" aria-label="Main navigation">
+        <a href="PROJECTS.html" class="active" aria-current="page">projects</a>
+        <a href="EXPERIENCE.html">experience</a>
+        <a href="CERTIFICATE.html">certificates</a>
+        <a href="TECHSTACK.html">stack</a>
+        <a href="RECOMMENDATION.html">recommendations</a>
+        <a href="CONTACT.html">contact</a>
+      </nav>
+    </div>
+
+    <div class="sidebar-bottom">
+      <div class="sidebar-contact">
+        <span class="contact-label">for work &amp; school</span>
+        <a href="mailto:davea0153@gmail.com" class="email-link">davea0153@gmail.com</a>
+      </div>
+      <a class="sidebar-resume-link" href="MOREINFO.html">r&eacute;sum&eacute; &rarr;</a>
+    </div>
+  </header>
+
+  <main id="main">
+    <section>
+      <p class="crumb"><a href="PROJECTS.html">projects</a> / finora</p>
+      <h1 class="page-title">finora &mdash; personal expense tracker</h1>
+      <p class="page-lead">a quiet place to log what comes in and what goes out, set a monthly and a weekly budget, and see the whole month honestly.</p>
+      <div class="stack-cloud"><span class="tag">plain html</span><span class="tag">css</span><span class="tag">javascript</span><span class="tag">supabase</span><span class="tag">postgresql</span><span class="tag">row level security</span><span class="tag">chart.js</span></div>
+      <div class="case-media">
+        <img src="images/expense-tracker-cover.png" alt="Finora dashboard showing monthly income, expenses, balance, monthly and weekly budget meters, and entry filters" width="1200" height="600" />
+      </div>
+      <div class="case-grid">
+        <div class="case-block">
+          <h2>the brief</h2>
+          <p>Build a personal expense tracker that is simple enough to explain in a minute and complete enough for everyday use: real accounts with email confirmation and password recovery, income and expense entries, a monthly summary, monthly and weekly budgets, filters, and a category breakdown.</p>
+          <p>The constraints mattered as much as the features: plain HTML, CSS, and ES modules; no framework, no build step, and no runtime CDN (Chart.js is vendored locally); plus a Supabase publishable key in the browser with Row Level Security doing the real access control.</p>
+        </div>
+        <div class="case-block">
+          <h2>the approach</h2>
+          <p>Finora lives in its own <a href="https://github.com/101dave/Finora" target="_blank" rel="noopener noreferrer">repository</a> as a static shell plus eleven small ES modules. <code>app.js</code> chooses between the auth screen and the dashboard, <code>dashboard.js</code> owns one month of state alongside the current ISO week, and <code>supabase-store.js</code> wraps GoTrue and PostgREST behind a small store interface.</p>
+          <p>Sample-data mode was deliberately removed so the app is real accounts only &mdash; one store, one data path, and zero drift between mock state and Postgres. Request tokens guard month navigation so a slow response never overwrites a newly selected month.</p>
+        </div>
+        <div class="case-block">
+          <h2>accounts and budgets</h2>
+          <p>Supabase Auth handles email/password sign-up, confirmation links, sign-in, and a non-enumerating forgot-password flow that saves a new password through <code>PUT /auth/v1/user</code> and opens the dashboard directly.</p>
+          <p>Entries and limits live in two Postgres tables: <code>transactions</code> uses <code>numeric(12,2)</code> amounts and real <code>date</code> values, while <code>budgets</code> keys on <code>(user_id, period, period_start)</code> to support both monthly budgets and Monday&ndash;Sunday ISO weekly budgets.</p>
+        </div>
+        <div class="case-block">
+          <h2>security</h2>
+          <p>Each table enforces four owner-only policies comparing <code>(select auth.uid()) = user_id</code>, <code>anon</code> holds zero table privileges, and default <code>TRUNCATE</code> grants (which bypass RLS in Postgres) are explicitly revoked from both <code>anon</code> and <code>authenticated</code>.</p>
+          <p>I verified this against the live database with two impersonated users: each saw only their own rows, cross-user updates and deletes affected zero rows, a forged <code>user_id</code> insert failed with <code>42501</code>, and <code>anon</code> was denied. Test accounts and rows were cleaned up afterwards.</p>
+        </div>
+        <div class="case-block">
+          <h2>monochrome single-column design</h2>
+          <p>The dashboard reads top to bottom in one column capped at 760px: month bar &rarr; three summary numbers (<em>In</em>, <em>Out</em>, <em>Left</em>) &rarr; monthly and weekly budget meters &rarr; entries &rarr; a collapsed native <code>&lt;details&gt;</code> panel for the category doughnut and daily insights.</p>
+          <p>The palette is strictly black ink on white paper with a ten-step grey ramp. Meaning rides on weight, sign, and shape instead of colour: bold <code>+</code> for income, regular <code>&minus;</code> for expenses, grey fill near a budget limit, and black diagonal hatching past it.</p>
+        </div>
+        <div class="case-block">
+          <h2>phone layout and accessibility</h2>
+          <p>Fluid <code>clamp()</code> sizing and a six-tier phone breakpoint ladder down to 320px turn table rows into bordered cards with 44&times;44px touch targets, dock dialogs to the bottom as sheets, and respect device <code>safe-area-inset-*</code> margins.</p>
+          <p>Every field keeps a visible label and <code>aria-describedby</code> alert errors, native <code>&lt;dialog&gt;</code> handles focus trapping and Escape, and a text legend repeats every category value beside the decorative canvas. Four axe-core runs across auth, recovery, and the dashboard reported zero WCAG A/AA violations.</p>
+        </div>
+        <div class="case-block">
+          <h2>testing and deployment</h2>
+          <p>Twelve dependency-free <code>node --test</code> unit tests cover money formatting, date boundaries, and ISO week maths, backed by 41 jsdom integration checks across the dashboard, budget meters, and password-recovery flows.</p>
+          <p>GitHub Actions runs the unit suite before deploying every push to GitHub Pages, and <code>vercel.json</code> ships clean URLs and security headers with zero build step.</p>
+        </div>
+        <div class="case-block">
+          <h2>what i&rsquo;d add next</h2>
+          <p>CSV export, recurring entries, custom SMTP to lift Supabase&rsquo;s default email rate ceiling, and user-defined categories stored per account. Each is a real improvement, while keeping the core loop small and readable.</p>
+        </div>
+      </div>
+      <div class="case-links">
+        <a href="https://101dave.github.io/Finora/" target="_blank" rel="noopener noreferrer">live app <span class="arr">&#8599;</span></a><a href="https://github.com/101dave/Finora" target="_blank" rel="noopener noreferrer">source <span class="arr">&#8599;</span></a><a href="PROJECTS.html">back to projects <span class="arr">&#8594;</span></a>
+      </div>
+    </section>
+  <footer class="site-footer">
+    <p>&copy; <span class="year">2026</span> allan dave ebale &middot; built with plain html, css &amp; js</p>
+    <p class="footer-links">
+      <a href="MOREINFO.html">r&eacute;sum&eacute;</a>
+      <a href="CONTACT.html">contact</a>
+      <a href="https://github.com/101dave" target="_blank" rel="noopener noreferrer">github <span class="arr">&#8599;</span></a>
+    </p>
+  </footer>
+  </main>
+
+</body>
+</html>
