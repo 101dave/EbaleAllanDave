@@ -46,6 +46,16 @@ class StaticSiteTests(unittest.TestCase):
         for target in ('PROJECT-SCHOLOG.html', 'PROJECT-ATM.html', 'PROJECT-GRADES.html'):
             self.assertIn(f'href="{target}"', home)
 
+    def test_scholog_is_the_only_featured_project(self):
+        projects = (ROOT / 'PROJECTS.html').read_text(encoding='utf-8')
+        self.assertEqual(projects.count('class="showcase-card featured-project"'), 1)
+        self.assertEqual(projects.count('class="project-item"'), 8)
+        featured, other_projects = projects.split('<h2 class="other-projects-title">', 1)
+        for target in ('https://scholog.vercel.app', 'https://github.com/101dave/Scholog', 'PROJECT-SCHOLOG.html'):
+            self.assertIn(f'href="{target}"', featured)
+        for target in ('ATMSIMMULATOR.txt', 'STUDENTGRADEMANAGEMENTSYSTEM.txt', 'CALCULATOR.txt'):
+            self.assertIn(f'href="{target}"', other_projects)
+
     def test_portrait_is_used_for_icons_and_shared_links(self):
         for name, page in self.pages.items():
             with self.subTest(page=name):
